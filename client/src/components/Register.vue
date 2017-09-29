@@ -8,12 +8,14 @@
   name="email"
   v-model="email"
   placeholder="email" />
-<br>
+<br><br>
   <input 
   type="password"
   name="password"
   v-model="password"
   placeholder="password" />
+  <br><br>
+
 <br><br>
 <div class="error" v-html = "error" />
 <br>
@@ -37,8 +39,8 @@ export default {
       try{
      await AuthenticationService.register({
        email: this.email,
-       password: this.password
-     })
+       password: this.password,
+       })
     }catch (error){
         this.error = error.response.data.error
     }
