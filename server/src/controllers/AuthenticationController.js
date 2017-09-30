@@ -1,4 +1,5 @@
 const { User } = require('../models')
+const config = require('../config/config')
 
 module.exports = {
   async  register(req, res) {
@@ -10,5 +11,40 @@ module.exports = {
               error: 'This email is alrady in use'
           })
       }
+    },
+    async login (req, res) {
+        try {
+          const {email, password} = req.body
+          const user = await User.findOne({
+            where: {
+              email: email
+            }
+          })
+     
+          if (!user) {
+            return res.status(403).send({
+              error: 'The login information was incorrect'
+            })
+          }
+    
+          
+          const isPasswordValid = password === user.password
+          console.log(password, user.password)
+          console.log(isPasswordValid)
+          if (!isPasswordValid) {
+            return res.status(403).send({
+              error: 'The login information was incorrect'
+            })
+          }
+
+          const userJson = user.toJSON()
+          res.send({
+            user: userJson,
+                })
+        } catch (err) {
+          res.status(500).send({
+            error: 'An error has occured trying to log in'
+          })
+        }
+      }
     }
-}

@@ -4,7 +4,7 @@
 <v-flex xs6 offset-xs3>
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
-<v-toolbar-title >Register</v-toolbar-title>
+<v-toolbar-title >Login</v-toolbar-title>
 </v-toolbar>
 
 <div class = "pl-4 pr-4 pt-2 pb-2">
@@ -18,15 +18,12 @@
               v-model="password"
             ></v-text-field>
 
-            <v-text-field
-              label="Name of the Mine (optional)"
-              v-model="mine"
-            ></v-text-field>
+          
 
   <div class="error" v-html = "error" />
 <br>
 <v-btn class = "indigo darken-3 " 
-@click="register"><span class = " white--text">Register </span>
+@click="login"><span class = " white--text">Login </span>
 </v-btn>
 </div>
 
@@ -48,13 +45,12 @@ export default {
     };
   },
   methods: {
-    async register() {
+    async login() {
       try{
-     await AuthenticationService.register({
+     await AuthenticationService.login({
        email: this.email,
        password: this.password,
-       mine: this.mine,
-       })
+             })
     }catch (error){
         this.error = error.response.data.error
     }

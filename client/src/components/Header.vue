@@ -16,11 +16,19 @@
     </v-toolbar-items>
           <v-spacer></v-spacer>
     <v-toolbar-items >
-       <v-btn flat dark 
-       @click="navigateTo({name: 'register'})"> 
-        Sign Up
+
+      <v-btn flat dark 
+         @click="navigateTo({name: 'login'})"> <!-- TODO:refactor later -->
+          Login
       </v-btn>
-      <v-btn flat dark> Login</v-btn>
+
+       <v-btn flat dark 
+          @click="navigateTo({name: 'register'})"> <!-- TODO:refactor later -->
+          Sign Up
+      </v-btn>
+
+      
+      
     </v-toolbar-items>
         
     </v-toolbar-items>
