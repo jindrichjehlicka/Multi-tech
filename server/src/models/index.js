@@ -8,9 +8,9 @@ const db = {}
 const sequelize = new Sequelize(
     config.db.database,
     config.db.user,
-    // config.db.name,
     config.db.password,
-    config.db.options,
+    // config.db.mine,
+    config.db.options
 )
 
 fs.readdirSync(__dirname)

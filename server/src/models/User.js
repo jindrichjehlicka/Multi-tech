@@ -5,6 +5,8 @@ sequelize.define('User',{
         unique:true
     },
     password: DataTypes.STRING,
-    name: DataTypes.STRING
+    mine: {
+        type: DataTypes.STRING
+    },
 })
 //takes sequelize and data types, returns(define) user model that can be used

@@ -1,27 +1,40 @@
 /* eslint-disable */
 <template>
-<div>
-<h1>Register</h1>
+ <v-layout column>
+<v-flex xs6 offset-xs3>
+<div class = "white elevation-24">
+<v-toolbar flat dense class class = "indigo darken-2 white--text" >
+<v-toolbar-title >Register</v-toolbar-title>
+</v-toolbar>
 
-<input 
-  type="email"
-  name="email"
-  v-model="email"
-  placeholder="email" />
-<br><br>
-  <input 
-  type="password"
-  name="password"
-  v-model="password"
-  placeholder="password" />
-  <br><br>
+<div class = "pl-4 pr-4 pt-2 pb-2">
+ <v-text-field
+              label="Email"
+              v-model="email"
+            ></v-text-field>
 
-<br><br>
-<div class="error" v-html = "error" />
+    <v-text-field
+              label="Password"
+              v-model="password"
+            ></v-text-field>
+
+            <v-text-field
+              label="Name of mine (optional)"
+              v-model="mine"
+            ></v-text-field>
+
+  <div class="error" v-html = "error" />
 <br>
-<button
-@click="register">Register</button>
+<v-btn class = "indigo darken-3 " 
+@click="register"><span class = " white--text">Register </span>
+</v-btn>
 </div>
+
+</div>
+</v-flex>
+</v-layout>
+
+
  </template>
 
 <script>
@@ -40,6 +53,7 @@ export default {
      await AuthenticationService.register({
        email: this.email,
        password: this.password,
+       mine: this.mine,
        })
     }catch (error){
         this.error = error.response.data.error
@@ -51,7 +65,8 @@ export default {
 
 
 <style scoped>
-.error{
-  color:red;
-}
+
+
+
+
 </style>
