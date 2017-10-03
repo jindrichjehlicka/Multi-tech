@@ -12,5 +12,8 @@ module.exports = {
             storage:'./multitech.sqlite'
 
         }
+    },
+    authentication:{
+        jwtSecret: process.env.JWT_SECRET || 'secret'
     }
 }
