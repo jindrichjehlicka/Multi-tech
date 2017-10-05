@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs6 offset-xs3>
+<v-flex xs4 offset-xs4>
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Register</v-toolbar-title>

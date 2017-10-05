@@ -18,7 +18,7 @@ class="footer pa-3">
 <style scoped>
 .footer{
     background-color: grey;
-    color:black;
+    color:white;
 }
 
 
