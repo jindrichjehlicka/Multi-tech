@@ -1,6 +1,6 @@
 module.exports = {
     port: process.env.PORT || 8081,
-    protocol: 'tcp',
+ 
     db:{
         database:process.env.DB_NAME || 'multitech' ,
         user:process.env.DB_USER || 'multitech',

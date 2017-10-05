@@ -1,20 +1,21 @@
 /* eslint-disable */
 <template>
-  <div class="hello">
-    <h1>{{ msg }}
-    </h1>
-  </div>
-</template>
+<v-container >
+<v-layout column>
+<v-flex xs12 sm6 offset-sm3>
+<v-card>
+        <v-card-media src="../images/MTS.png" >
+        
+        </v-card-media>
+        </v-card>
+  <img src="../images/MTS.png" alt="logo" style="width:450px;height:200px;" >
+</v-flex>
+</v-layout>
+</v-container>
+ </template>
 
 <script>
-export default {
-  name: 'hello',
-  data() {
-    return {
-      msg: 'Main page',
-    };
-  },
-};
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -36,4 +37,6 @@ li {
 a {
   color: #42b983;
 }
+
+
 </style>

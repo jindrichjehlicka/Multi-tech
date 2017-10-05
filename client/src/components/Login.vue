@@ -8,6 +8,10 @@
 </v-toolbar>
 
 <div class = "pl-4 pr-4 pt-2 pb-2">
+<form
+  name="multi-tech-form"
+  autocomplete ="on">
+  
  <v-text-field
               label="Email"
               v-model="email"
@@ -15,9 +19,10 @@
 
     <v-text-field
               label="Password"
+              type ="password"
               v-model="password"
-            ></v-text-field>
-
+              ></v-text-field>
+            </form>
           
 
   <div class="error" v-html = "error" />
@@ -47,10 +52,12 @@ export default {
   methods: {
     async login() {
       try{
-     await AuthenticationService.login({
+    const response = await AuthenticationService.login({
        email: this.email,
        password: this.password,
              })
+      this.$store.dispatch('setToken', response.data.token)
+      this.$store.dispatch('setUser', response.data.user)
     }catch (error){
         this.error = error.response.data.error
     }
