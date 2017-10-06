@@ -27,7 +27,10 @@
               label="Name of the Mine (optional)"
               v-model="mine"
             ></v-text-field>
+            
             </form>
+            
+              
 
   <div class="error" v-html = "error" />
 <br>

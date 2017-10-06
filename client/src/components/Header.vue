@@ -1,6 +1,7 @@
 /* eslint-disable */
 <template>
   <v-toolbar fixed class="indigo darken-2" dark>
+  <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
     <v-toolbar-title class="mr4">
    
       <span
@@ -9,13 +10,13 @@
         Multi-tech
       </span>
     </v-toolbar-title>
-
-    <v-toolbar-items >
+    
+    <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat dark> Products</v-btn>
       <v-btn flat dark> Support</v-btn>
     </v-toolbar-items>
           <v-spacer></v-spacer>
-    <v-toolbar-items >
+    <v-toolbar-items class="hidden-sm-and-down">
 
       <v-btn flat dark to ="Login"
        v-if="!$store.state.isUserLoggedIn"
