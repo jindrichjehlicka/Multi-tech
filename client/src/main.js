@@ -9,6 +9,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import 'font-awesome/css/font-awesome.css'
 
+
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify)

@@ -27,8 +27,8 @@
 
   <div class="error" v-html = "error" />
 <br>
-<v-btn class = "indigo darken-3 " 
-@click="login"><span class = " white--text">Login </span>
+<v-btn dark class = "indigo darken-3 " 
+@click="login"><i class="fa fa-sign-in"></i>Login
 </v-btn>
 </div>
 
