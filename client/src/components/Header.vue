@@ -17,10 +17,11 @@
           <v-spacer></v-spacer>
     <v-toolbar-items >
 
-      <v-btn 
+      <v-btn flat dark to ="Login"
        v-if="!$store.state.isUserLoggedIn"
        flat dark 
-         @click="navigateTo({name: 'login'})"> <!-- TODO:refactor later -->
+         @click="navigateTo({name: 'login'})"
+           > <!-- TODO:refactor later -->
           Login
       </v-btn>
 
@@ -34,8 +35,17 @@
        <v-btn 
        v-if="$store.state.isUserLoggedIn"
        flat dark 
-          @click="navigateTo({name: ''})"> <!-- TODO:refactor later -->
+          @click="navigateTo({name: ''})"
+          > <!-- TODO:refactor later -->
           My profile
+      </v-btn>
+
+<v-btn 
+       v-if="$store.state.isUserLoggedIn"
+       flat dark 
+          @click="navigateTo({name: ''})"
+          > <!-- TODO:refactor later -->
+          Sign out
       </v-btn>
 
       

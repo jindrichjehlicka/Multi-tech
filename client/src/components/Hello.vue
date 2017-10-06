@@ -1,18 +1,24 @@
 /* eslint-disable */
 <template>
-<v-container >
-<v-layout column>
-<v-flex xs12 sm6 offset-sm3>
-<v-card>
-        <v-card-media src="../images/MTS.png" >
-        
-        </v-card-media>
-        </v-card>
-  <img src="../images/MTS.png" alt="logo" style="width:450px;height:200px;" >
-</v-flex>
-</v-layout>
-</v-container>
- </template>
+
+      <v-card flat class="card-1"
+      >
+      
+        <v-card-media 
+      >
+<v-container  grid-list-xs >
+  <v-layout row wrap>
+    <v-flex xs12 sm6 offset-sm3>
+          <img src="../images/mts.png" alt="logo" >
+       </v-flex>
+  </v-layout>
+  </v-container>
+  </v-card-media>   
+   
+            
+      </v-card>
+     
+</template
 
 <script>
 
@@ -38,5 +44,8 @@ a {
   color: #42b983;
 }
 
+.card-1{
+  background-color:#FAFAFA;
+}
 
 </style>

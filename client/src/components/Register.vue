@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs4 offset-xs4>
+<v-flex xs12 sm4 offset-sm4 class="my-3">
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Register</v-toolbar-title>
@@ -64,6 +64,9 @@ export default {
        })
       this.$store.dispatch('setToken', response.data.token)
       this.$store.dispatch('setUser', response.data.user)
+       this.$router.push({
+          name: 'login'
+        })
     }catch (error){
         this.error = error.response.data.error
     }
