@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs12 sm4 offset-sm4 class="my-3">
+<v-flex xs12 sm4 offset-sm4 class="mt-5">
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Register</v-toolbar-title>
@@ -10,7 +10,9 @@
 <div class = "pl-4 pr-4 pt-2 pb-2">
 <form
   name="multi-tech-form"
-  autocomplete ="on">
+  autocomplete ="on"
+  class="mb-1">
+  
  <v-text-field
               label="Email"
               v-model="email"
@@ -34,8 +36,8 @@
 
   <div class="error" v-html = "error" />
 <br>
-<v-btn dark class = "indigo darken-3 " 
-@click="register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register 
+<v-btn dark class = "indigo darken-3 pm-2" 
+@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span> Register 
 </v-btn>
 </div>
 

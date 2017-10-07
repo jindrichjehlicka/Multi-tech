@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs12 sm4 offset-sm4 class="my-3">
+<v-flex xs12 sm4 offset-sm4 class="mt-5">
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Login</v-toolbar-title>
@@ -28,7 +28,7 @@
   <div class="error" v-html = "error" />
 <br>
 <v-btn dark class = "indigo darken-3 " 
-@click="login"><i class="fa fa-sign-in"></i>Login
+@click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Login
 </v-btn>
 </div>
 

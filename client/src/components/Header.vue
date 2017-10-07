@@ -4,15 +4,17 @@
     <v-navigation-drawer
       persistent
       v-model="drawer"
-      enable-resize-watcher
+     enable-resize-watcher
+     clipped
+   temporary
       app
-      dark
-      
+   dark
+      class="indigo darken-3"
     >
     <br/>
-      <v-list dense>
+      <v-list dense class="indigo darken-3">
 
-        <v-list-tile @click="">
+        <v-list-tile @click="navigateTo({name: 'products'})">
           <v-list-tile-action>
             <i class="fa fa-product-hunt" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -21,7 +23,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click="">
+        <v-list-tile @click="navigateTo({name: 'support'})">
           <v-list-tile-action>
             <i class="fa fa-question" aria-hidden="true"></i> 
           </v-list-tile-action>
@@ -39,7 +41,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-         <v-list-tile v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name: 'register'})">
+         <v-list-tile  v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name: 'register'})">
           <v-list-tile-action>
             <i class="fa fa-user-plus" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -48,18 +50,18 @@
           </v-list-tile-content>
         </v-list-tile>
 
-         <v-list-tile v-if="$store.state.isUserLoggedIn" @click="">
+         <v-list-tile v-if="$store.state.isUserLoggedIn" @click="navigateTo({name: 'profile'})">
           <v-list-tile-action>
-            <v-icon></v-icon>
+            <i class="fa fa-user" aria-hidden="true"></i>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>My Profile</v-list-tile-title>
+            <v-list-tile-title>Profile</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
          <v-list-tile v-if="$store.state.isUserLoggedIn" @click="">
           <v-list-tile-action>
-            <v-icon></v-icon>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title >Sign Out</v-list-tile-title>
@@ -69,7 +71,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar fixed class="indigo darken-2" dark dense>
+    <v-toolbar fixed class="indigo darken-3" dark dense>
       <v-toolbar-side-icon  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
       <v-toolbar-title class="mr4">
    
@@ -81,8 +83,14 @@
     </v-toolbar-title>
 <br/>
  <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat dark> Products</v-btn>
-      <v-btn flat dark> Support</v-btn>
+
+      <v-btn flat dark
+      @click="navigateTo({name: 'products'})"
+      > Products</v-btn>
+
+      <v-btn flat dark
+      @click="navigateTo({name: 'support'})"
+      > Support</v-btn>
     </v-toolbar-items>
           <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
@@ -103,11 +111,12 @@
       </v-btn>
 
        <v-btn 
-       v-if="$store.state.isUserLoggedIn"
+       
        flat dark 
-          @click="navigateTo({name: ''})"
-          > <!-- TODO:refactor later -->
-          My profile
+       v-if="$store.state.isUserLoggedIn"
+          @click="navigateTo({name:'profile'})"
+          > <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
+        Profile
       </v-btn>
 
 <v-btn 

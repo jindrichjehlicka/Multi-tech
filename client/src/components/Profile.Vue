@@ -1,12 +1,11 @@
 /* eslint-disable */
 <template>
 
-        <v-layout row wrap>
+     <v-layout row wrap>
     <v-flex xs12 sm4 offset-sm4>
-     <h1 >Products</h1>
+    <h1 >My profile</h1>
     </v-flex>
   </v-layout>
-     
      
 </template
 
