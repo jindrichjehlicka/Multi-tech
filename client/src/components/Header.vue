@@ -8,7 +8,7 @@
      clipped
    temporary
       app
-   dark
+   dark  
       class="indigo darken-3"
     >
     <br/>

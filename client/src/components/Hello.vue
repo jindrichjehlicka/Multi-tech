@@ -1,10 +1,10 @@
 /* eslint-disable */
 <template>
 
-      <v-card flat class="card-1"
+      <v-card flat 
       >
       
-        <v-card-media 
+        <v-card-media class="card-1"
       >
 <v-container  grid-list-xs >
   <v-layout row wrap>

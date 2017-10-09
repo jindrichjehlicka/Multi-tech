@@ -1,68 +1,86 @@
 /* eslint-disable */
 <template>
+ <v-layout column>
+<v-flex xs12 sm6 offset-sm2 class="mt-5">
+<div class = "white elevation-24">
+<v-toolbar flat dense class class = "indigo darken-2 white--text" >
+<v-toolbar-title >Support</v-toolbar-title>
+</v-toolbar>
 
-    <v-container fluid>
-    <v-layout justify-space-around class="mb-2">
-      <span class="group pa-2">
-        <v-icon>home</v-icon>
-        <v-icon>event</v-icon>
-        <v-icon>info</v-icon>
-      </span>
+<div class = "pl-4 pr-4 pt-2 pb-2">
+    <v-form v-model="valid" ref="form" lazy-validation>
+    <v-text-field
+      label="Name"
+      v-model="name"
+      :rules="nameRules"
+      :counter="10"
+      required
+    ></v-text-field>
+    <v-text-field
+      label="E-mail"
+      v-model="email"
+      :rules="emailRules"
+      required
+    ></v-text-field>
+    <v-select
+      label="Item"
+      v-model="select"
+      :items="items"
+      :rules="[v => !!v || 'Item is required']"
+      required
+    ></v-select>
+    <v-checkbox
+      label="Do you agree?"
+      v-model="checkbox"
+      :rules="[v => !!v || 'You must agree to continue!']"
+      required
+    ></v-checkbox>
 
-      <span class="group pa-2 teal">
-        <v-icon dark>folder_open</v-icon>
-        <v-icon dark>widgets</v-icon>
-        <v-icon dark>gavel</v-icon>
-      </span>
-    </v-layout>
-
-    <v-layout justify-space-around class="mb-2">
-      <span class="group pa-2">
-        <v-icon medium>home</v-icon>
-        <v-icon medium>event</v-icon>
-        <v-icon medium>info</v-icon>
-      </span>
-
-      <span class="group pa-2 teal">
-        <v-icon medium dark>folder_open</v-icon>
-        <v-icon medium dark>widgets</v-icon>
-        <v-icon medium dark>gavel</v-icon>
-      </span>
-    </v-layout>
-
-    <v-layout justify-space-around class="mb-2">
-      <span class="group pa-2">
-        <v-icon large>home</v-icon>
-        <v-icon large>event</v-icon>
-        <v-icon large>info</v-icon>
-      </span>
-
-      <span class="group pa-2 teal">
-        <v-icon large dark>folder_open</v-icon>
-        <v-icon large dark>widgets</v-icon>
-        <v-icon large dark>gavel</v-icon>
-      </span>
-    </v-layout>
-
-    <v-layout justify-space-around>
-      <span class="group pa-2">
-        <v-icon x-large>home</v-icon>
-        <v-icon x-large>event</v-icon>
-        <v-icon x-large>info</v-icon>
-      </span>
-
-      <span class="group pa-2 teal">
-        <v-icon x-large dark>folder_open</v-icon>
-        <v-icon x-large dark>widgets</v-icon>
-        <v-icon x-large dark>gavel</v-icon>
-      </span>
-    </v-layout>
-  </v-container>
-     
-</template
+    <v-btn
+      @click="submit"
+      :disabled="!valid"
+    >
+      submit
+    </v-btn>
+    <v-btn @click="clear">clear</v-btn>
+  </v-form>
+     </div>
+     </div>
+</v-flex>
+     </v-layout>
+</template>
 
 <script>
+ export default {
+    $validates: true,
+    data () {
+      return {
+        name: '',
+        email: '',
+        select: null,
+        items: [
+          'Item 1',
+          'Item 2',
+          'Item 3',
+          'Item 4'
+        ],
+        checkbox: null
+      }
+    },
+    methods: {
+      submit () {
+        this.$validator.validateAll()
+      },
+      clear () {
+        this.name = ''
+        this.email = ''
+        this.select = null
+        this.checkbox = null
+        this.$validator.clean()
+      }
+    }
 
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

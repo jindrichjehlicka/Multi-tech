@@ -37,7 +37,7 @@
   <div class="error" v-html = "error" />
 <br>
 <v-btn dark class = "indigo darken-3 pm-2" 
-@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span> Register 
+@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span>Register 
 </v-btn>
 </div>
 
