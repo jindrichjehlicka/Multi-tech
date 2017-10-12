@@ -1,13 +1,9 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs12 sm4 offset-sm4 class="mt-5">
-<div class = "white elevation-24">
-<v-toolbar flat dense class class = "indigo darken-2 white--text" >
-<v-toolbar-title >Login</v-toolbar-title>
-</v-toolbar>
+<v-flex xs6 sm6 offset-sm3 class="mt-5">
+<panel title= "Login">
 
-<div class = "pl-4 pr-4 pt-2 pb-2">
 <form
   name="multi-tech-form"
   autocomplete ="on">
@@ -30,9 +26,8 @@
 <v-btn dark class = "indigo darken-3 " 
 @click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Login
 </v-btn>
-</div>
 
-</div>
+</panel>
 </v-flex>
 </v-layout>
 
@@ -41,6 +36,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
 export default {
    data() {
     return {
@@ -66,6 +62,9 @@ export default {
     }
     },
   },
+   components:{
+    Panel
+  }
 };
 </script>
 

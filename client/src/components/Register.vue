@@ -2,12 +2,7 @@
 <template>
  <v-layout column>
 <v-flex xs12 sm4 offset-sm4 class="mt-5">
-<div class = "white elevation-24">
-<v-toolbar flat dense class class = "indigo darken-2 white--text" >
-<v-toolbar-title >Register</v-toolbar-title>
-</v-toolbar>
-
-<div class = "pl-4 pr-4 pt-2 pb-2">
+<panel title= "Register">
 <form
   name="multi-tech-form"
   autocomplete ="on"
@@ -31,25 +26,25 @@
             ></v-text-field>
             
             </form>
-            
-              
-
+                         
   <div class="error" v-html = "error" />
 <br>
-<v-btn dark class = "indigo darken-3 pm-2" 
+<v-btn dark 
+ class = "indigo darken-3 pm-2" 
 @click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span>Register 
 </v-btn>
-</div>
 
-</div>
+</panel>
+
+
 </v-flex>
 </v-layout>
-
 
  </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
 export default {
    data() {
     return {
@@ -58,6 +53,9 @@ export default {
       mine:'',
       error: null
     };
+  },
+   components:{
+    Panel
   },
   methods: {
     async register() {
@@ -77,6 +75,9 @@ export default {
     }
     },
   },
+  components:{
+    Panel
+  }
 };
 </script>
 

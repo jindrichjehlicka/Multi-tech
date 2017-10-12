@@ -59,7 +59,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-         <v-list-tile v-if="$store.state.isUserLoggedIn" @click="">
+         <v-list-tile v-if="$store.state.isUserLoggedIn" @click="logout">
           <v-list-tile-action>
             <i class="fa fa-sign-out" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -67,6 +67,19 @@
             <v-list-tile-title >Sign Out</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        
+          
+         <v-list-tile class="mt-5 pt-5 " @click="externalLink">
+          <v-list-tile-action>
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title >Go back to multitechwa.com</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+
 
       </v-list>
     </v-navigation-drawer>
@@ -122,7 +135,7 @@
 <v-btn 
        v-if="$store.state.isUserLoggedIn"
        flat dark 
-          @click="navigateTo({name: ''})"
+          @click="logout"
           > <!-- TODO:refactor later -->
           Sign out
       </v-btn>
@@ -145,6 +158,17 @@ export default{
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout (){
+    this.$store.dispatch('setToken', null)
+    this.$store.dispatch('setUser', null)
+    this.$router.push({
+      name:'root'
+    }) 
+   
+    },
+    externalLink () {
+      window.location='http://www.multitechwa.com'
     }
   }, 
     data: () => ({
@@ -152,8 +176,8 @@ export default{
     }),
     props: {
       source: String
-    }
-  
+    },
+
 }
 </script>
 

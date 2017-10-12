@@ -1,18 +1,5 @@
 
-<template>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CMaterial+Icons' rel="stylesheet">
-        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-        </head>
-        <body>
- 
+<template>    
   <div id="app">
  <v-app>
   
@@ -26,11 +13,8 @@
      </main>
      <page-footer/>
     </v-app>  
-     </div>
-     
-     </body>
-     </html>
-</template>
+     </div>     
+     </template>
 
 <script>
 import PageHeader from '@/components/Header.vue'

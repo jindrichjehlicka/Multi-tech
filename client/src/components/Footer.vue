@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
 <v-footer 
-light
+dark
 fixed
 class="footer pa-3">
     <v-spacer></v-spacer>
@@ -16,10 +16,7 @@ class="footer pa-3">
 
 
 <style scoped>
-.footer{
-    background-color: grey;
-    color:white;
-}
+
 
 
 </style>

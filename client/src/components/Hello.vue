@@ -4,11 +4,11 @@
       <v-card flat 
       >
       
-        <v-card-media class="card-1"
+        <v-card-media class="card-1 "
       >
 <v-container  grid-list-xs >
   <v-layout row wrap>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex xs12 sm6 offset-sm3  >
           <img src="../images/mts.png" alt="logo" >
        </v-flex>
   </v-layout>

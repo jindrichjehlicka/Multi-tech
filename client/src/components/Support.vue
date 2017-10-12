@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs12 sm6 offset-sm2 class="mt-5">
+<v-flex xs12 sm6 offset-sm3 class="mt-5">
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Support</v-toolbar-title>
@@ -9,32 +9,17 @@
 
 <div class = "pl-4 pr-4 pt-2 pb-2">
     <v-form v-model="valid" ref="form" lazy-validation>
-    <v-text-field
-      label="Name"
-      v-model="name"
-      :rules="nameRules"
-      :counter="10"
-      required
-    ></v-text-field>
-    <v-text-field
-      label="E-mail"
-      v-model="email"
-      :rules="emailRules"
-      required
-    ></v-text-field>
+   
+   
     <v-select
-      label="Item"
+      label="Why are you writing to us?"
       v-model="select"
       :items="items"
       :rules="[v => !!v || 'Item is required']"
       required
     ></v-select>
-    <v-checkbox
-      label="Do you agree?"
-      v-model="checkbox"
-      :rules="[v => !!v || 'You must agree to continue!']"
-      required
-    ></v-checkbox>
+   
+   <v-text-field box multi-line label="Message"></v-text-field>
 
     <v-btn
       @click="submit"
@@ -55,16 +40,15 @@
     $validates: true,
     data () {
       return {
-        name: '',
-        email: '',
-        select: null,
+        message:'',
+       select: null,
         items: [
-          'Item 1',
-          'Item 2',
-          'Item 3',
-          'Item 4'
+          'Issues with product',
+          'Issues with website',
+          'Feedback',
+          'Others'
         ],
-        checkbox: null
+        
       }
     },
     methods: {
@@ -72,10 +56,10 @@
         this.$validator.validateAll()
       },
       clear () {
-        this.name = ''
-        this.email = ''
+        t
+       this.message ='',
         this.select = null
-        this.checkbox = null
+       
         this.$validator.clean()
       }
     }
