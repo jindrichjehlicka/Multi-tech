@@ -8,7 +8,8 @@
      clipped
    temporary
       app
-   dark  
+   dark 
+  
       class="indigo darken-3"
     >
     <br/>
@@ -84,7 +85,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar fixed class="indigo darken-3" dark dense>
+    <v-toolbar  fixed dark  class="indigo darken-3" >
       <v-toolbar-side-icon  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
       <v-toolbar-title class="mr4">
    

@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
  <v-layout column>
-<v-flex xs6 sm6 offset-sm3 class="mt-5">
+<v-flex xs12 sm4 offset-sm4 class="mt-5">
 <panel title= "Login">
 
 <form
