@@ -27,7 +27,15 @@
             
             </form>
                          
-  <div class="error" v-html = "error" />
+  <v-alert
+        class="ml-4"
+        :value="error"
+        transition="scale-transition"
+        error>
+        {{error}}
+</v-alert>
+
+
 <br>
 <v-btn dark 
  class = "indigo darken-3 pm-2" 

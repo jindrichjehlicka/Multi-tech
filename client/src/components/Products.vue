@@ -1,13 +1,55 @@
 /* eslint-disable */
 <template>
-  <v-flex xs6 offset-xs3 class="mt-5">
+  <v-flex xs6 sm6 offset-sm3 class="mt-5">
     <panel title = "Products"> 
+      <v-btn 
+        :to="{name: 'products-create'}"    
+        slot ="action"
+        class="green darken-1"
+        dark 
+        medium
+        absolute
+        right
+        middle
+        fab >
+        <v-icon>add</v-icon> 
+      </v-btn>
+
+    
       <div 
       v-for="product in products"
-      :key="product.title">
-          {{product.companyName}} -
-          {{product.model}} -
-          {{product.description}}
+      class="product"
+      :key="product.id">
+
+      <v-layout>
+        <v-flex xs6>
+            <div class="product-name">
+              {{product.companyName}}
+              </div>
+
+              <div class="product-model">
+              {{product.model}}
+              </div>
+
+                <v-btn 
+                dark 
+                class = "indigo darken-3 " 
+                  @click="navigateTo({
+                    name: 'product',
+                     params: {
+                       productId: product.id
+                       }
+                       })"><span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp</span>
+                      View
+                </v-btn>
+
+              </v-flex>
+
+          <v-flex xs6>
+            <img class="product-logo" :src="product.companyLogo"/>
+          </v-flex>
+        </v-layout>
+
       </div>
     </panel>
   </v-flex>
@@ -16,9 +58,14 @@
 </template>
 
 <script>
-import SongsService from '@/services/ProductsService'
+import ProductsService from '@/services/ProductsService'
 import Panel from '@/components/Panel'
 export default{
+  methods:{
+      navigateTo (route) {
+      this.$router.push(route)
+    },
+  },
     components: {
       Panel
     },
@@ -28,14 +75,30 @@ export default{
       }
     },
    async mounted(){
-      //do a request to the backend for all the songs
-     this.products = await ProductsService.index()
+      //do a request to the backend for all the products
+     this.products = (await ProductsService.index()).data
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.product{
+  padding:20px;
+  height: 330px;
+  overflow: hidden;
+}
 
+.product-name{
+  font-size:30px;
+}
+
+.product-model{
+font-size:24px;
+}
+.product-logo{
+  width:70%;
+  margin: 0 auto;
+}
 
 </style>

@@ -2,9 +2,12 @@
 <template>
 
 <div class = "white elevation-24">
-<v-toolbar flat dense class class = "indigo darken-2 white--text" >
-<v-toolbar-title >{{title}}</v-toolbar-title>
+  <v-toolbar flat   class = "indigo darken-2 white--text" >
+      <v-toolbar-title >{{title}} </v-toolbar-title>
+<slot name = "action" />
 </v-toolbar>
+
+
 
   <div class="pl-4 pr-4 pt-2 pb-2">
 <slot>
