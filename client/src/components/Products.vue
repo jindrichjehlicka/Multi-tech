@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <v-flex xs6 sm6 offset-sm3 class="mt-5">
+  <v-flex xs12 sm6 offset-sm3 class="mt-5">
     <panel title = "Products"> 
       <v-btn 
         :to="{name: 'products-create'}"    
@@ -33,7 +33,7 @@
 
                 <v-btn 
                 dark 
-                class = "indigo darken-3 " 
+                                class = "indigo darken-3 mt-3" 
                   @click="navigateTo({
                     name: 'product',
                      params: {
@@ -84,8 +84,8 @@ export default{
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .product{
-  padding:20px;
-  height: 330px;
+  padding:30px;
+  height: 250px;
   overflow: hidden;
 }
 

@@ -1,6 +1,6 @@
 <template>
     <v-layout>
-        <v-flex xs4>
+        <v-flex xs3 offset-xs1>
         <panel title="Products Metadata" class="mt-5 ml-2">
      
             <v-text-field
@@ -27,7 +27,7 @@
               </panel>
         </v-flex>
 
-        <v-flex xs8>
+        <v-flex xs6>
             <panel title="Products Structure" class="ml-4 mt-5">
             <v-text-field
               label="Description"

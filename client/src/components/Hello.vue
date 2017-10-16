@@ -1,22 +1,21 @@
 /* eslint-disable */
 <template>
-
-      <v-card flat 
-      >
-      
-        <v-card-media class="card-1 "
-      >
-<v-container  grid-list-xs >
-  <v-layout row wrap>
-    <v-flex xs12 sm6 offset-sm3  >
+  <v-card flat class="mt-5">
+    <v-card-media class="card-1">
+    <v-container  grid-list-xs >
+    <v-layout row wrap>
+    <v-flex xs12 sm5 offset-sm4  >
           <img src="../images/mts.png" alt="logo" >
        </v-flex>
   </v-layout>
   </v-container>
+  
   </v-card-media>   
    
-            
+  
+           
       </v-card>
+
      
 </template
 
