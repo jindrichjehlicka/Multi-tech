@@ -5,6 +5,9 @@ export default {
     index() {
         return Api().get('products')
     },
+    show (productId) {
+        return Api().get(`products/${productId}`)
+    },
     post(product) {
         return Api().post('products', product)
     }

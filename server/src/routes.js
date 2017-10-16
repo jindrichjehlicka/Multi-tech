@@ -16,4 +16,7 @@ module.exports = (app) => {
 
     app.post('/products',
         ProductsController.post)
+
+        app.get('/products/:productId',
+        ProductsController.show)
 }
