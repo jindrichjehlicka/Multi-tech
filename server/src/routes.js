@@ -14,9 +14,14 @@ module.exports = (app) => {
     app.get('/products',
         ProductsController.index),
 
-    app.post('/products',
-        ProductsController.post)
+    app.put('/products/:productId',
+        ProductsController.put)
 
-        app.get('/products/:productId',
+
+    app.post('/products',
+        ProductsController.post),
+
+    app.get('/products/:productId',
         ProductsController.show)
-}
+    }
+       

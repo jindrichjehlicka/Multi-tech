@@ -7,7 +7,8 @@ import Products from '@/components/Products';
 import Profile from '@/components/Profile';
 import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
-import ViewProduct from '@/components/ViewProduct';
+import ViewProduct from '@/components/ViewProduct/Index';
+import EditProduct from '@/components/EditProduct';
 
 Vue.use(Router);
 
@@ -54,7 +55,12 @@ export default new Router({
       name: 'product',
       component:ViewProduct,
     },
-
+    {
+      path: '/products/:productId/edit',
+      name: 'product-edit',
+      component:EditProduct,
+    },
+    
     
    
 

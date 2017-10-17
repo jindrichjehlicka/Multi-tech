@@ -22,7 +22,7 @@
       :key="product.id">
 
       <v-layout>
-        <v-flex xs6>
+        <v-flex xs12 sm6>
             <div class="product-name">
               {{product.companyName}}
               </div>
@@ -33,7 +33,7 @@
 
                 <v-btn 
                 dark 
-                                class = "indigo darken-3 mt-3" 
+                class = "indigo darken-3 mt-3" 
                   @click="navigateTo({
                     name: 'product',
                      params: {
@@ -45,7 +45,7 @@
 
               </v-flex>
 
-          <v-flex xs6>
+          <v-flex sm6 hidden-xs-only>
             <img class="product-logo" :src="product.companyLogo"/>
           </v-flex>
         </v-layout>
@@ -85,7 +85,7 @@ export default{
 <style scoped>
 .product{
   padding:30px;
-  height: 250px;
+  height: 230px;
   overflow: hidden;
 }
 

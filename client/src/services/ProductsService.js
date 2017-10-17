@@ -10,6 +10,9 @@ export default {
     },
     post(product) {
         return Api().post('products', product)
+    },
+    put(product) {
+        return Api().put(`products/${product.id}`, product)
     }
 }
 
