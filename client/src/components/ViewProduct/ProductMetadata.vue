@@ -14,13 +14,12 @@
               {{product.description}}
               </div>
 
-              <div class="product-manual mb-5">
-              {{product.manual}}
-              </div>
-            
-           
+             
+            <br/>
+          
               <v-btn
               center
+              right
                 dark 
                 class = "indigo darken-3 " 
                   @click="navigateTo({
@@ -28,24 +27,26 @@
                      params: {
                        productId: product.id
                        }
-                       })"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp</span>
+                       })"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit
                 </v-btn>
               
                 <!-- TODO -->
-                  <v-btn 
-                  right
-                dark 
-                class = "indigo darken-3 " 
-                  @click="navigateTo({
-                    name: '',
-                     params: {
-                      
-                       }
-                       })"><i class="fa fa-download" aria-hidden="true"></i>&nbsp</span>
-                      Download manual
-                </v-btn>
-                 
+                 <div class="product-url ">
+              <a :href="product.url" target="_blank"><v-btn
+              dark 
+              right
+                class = "indigo darken-3 ml-4" 
+              ><i class="fa fa-download" aria-hidden="true"></i>&nbsp Download manual</v-btn></a>
+              </div>
+            
+     
+              
+            
+
+             
+             
+            
         
         </panel>
 </template>
@@ -54,13 +55,20 @@
 import Panel from '@/components/Panel'
 
     export  default {
+        
         props: [
             'product'
         ],
         methods: {
           navigateTo (route){
             this.$router.push(route)
-          }
+          },
+       
+        manualLink(){
+          res.$route.redirect(product.url)
+        }
+          
+    
         },
         components:{
             Panel
@@ -93,8 +101,13 @@ color:black;
 font-size:18px;
 color:black;
 }
-.product-manual{
+.product-url{
 font-size:15px;
 color:black;
+}
+
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
 }
 </style>

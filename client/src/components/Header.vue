@@ -71,7 +71,8 @@
 
         
           
-         <v-list-tile class="mt-5 pt-5 " @click="externalLink">
+         <v-list-tile class="mt-5 pt-5 " @click="externalLink" >
+           
           <v-list-tile-action>
             <i class="fa fa-external-link" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -169,7 +170,9 @@ export default{
    
     },
     externalLink () {
-      window.location='http://www.multitechwa.com'
+      
+      window.location= 'http://www.multitechwa.com'
+      
     }
   }, 
     data: () => ({

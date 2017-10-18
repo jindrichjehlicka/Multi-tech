@@ -42,7 +42,7 @@
                required
               :rules="[required]"
               multi-line
-                v-model="product.manual"
+                v-model="product.url"
               ></v-text-field>
             </panel>
 
@@ -79,7 +79,7 @@ export  default {
             model:null,
             description:null,
             companyLogo:null,
-            manual:null
+            url:null
                 },
                 error:null,
                 required:(value) => !!value || 'Required.'
