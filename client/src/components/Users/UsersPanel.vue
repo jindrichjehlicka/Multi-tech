@@ -93,22 +93,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.product{
-  padding:30px;
-  height: 230px;
-  overflow: hidden;
+.user-email{
+ font-size:18px;
+ color:black;
 }
 
-.product-name{
-  font-size:30px;
-}
 
-.product-model{
-font-size:24px;
-}
-.product-logo{
-  width:70%;
-  margin: 0 auto;
-}
 
 </style>
