@@ -1,16 +1,32 @@
-const { Product} = require('../models')
+const {Product} = require('../models')
 
 
 
 
 module.exports = {
-
-  async index (req, res) {
+async index (req, res) {
     try {
-     const product = await Product.findAll({
-       limit:20
-     })
-     res.send(product)
+      let products = null
+      const search = req.query.search
+      if (search) {
+      products = await Product.findAll({
+        where: {
+         $or: [
+           'companyName', 'model'
+            ].map(key =>({
+              [key]: {
+            $like: `%${search}%`
+           }
+         }))
+        }
+      })
+      } else{
+         products = await Product.findAll({
+          limit:20
+        })
+      }
+     
+     res.send(products)
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured trying to get the product'
@@ -41,12 +57,12 @@ module.exports = {
       },
       async put(req, res) {
         try {
-         const product = await Product.update(req.body,{
-           where: {
-             id: req.params.productId
+          await Product.update(req.body, {
+            where: {
+              id: req.params.productId
            }
          })
-         res.send(this.body)
+         res.send(req.body)
         } catch (err) {
           res.status(500).send({
             error: 'An error has occured trying to update the product'

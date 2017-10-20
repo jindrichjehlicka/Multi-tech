@@ -10,7 +10,7 @@
 <script>
 import ProductMetadata from '@/components/ViewProduct/ProductMetadata'
 import ProductsService from '@/services/ProductsService'
-import Panel from '@/components/Panel'
+
 
     export  default {
         data(){
@@ -23,7 +23,7 @@ import Panel from '@/components/Panel'
             this.product = (await ProductsService.show(productId)).data
         },
         components:{
-            Panel,   
+              
             ProductMetadata
         }
     }

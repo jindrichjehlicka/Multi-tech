@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+
 
     export  default {
         
@@ -70,9 +70,7 @@ import Panel from '@/components/Panel'
           
     
         },
-        components:{
-            Panel
-        }
+       
             
        }
 </script>

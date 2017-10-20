@@ -60,7 +60,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-         <v-list-tile v-if="$store.state.isUserLoggedIn" @click="logout">
+         <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
           <v-list-tile-action>
             <i class="fa fa-sign-out" aria-hidden="true"></i>
           </v-list-tile-action>

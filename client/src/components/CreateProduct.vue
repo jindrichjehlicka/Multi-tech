@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+
 import ProductsService from '@/services/ProductsService'
 
 export  default {
@@ -108,9 +108,7 @@ export  default {
                 }
             }
     },
-        components:{
-            Panel
-        }
+       
     }
 </script>
 

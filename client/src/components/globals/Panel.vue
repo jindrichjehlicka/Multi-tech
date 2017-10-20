@@ -2,7 +2,7 @@
 <template>
 
 <div class = "white elevation-24">
-  <v-toolbar flat   class = "indigo darken-2 white--text" >
+  <v-toolbar dense flat   class = "indigo darken-2 white--text" >
       <v-toolbar-title >{{title}} </v-toolbar-title>
 <slot name = "action" />
 </v-toolbar>

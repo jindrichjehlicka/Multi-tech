@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <v-flex xs12 sm6 offset-sm3 class="mt-5">
+  <v-flex xs12 sm6 offset-sm3 >
     <panel title = "Products"> 
       <v-btn 
         :to="{name: 'products-create'}"    
@@ -59,25 +59,29 @@
 
 <script>
 import ProductsService from '@/services/ProductsService'
-import Panel from '@/components/Panel'
-export default{
-  methods:{
+
+export default {
+    data () {
+      return {
+       products:null
+      }
+    },
+  watch: {
+    '$route.query.search':  {
+      immediate: true,
+      async handler (value) {
+        this.products = (await ProductsService.index(value)).data
+      }
+    }
+  },
+   methods:{
       navigateTo (route) {
       this.$router.push(route)
     },
   },
-    components: {
-      Panel
-    },
-    data (){
-      return{
-       products:null
-      }
-    },
-   async mounted(){
-      //do a request to the backend for all the products
-     this.products = (await ProductsService.index()).data
-    }
+    
+   
+  
 }
 </script>
 
