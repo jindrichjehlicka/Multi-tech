@@ -64,9 +64,7 @@
             this.$router.push(route)
           },
        
-        manualLink(){
-          res.$route.redirect(product.url)
-        }
+    
           
     
         },

@@ -9,6 +9,7 @@ import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
 import ViewProduct from '@/components/ViewProduct/Index';
 import EditProduct from '@/components/EditProduct';
+import Users from '@/components/Users/Index';
 
 Vue.use(Router);
 
@@ -35,11 +36,7 @@ export default new Router({
       name: 'support',
       component: Support,
     },
-    {
-      path: '/products',
-      name: 'products',
-      component: Products,
-    },
+    
     {
       path: '/profile',
       name: 'profile',
@@ -51,6 +48,11 @@ export default new Router({
       component:CreateProduct,
     },
     {
+      path: '/products',
+      name: 'products',
+      component: Products,
+    },
+    {
       path: '/products/:productId',
       name: 'product',
       component:ViewProduct,
@@ -60,6 +62,26 @@ export default new Router({
       name: 'product-edit',
       component:EditProduct,
     },
+    {
+      path: '/products/create',
+      name: 'products-create',
+      component:CreateProduct,
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: Users,
+    },
+    // {
+    //   path: '/users/:userId',
+    //   name: 'user',
+    //   component:ViewUser,
+    // },
+    // {
+    //   path: '/users/:userId/edit',
+    //   name: 'user-edit',
+    //   component:EditUser,
+    // },
     
     
    

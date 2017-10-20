@@ -104,8 +104,14 @@
       > Products</v-btn>
 
       <v-btn flat dark
-      @click="navigateTo({name: 'support'})"
+      to="support"
       > Support</v-btn>
+
+
+      <v-btn flat dark to="users"
+     
+      > Users</v-btn>
+
     </v-toolbar-items>
           <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
