@@ -1,4 +1,6 @@
 <template>
+<div>
+<page-header/>
     <v-layout>
         <v-flex xs3 offset-xs1>
         <panel title="Product Metadata" class="mt-5 ml-2">
@@ -65,8 +67,8 @@
         </v-flex>
 
     </v-layout>
+    </div>
 </template>
-
 <script>
 
 import ProductsService from '@/services/ProductsService'

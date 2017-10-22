@@ -1,6 +1,7 @@
 /* eslint-disable */
 <template>
-  
+  <div>
+  <page-header/>
   <v-layout column>
     <v-flex>
       <users-search-panel />
@@ -9,7 +10,7 @@
       </v-flex>
 
   </v-layout>
-     
+     </div>
 </template>
 
 <script>
@@ -18,11 +19,7 @@ import UsersSearchPanel from './UsersSearchPanel'
 import UsersService from '@/services/UsersService'
 
 export default{
-  methods:{
-      navigateTo (route) {
-      this.$router.push(route)
-    },
-  },
+
     components: {
       
       UsersPanel,

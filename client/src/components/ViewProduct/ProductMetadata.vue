@@ -22,12 +22,12 @@
               right
                 dark 
                 class = "indigo darken-3 " 
-                  @click="navigateTo({
+                :to="{
                     name: 'product-edit',
                      params: {
-                       productId: product.id
+                       productID: product.id
                        }
-                       })"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
+                       }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit
                 </v-btn>
               
@@ -59,18 +59,7 @@
         props: [
             'product'
         ],
-        methods: {
-          navigateTo (route){
-            this.$router.push(route)
-          },
-       
-    
-          
-    
-        },
-       
-            
-       }
+      }
 </script>
 
 <style scoped>

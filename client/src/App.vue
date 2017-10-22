@@ -3,7 +3,7 @@
   <div id="app">
  <v-app>
   
-  <page-header />
+  
 
      <main>
        <v-container fluid>
@@ -17,14 +17,14 @@
      </template>
 
 <script>
-import PageHeader from '@/components/Header.vue'
+
 import PageFooter from '@/components/Footer.vue'
 
 
 export default {
   name: 'app',
   components:{
-    PageHeader,
+    
     PageFooter
   }
 };

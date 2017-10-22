@@ -1,5 +1,7 @@
 /* eslint-disable */
 <template>
+<div>
+<page-header/>
  <v-layout column>
 <v-flex xs12 sm6 offset-sm3 class="mt-5">
 <div class = "white elevation-24">
@@ -33,6 +35,7 @@
      </div>
 </v-flex>
      </v-layout>
+     </div>
 </template>
 
 <script>

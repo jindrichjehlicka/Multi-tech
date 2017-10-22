@@ -1,10 +1,13 @@
 <template>
+<div>
+<page-header/>
     <v-layout >
         <v-flex xs12 sm6 offset-sm3>
             <product-metadata :product = "product" />
      
         </v-flex>
     </v-layout>
+    </div>
 </template>
 
 <script>

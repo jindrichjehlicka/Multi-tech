@@ -34,12 +34,12 @@
                 <v-btn 
                 dark 
                 class = "indigo darken-3 mt-3" 
-                  @click="navigateTo({
-                    name: 'product',
-                     params: {
-                       productId: product.id
-                       }
-                       })"><span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp</span>
+                   :to="{
+                   name: 'product',
+                   params: {
+                     productId: product.id
+                   }
+                 }"><span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp</span>
                       View
                 </v-btn>
 
@@ -74,11 +74,7 @@ export default {
       }
     }
   },
-   methods:{
-      navigateTo (route) {
-      this.$router.push(route)
-    },
-  },
+ 
     
    
   

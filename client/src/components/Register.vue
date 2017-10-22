@@ -1,6 +1,8 @@
 /* eslint-disable */
 <template>
- <v-layout column>
+<div>
+<page-header/>
+ <v-layout column justify-center > 
 <v-flex xs12 sm4 offset-sm4 class="mt-5">
 <panel title= "Register">
 <form
@@ -47,7 +49,7 @@
 
 </v-flex>
 </v-layout>
-
+</div>
  </template>
 
 <script>

@@ -1,5 +1,9 @@
 /* eslint-disable */
+
 <template>
+<div>
+<page-header/>
+
   <v-card flat class="mt-5">
     <v-card-media class="card-1">
     <v-container  grid-list-xs >
@@ -16,11 +20,19 @@
            
       </v-card>
 
-     
-</template
+     </div>
+</template>
 
 <script>
+// import PageHeader from '@/components/globals/Header.vue'
 
+
+// export default {
+//   name: 'app',
+//   components:{
+//     PageHeader
+//   }
+// };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
