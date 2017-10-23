@@ -1,6 +1,6 @@
 <template>
 <div>
-<page-header/>
+<admin-header/>
     <v-layout>
         <v-flex xs3 offset-xs1>
         <panel title="Products Metadata" class="mt-5 ml-2">
@@ -104,7 +104,7 @@ export  default {
             try{
                 await ProductsService.post(this.product)
                 this.$router.push({
-                name: 'products'
+                name: 'admin-products'
         })
                 } catch (err) {
                     console.log(err)

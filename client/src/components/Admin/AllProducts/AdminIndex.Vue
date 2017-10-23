@@ -4,7 +4,7 @@
   <admin-header/>
   <v-layout column>
     <v-flex>
-    
+     <admin-products-search-panel class="mb-5" />
     
     <admin-products-panel/>
       </v-flex>

@@ -40,10 +40,17 @@
 
 <br>
 <v-btn dark 
- class = "indigo darken-3 pm-2" 
-@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span>Register 
+ class = "indigo darken-3 pm-2 mb-5" 
+@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span>Sign up
 </v-btn>
-
+<div class="mb-3">Already have an account?  <router-link
+      class="home"
+      tag="span"
+      :to="{name: 'root'}"
+        >
+         Sign in here! 
+      </router-link>
+      </div>
 </panel>
 
 
@@ -89,7 +96,15 @@ export default {
 
 
 <style scoped>
-
+.home{
+  cursor: pointer;
+  font-size:15px;
+  text-decoration: underline;
+}
+.home:hover{
+  color: #0000CD;
+  font-size:17px;
+}
 
 
 

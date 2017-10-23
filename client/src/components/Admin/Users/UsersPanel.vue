@@ -36,7 +36,7 @@
     <v-flex sm6 hidden-sm-and-down>
     
             <div class="user-email pt-3" id="user-email-big">
-               {{user.id}} - {{user.email}} 
+               {{user.id}}. - {{user.email}} 
              
               </div>
               

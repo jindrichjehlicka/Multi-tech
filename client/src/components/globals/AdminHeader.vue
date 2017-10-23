@@ -14,6 +14,22 @@
     >
     <br/>
       <v-list dense class="indigo darken-3" >
+
+           <v-list-tile :to="{name: 'admin'}" >
+          <v-list-tile-action>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </v-list-tile-action>
+          <v-list-tile-content>
+               <router-link
+      class="admin"
+      tag="span"
+      :to="{name: 'admin'}"
+        >
+      Admin
+      </router-link>
+          </v-list-tile-content>
+        </v-list-tile>
+
       <v-list-tile  :to="{
       name: 'admin-products'
       }" >
@@ -29,10 +45,21 @@
       name: 'users'
       }">
           <v-list-tile-action>
-            <i class="fa fa-question" aria-hidden="true"></i> 
+            <i class="fa fa-users" aria-hidden="true"></i>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>Users</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+           <v-list-tile  :to="{
+      name: 'root'
+      }">
+          <v-list-tile-action>
+            <i class="fa fa-home" aria-hidden="true"></i> 
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Main page</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -80,10 +107,11 @@
       <router-link
       class="home"
       tag="span"
-      :to="{name: 'root'}"
+      :to="{name: 'admin'}"
         >
-        Multi-tech
-      </router-link><br/>
+      Admin
+      </router-link>
+      <br/>
     </v-toolbar-title>
 <br/>
  <v-toolbar-items class="hidden-sm-and-down">
@@ -112,7 +140,17 @@
           <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
 
-     
+         <v-btn 
+       class="button"
+       flat dark 
+       
+           :to="{
+      name: 'root'
+     }"> <span>
+      <i class="fa fa-home" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
+        Main page
+      </v-btn>
+
 
        
        <v-btn 
@@ -196,10 +234,6 @@ export default {
 .bars{
   border:2px solid ;
 }
-#navbar{
-  border-radius:12px;
-}
-#drawer{
-  border-radius:12px;
-}
+
+
 </style>

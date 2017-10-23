@@ -13,7 +13,19 @@
       class="indigo darken-3"
     >
     <br/>
+
+    
       <v-list dense class="indigo darken-3" >
+
+       <v-list-tile :to="{name: 'root'}">
+          <v-list-tile-action>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Main page</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
       <v-list-tile  :to="{
       name: 'products'
       }" >
@@ -137,7 +149,8 @@
        flat dark 
           :to="{
       name: 'admin'
-     }"> 
+     }">  <span>
+      <i class="fa fa-key" aria-hidden="true"></i></i>&nbsp</span>
           Admin
       </v-btn>
 

@@ -32,11 +32,20 @@
 </v-alert>
   
 <br>
-<v-btn dark class = "indigo darken-3 " 
-@click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Login
+<v-btn dark class = "indigo darken-3 mb-5" 
+@click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Sign in
 </v-btn>
 
+<div class="mb-3">Don't have an account yet?   <router-link
+      class="home"
+      tag="span"
+      :to="{name: 'root'}"
+        >
+        Sign up here!
+      </router-link>
+      </div>
 </panel>
+
 </v-flex>
 </v-layout>
 
@@ -78,7 +87,15 @@ export default {
 
 <style scoped>
 
-
+.home{
+  cursor: pointer;
+  font-size:15px;
+  text-decoration: underline;
+}
+.home:hover{
+  color: #0000CD;
+  font-size:17px;
+}
 
 
 </style>

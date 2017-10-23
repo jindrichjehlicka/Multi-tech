@@ -2,7 +2,18 @@
 <template>
   <v-flex xs12 sm6 offset-sm3 >
     <panel title = "All Products"> 
-     
+         <v-btn 
+        :to="{name: 'products-create'}"    
+        slot ="action"
+        class="green darken-1"
+        dark 
+        medium
+        absolute
+        right
+        middle
+        fab >
+        <v-icon>add</v-icon> 
+      </v-btn>
     
       <div 
       v-for="product in products"
