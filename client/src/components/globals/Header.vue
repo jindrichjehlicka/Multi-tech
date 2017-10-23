@@ -93,7 +93,7 @@
     </v-navigation-drawer>
 
     <v-toolbar  dark fixed flat  class="indigo darken-3" >
-      <v-toolbar-side-icon  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
+      <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
       <v-toolbar-title >
    
       <router-link
@@ -108,21 +108,28 @@
  <v-toolbar-items class="hidden-sm-and-down">
 
       <v-btn flat dark
+     
+       class="button"
       :to="{
       name: 'products'
+     
       }"
      > Products</v-btn>
 
       <v-btn flat dark
+      class="button"
         :to="{
       name: 'support'
+      
       }"
       > Support</v-btn>
 
 
       <v-btn flat dark 
+      class="button"
        :to="{
       name: 'users'
+    
       }"
       > Users</v-btn>
 
@@ -132,38 +139,41 @@
 
       <v-btn flat dark to ="Login"
        v-if="!$store.state.isUserLoggedIn"
+       class="button"
        flat dark 
           :to="{
       name: 'login'
-      }"
-           > 
+     }"> 
           Login
       </v-btn>
 
        <v-btn 
        v-if="!$store.state.isUserLoggedIn"
+       class="button"
        flat dark 
            :to="{
       name: 'register'
-      }"> 
+     }"> 
           Sign Up
       </v-btn>
 
        <v-btn 
-       
+       class="button"
        flat dark 
        v-if="$store.state.isUserLoggedIn"
            :to="{
       name: 'profile'
-      }"> <span>
+     }"> <span>
       <i class="fa fa-user" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
         Profile
       </v-btn>
 
-<v-btn 
+      <v-btn 
+      class="button"
        v-if="$store.state.isUserLoggedIn"
        flat dark 
           @click="logout"
+          
           > <!-- TODO:refactor later -->
           Sign out
       </v-btn>
@@ -216,6 +226,17 @@ export default {
 }
 .home:hover{
   color: #DCDCDC;
+}
+.button{
+  border-radius:12px ;
+   padding:  10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  
+}
+.bars{
+  border:2px solid ;
 }
 
 </style>
