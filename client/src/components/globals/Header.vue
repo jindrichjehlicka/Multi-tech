@@ -125,17 +125,21 @@
       > Support</v-btn>
 
 
-      <v-btn flat dark 
-      class="button"
-       :to="{
-      name: 'users'
-    
-      }"
-      > Users</v-btn>
+      
 
     </v-toolbar-items>
           <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
+
+     <v-btn flat dark to ="Admin"
+      v-if="$store.state.isUserLoggedIn" 
+       class="button"
+       flat dark 
+          :to="{
+      name: 'admin'
+     }"> 
+          Admin
+      </v-btn>
 
       <v-btn flat dark to ="Login"
        v-if="!$store.state.isUserLoggedIn"

@@ -9,14 +9,14 @@
    temporary
       app
    dark 
-  
+   id="drawer"
       class="indigo darken-3"
     >
     <br/>
-      <v-list dense class="indigo darken-3">
+      <v-list dense class="indigo darken-3" >
       <v-list-tile  :to="{
-      name: ''
-      }">
+      name: 'admin-products'
+      }" >
           <v-list-tile-action>
             <i class="fa fa-product-hunt" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -26,7 +26,7 @@
         </v-list-tile>
 
         <v-list-tile  :to="{
-      name: ''
+      name: 'users'
       }">
           <v-list-tile-action>
             <i class="fa fa-question" aria-hidden="true"></i> 
@@ -36,13 +36,19 @@
           </v-list-tile-content>
         </v-list-tile>
 
-      
-       
+        
+  
 
          <v-list-tile v-if="$store.state.isUserLoggedIn"  :to="{
       name: 'profile'
       }">
-        
+          <v-list-tile-action>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Profile</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
          <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
           <v-list-tile-action>
@@ -67,8 +73,8 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar  dark fixed flat  class="indigo darken-3" >
-      <v-toolbar-side-icon  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
+    <v-toolbar  dark fixed flat  class="indigo darken-3" id="navbar">
+      <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
       <v-toolbar-title >
    
       <router-link
@@ -83,16 +89,22 @@
  <v-toolbar-items class="hidden-sm-and-down">
 
       <v-btn flat dark
+     
+       class="button"
       :to="{
-      name: 'products'
+      name: 'admin-products'
+     
       }"
-     > Products</v-btn>
+     > All Products</v-btn>
 
-    
+     
+
 
       <v-btn flat dark 
+      class="button"
        :to="{
       name: 'users'
+    
       }"
       > Users</v-btn>
 
@@ -102,23 +114,24 @@
 
      
 
-     
-
-       <v-btn 
        
+       <v-btn 
+       class="button"
        flat dark 
        v-if="$store.state.isUserLoggedIn"
            :to="{
       name: 'profile'
-      }"> <span>
+     }"> <span>
       <i class="fa fa-user" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
         Profile
       </v-btn>
 
-<v-btn 
+      <v-btn 
+      class="button"
        v-if="$store.state.isUserLoggedIn"
        flat dark 
           @click="logout"
+          
           > <!-- TODO:refactor later -->
           Sign out
       </v-btn>
@@ -172,5 +185,21 @@ export default {
 .home:hover{
   color: #DCDCDC;
 }
-
+.button{
+  border-radius:12px ;
+   padding:  10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  
+}
+.bars{
+  border:2px solid ;
+}
+#navbar{
+  border-radius:12px;
+}
+#drawer{
+  border-radius:12px;
+}
 </style>

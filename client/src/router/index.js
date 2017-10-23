@@ -10,7 +10,10 @@ import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
 import ViewProduct from '@/components/ViewProduct/Index';
 import EditProduct from '@/components/EditProduct';
-import Users from '@/components/Users/Index';
+import Users from '@/components/Admin/Users/Index';
+import AdminProducts from '@/components/Admin/AllProducts/AdminIndex';
+import Admin from '@/components/Admin/Index';
+
 
 Vue.use(Router);
 
@@ -72,6 +75,16 @@ export default new Router({
       path: '/users',
       name: 'users',
       component: Users,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+    },
+    {
+      path: '/admin/products',
+      name: 'admin-products',
+      component: AdminProducts,
     },
     // {
     //   path: '/users/:userId',
