@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) =>{
     password: DataTypes.STRING,
     mine: {
         type: DataTypes.STRING,
-        defaultValue: 'No Mine'
+        defaultValue: 'Not Defined'
         
     },
     admin: {

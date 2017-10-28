@@ -7,12 +7,26 @@
               {{user.email}}
               </div>
 
-              <div class="user-mine">
+              <div v-if="user.mine === ''"class="user-mine">
+              Not defined
+              </div>
+              <div v-else class="user-mine">
               {{user.mine}}
               </div>
-                <br/>
-              <div class="user-admin">
-              {{user.admin}}
+
+             <div v-if="user.admin === 0" class="user-email pt-3" id="user-email-big">
+               Customer account
+             
+              </div>
+              <div v-else-if="user.admin === 1" class="user-email pt-3" id="user-email-big">
+                Admin account
+              </div>
+              <div v-else>
+                Account type has not been specified
+                </div>
+
+              <div class="user-createdAt">
+              {{user.createdAt}}
               </div>
 
              
@@ -48,17 +62,19 @@
               
 
             <v-text-field
-              label="Mine"
+              label="Mine name (optional)"
              
                 v-model="user.mine"
               ></v-text-field>
 
             <v-text-field
-              label="Admin"
+              label="Admin(0-Customer,1-Admin)"
               required
               :rules="[required]"
                 v-model="user.admin"
               ></v-text-field>
+
+            
               
       
            

@@ -7,7 +7,7 @@ module.exports = {
             password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
             ),
-            mine: Joi.string().empty('').default('default value'),
+            mine: Joi.string().empty('').optional(),
             admin:Joi.number().integer().min(0).max(1)
         }
 
