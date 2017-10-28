@@ -13,6 +13,8 @@ import EditProduct from '@/components/EditProduct';
 import Users from '@/components/Admin/Users/Index';
 import AdminProducts from '@/components/Admin/AllProducts/AdminIndex';
 import Admin from '@/components/Admin/Index';
+import EditUser from '@/components/EditUser';
+import ViewUser from '@/components/ViewUser/Index';
 
 
 Vue.use(Router);
@@ -66,11 +68,7 @@ export default new Router({
       name: 'product-edit',
       component:EditProduct,
     },
-    {
-      path: '/products/create',
-      name: 'products-create',
-      component:CreateProduct,
-    },
+   
     {
       path: '/users',
       name: 'users',
@@ -86,16 +84,16 @@ export default new Router({
       name: 'admin-products',
       component: AdminProducts,
     },
-    // {
-    //   path: '/users/:userId',
-    //   name: 'user',
-    //   component:ViewUser,
-    // },
-    // {
-    //   path: '/users/:userId/edit',
-    //   name: 'user-edit',
-    //   component:EditUser,
-    // },
+    {
+      path: '/users/:userId',
+      name: 'user',
+      component:ViewUser,
+    },
+    {
+      path: '/users/:userId/edit',
+      name: 'user-edit',
+      component:EditUser,
+    },
     
     
    

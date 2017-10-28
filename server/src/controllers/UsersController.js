@@ -12,7 +12,7 @@ async index (req, res) {
       users = await User.findAll({
         where: {
          $or: [
-           'email'
+           'email',  'id'
             ].map(key =>({
               [key]: {
             $like: `%${search}%`
@@ -36,7 +36,7 @@ async index (req, res) {
 
   async show (req, res) {
     try {
-     const users = await User.findById(req.params.userId)  
+     const user = await User.findById(req.params.userId)  
      res.send(user)
     } catch (err) {
       res.status(500).send({
@@ -65,7 +65,7 @@ async index (req, res) {
          res.send(req.body)
         } catch (err) {
           res.status(500).send({
-            error: 'An error has occured trying to update the product'
+            error: 'An error has occured trying to update the user'
           })
         }
       }

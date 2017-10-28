@@ -1,6 +1,6 @@
 <template>
 <div>
-<page-header/>
+<admin-header/>
     <v-layout>
         <v-flex xs3 offset-xs1>
         <panel title="Product Metadata" class="mt-5 ml-2">
@@ -106,7 +106,7 @@ export  default {
 
          const productId = this.$store.state.route.params.productId
          try {
-              console.log("Hello bitch")
+              console.log("Hello ")
             await ProductsService.put(this.product)
            
             this.$router.push({

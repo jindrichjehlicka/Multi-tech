@@ -8,6 +8,7 @@ module.exports = {
         user:process.env.DB_USER || 'multitech',
         password:process.env.DB_PASS || 'multitech',
         mine:process.env.DB_MINE || 'multitech',
+        admin:process.env.DB_ADMIN || 'multitech',
         options:{
             dialect: process.env.DIALECT || 'sqlite',
             host: process.env.HOST || 'locahost',

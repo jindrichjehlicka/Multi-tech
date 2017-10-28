@@ -35,9 +35,12 @@
 
     <v-flex sm6 hidden-sm-and-down>
     
-            <div class="user-email pt-3" id="user-email-big">
-               {{user.id}}. - {{user.email}} 
+            <div v-if="user.admin === 0" class="user-email pt-3" id="user-email-big">
+               {{user.id}}. - {{user.email}}  - Not ADMIN
              
+              </div>
+              <div v-else-if="user.admin === 1" class="user-email pt-3" id="user-email-big">
+                {{user.id}}. - {{user.email}} - ADMIN 
               </div>
               
               

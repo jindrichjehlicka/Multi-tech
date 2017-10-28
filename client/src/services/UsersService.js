@@ -16,7 +16,7 @@ export default {
         return Api().post('users', user)
     },
     put(user) {
-        return Api().put(`users/${user.id}`, )
+        return Api().put(`users/${user.id}`, user )
     }
 }
 
