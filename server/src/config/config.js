@@ -12,7 +12,7 @@ module.exports = {
         options:{
             dialect: process.env.DIALECT || 'sqlite',
             host: process.env.HOST || 'locahost',
-            storage:'./multitech.sqlite'
+            storage: path.resolve(__dirname,'../../multitech.sqlite')
 
         }
     },

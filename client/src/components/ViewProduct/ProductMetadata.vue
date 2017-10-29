@@ -24,8 +24,10 @@
                 class = "indigo darken-3 " 
                 :to="{
                     name: 'product-edit',
-                     params: {
-                       productID: product.id
+                     params() {
+                       return{
+                          productID: product.id
+                       }
                        }
                        }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit

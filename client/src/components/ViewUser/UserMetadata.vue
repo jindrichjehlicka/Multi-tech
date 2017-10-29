@@ -140,10 +140,7 @@ import UsersService from '@/services/UsersService'
             await UsersService.put(this.user)
            
             this.$router.push({
-                name: 'user',
-                params:{
-                    userId: userId
-                }
+                name: 'users'
         })
         
         } catch (err) {
@@ -160,9 +157,7 @@ import UsersService from '@/services/UsersService'
                 }
     },
         
-        props: [
-            'user'
-        ],
+        
       }
 </script>
 

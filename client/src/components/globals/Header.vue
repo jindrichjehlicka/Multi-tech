@@ -142,6 +142,8 @@
     </v-toolbar-items>
           <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
+    
+
 
      <v-btn flat dark to ="Admin"
       v-if="$store.state.isUserLoggedIn" 
@@ -209,7 +211,9 @@
 </template>
 
 <script>
+import UsersService from '@/services/UsersService'
 export default {
+    
   methods: {
     logout (){
     this.$store.dispatch('setToken', null)
@@ -225,19 +229,19 @@ export default {
       
     }
   }, 
+   
     data: () => ({
       drawer: true
     }),
     props: {
       source: String
     },
-
+     
 }
 </script>
 
 
 <style scoped>
-
 .home{
   cursor: pointer;
 }
@@ -255,5 +259,4 @@ export default {
 .bars{
   border:2px solid ;
 }
-
 </style>

@@ -94,6 +94,10 @@ export default new Router({
       name: 'user-edit',
       component:EditUser,
     },
+    {
+      path:'*',
+      redirect: 'root'
+    }
     
     
    
