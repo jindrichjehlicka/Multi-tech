@@ -17,7 +17,9 @@
     
       <v-list dense class="indigo darken-3" >
 
-       <v-list-tile :to="{name: 'root'}">
+       <v-list-tile :to="{
+         name: 'home'
+         }">
           <v-list-tile-action>
             <i class="fa fa-home" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -249,7 +251,7 @@ export default {
   color: #DCDCDC;
 }
 .button{
-  border-radius:12px ;
+  border-radius:10px ;
    padding:  10px;
     text-align: center;
     text-decoration: none;

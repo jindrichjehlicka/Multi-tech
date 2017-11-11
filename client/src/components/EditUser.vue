@@ -77,7 +77,7 @@ export  default {
 
          const userId = this.$store.state.route.params.userId
          try {
-              console.log("Hello user")
+              
             await UsersService.put(this.user)
            
             this.$router.push({

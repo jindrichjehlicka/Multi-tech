@@ -21,6 +21,13 @@ file !== 'index.js'
     db[model.name] = model
 })
 
+Object.keys(db).forEach(function (modelName){
+    if ('associate' in db[modelName]){
+        db[modelName].associate(db)
+    }
+}) 
+//for each model that was found, checks it it has associate method, if it has it passes to db
+//TODO:implement associate methods
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 

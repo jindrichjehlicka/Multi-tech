@@ -106,7 +106,7 @@ export  default {
 
          const productId = this.$store.state.route.params.productId
          try {
-              console.log("Hello ")
+          
             await ProductsService.put(this.product)
            
             this.$router.push({

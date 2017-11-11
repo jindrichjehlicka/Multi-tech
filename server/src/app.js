@@ -19,6 +19,8 @@ sequelize.sync()
 console.log(`Server started on port ${config.port}`)
 })
 
+
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
   }
