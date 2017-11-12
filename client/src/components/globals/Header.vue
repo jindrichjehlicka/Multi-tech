@@ -1,16 +1,16 @@
 /* eslint-disable */
+
 <template>
-     <div>
+<div >
+     
     <v-navigation-drawer
-      persistent
+ persistent
+    clipped
+  temporary
       v-model="drawer"
-     enable-resize-watcher
-     clipped
-   temporary
-      app
-   dark 
-   
-      class="indigo darken-3"
+      app 
+      dark
+     class="indigo darken-3"
     >
     <br/>
 
@@ -106,7 +106,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar  dark fixed flat  class="indigo darken-3" >
+    <v-toolbar app   dark fixed  flat  class="indigo darken-3" >
       <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
       <v-toolbar-title >
    
@@ -215,8 +215,14 @@
 <script>
 import UsersService from '@/services/UsersService'
 export default {
-    
+     data: () => ({
+      drawer: false
+    }),
+    props: {
+      source: String
+    },
   methods: {
+  
     logout (){
     this.$store.dispatch('setToken', null)
     this.$store.dispatch('setUser', null)
@@ -230,14 +236,13 @@ export default {
       window.location= 'http://www.multitechwa.com'
       
     }
+    
   }, 
+  
    
-    data: () => ({
-      drawer: true
-    }),
-    props: {
-      source: String
-    },
+  
+
+
      
 }
 </script>
@@ -251,7 +256,7 @@ export default {
   color: #DCDCDC;
 }
 .button{
-  border-radius:10px ;
+ 
    padding:  10px;
     text-align: center;
     text-decoration: none;

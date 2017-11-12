@@ -2,8 +2,9 @@
 <template>
 <v-footer 
   fixed
+
   
-  class="footer pa-3 grey lighten-2">
+  class="footer pa-3 grey lighten-3">
     <v-spacer></v-spacer>
     <div>© {{ new Date().getFullYear() }} Multitech WA</div>
         
@@ -16,7 +17,9 @@
 
 
 <style scoped>
-
+/* .footer{
+  color:lightgrey;
+} */
 
 
 </style>

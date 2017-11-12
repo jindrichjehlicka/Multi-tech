@@ -205,7 +205,7 @@ export default {
     }
   }, 
     data: () => ({
-      drawer: true
+      drawer: false
     }),
     props: {
       source: String

@@ -7,7 +7,7 @@ const{
 const Promise = require ('bluebird') //makes  sure it inserts before any other action
 const products = require ('./products.json')
 const users = require ('./users.json')
-const manuals = require ('./manuals.json')
+// const manuals = require ('./manuals.json')
 
 
 sequelize.sync({force:true})

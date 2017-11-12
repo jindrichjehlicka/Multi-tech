@@ -40,7 +40,7 @@
 <div class="mb-3">Don't have an account yet?   <router-link
       class="home"
       tag="span"
-      :to="{name: 'root'}"
+      :to="{name: 'register'}"
         >
         Sign up here!
       </router-link>
@@ -87,7 +87,9 @@ export default {
 
 
 <style scoped>
-
+#form{
+  margin-top:2cm;
+}
 .home{
   cursor: pointer;
  
@@ -116,8 +118,9 @@ export default {
 }
 
 .btn:hover {
+  transition-property: transform;
    transform:scale(1.1,1.1);
-
+  transition-duration: 0.3s;
 }
 
 @keyframes btn {

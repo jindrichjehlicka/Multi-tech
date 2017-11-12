@@ -4,9 +4,9 @@
   <page-header/>
   <v-layout column>
     <v-flex>
-      <products-search-panel />
+      <products-search-panel id="search-panel"/>
      
-      <products-panel class="mt-5"/>
+      <products-panel class="mt-5" id="panel"/>
       </v-flex>
 
   </v-layout>
@@ -57,5 +57,67 @@ font-size:24px;
   margin: 0 auto;
 }
 
+#search-panel {
+  position: relative;
+  -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
+  animation: mymove 1s;
+}
 
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+   0% {
+    top: 0px;
+    left: -1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  0% {
+    top: 0px;
+    left: -1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+#panel {
+  position: relative;
+  -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
+  animation: mymove2 1s;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove2 {
+ 0% {
+    top: 0px;
+    left: 1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+/* Standard syntax */
+@keyframes mymove2 {
+  0% {
+    top: 0px;
+    left: 1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
 </style>

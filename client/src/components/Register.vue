@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-<div>
+<div id="form">
 <page-header/>
  <v-layout column justify-center > 
 <v-flex xs12 sm4 offset-sm4 class="mt-5">
@@ -46,7 +46,7 @@
 <div class="mb-3">Already have an account?  <router-link
       class="home"
       tag="span"
-      :to="{name: 'root'}"
+      :to="{name: 'login'}"
         >
          Sign in here! 
       </router-link>
@@ -96,16 +96,66 @@ export default {
 
 
 <style scoped>
+#form{
+  margin-top:2cm;
+}
 .home{
   cursor: pointer;
-  font-size:15px;
+
   text-decoration: underline;
 }
 .home:hover{
   color: #0000CD;
-  font-size:17px;
+  font-size:15px;
 }
 
+.btn{
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: #fff 1px solid;
+  margin-top:40px;
+  opacity: 0;
+  animation-name: btn;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+
+  transition-property: transform;
+  transition-duration: 0.5s;
+}
+
+.btn:hover {
+   transform:scale(1.1,1.1);
+
+}
+
+@keyframes btn {
+  0%   {opacity:0}
+  100% {opacity: 1}
+}
+
+
+ #form{
+    position: relative;
+    -webkit-animation: mymove 1s ; /* Safari 4.0 - 8.0 */
+    animation: mymove 1s ;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+     0%   {top: -1000px; left: 0px; }
+    50% {top: 50px; left: 0px; }
+    100% {top: 0px; left: 0px; }
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    0%   {top: -1000px; left: 0px; }
+    50% {top: 50px; left: 0px; }
+    100% {top: 0px; left: 0px; }
+}
 
 
 </style>
