@@ -6,7 +6,7 @@
     <v-navigation-drawer
  persistent
     clipped
-  temporary
+ 
       v-model="drawer"
       app 
       dark
