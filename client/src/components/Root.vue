@@ -104,8 +104,6 @@ a {
 }
 
 #text {
-   margin: 0;
-  
   line-height: 1.5;
   text-align: center;
   position: relative;

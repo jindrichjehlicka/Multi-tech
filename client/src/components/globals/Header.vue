@@ -6,15 +6,16 @@
     <v-navigation-drawer
  persistent
     clipped
- 
+ temporary
       v-model="drawer"
       app 
       dark
+      
      class="indigo darken-3"
     >
     <br/>
 
-    
+    <!--TODO:add ripple -->
       <v-list dense class="indigo darken-3" >
 
        <v-list-tile :to="{
@@ -108,7 +109,7 @@
 
     <v-toolbar app   dark fixed  flat  class="indigo darken-3" >
       <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
-      <v-toolbar-title >
+      <v-toolbar-title id="title">
    
       <router-link
       class="home"
@@ -121,14 +122,14 @@
 <br/>
  <v-toolbar-items class="hidden-sm-and-down">
 
-      <v-btn flat dark
-     
+      <v-btn flat dark 
+      
        class="button"
       :to="{
       name: 'products'
      
       }"
-     > Products</v-btn>
+     :ripple="false"> Products</v-btn>
 
       <v-btn flat dark
       class="button"
@@ -136,6 +137,7 @@
       name: 'support'
       
       }"
+      :ripple="false"
       > Support</v-btn>
 
 
@@ -153,7 +155,8 @@
        flat dark 
           :to="{
       name: 'admin'
-     }">  <span>
+     }"
+     :ripple="false">  <span>
       <i class="fa fa-key" aria-hidden="true"></i></i>&nbsp</span>
           Admin
       </v-btn>
@@ -164,7 +167,8 @@
        flat dark 
           :to="{
       name: 'login'
-     }"> 
+     }"
+     :ripple="false"> 
           Login
       </v-btn>
 
@@ -174,7 +178,8 @@
        flat dark 
            :to="{
       name: 'register'
-     }"> 
+     }"
+     :ripple="false"> 
           Sign Up
       </v-btn>
 
@@ -184,7 +189,8 @@
        v-if="$store.state.isUserLoggedIn"
            :to="{
       name: 'profile'
-     }"> <span>
+     }"
+     :ripple="false"> <span>
       <i class="fa fa-user" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
         Profile
       </v-btn>
@@ -195,6 +201,7 @@
        flat dark 
           @click="logout"
           
+          :ripple="false"
           > <!-- TODO:refactor later -->
           Sign out
       </v-btn>
@@ -251,19 +258,30 @@ export default {
 <style scoped>
 .home{
   cursor: pointer;
-   padding-top: 2cm;
+
+   
 }
-.home:hover{
-  background-color: #474A9F;
+#title{
+ padding: 0.7em 1.5em;
 }
+#title:hover{
+  background-color:#474A9F;
+
+}
+
+
 .button{
  
-   padding:  10px;
+  
     text-align: center;
-    text-decoration: none;
+    
     display: inline-block;
+      padding: 1em 2em;
+  
   
 }
+
+
 .bars{
   border:2px solid ;
 }
