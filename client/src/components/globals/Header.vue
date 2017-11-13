@@ -6,12 +6,14 @@
     <v-navigation-drawer
  persistent
     clipped
- temporary
+ 
+ disable-route-watcher
       v-model="drawer"
       app 
       dark
       
      class="indigo darken-3"
+     id="drawer"
     >
     <br/>
 
@@ -101,7 +103,7 @@
             <i class="fa fa-external-link" aria-hidden="true"></i>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title >Go back to multitechwa.com</v-list-tile-title>
+            <v-list-tile-title >Go to <a id="multitech">Multitechwa</a></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -240,7 +242,7 @@ export default {
     },
     externalLink () {
       
-      window.location= 'http://www.multitechwa.com'
+      window.open ( 'http://www.multitechwa.com','_blank')
       
     }
     
@@ -284,5 +286,14 @@ export default {
 
 .bars{
   border:2px solid ;
+}
+
+#drawer{
+width:230px;
+}
+
+#multitech{
+  font-weight: bold;
+  font-size:14px;
 }
 </style>

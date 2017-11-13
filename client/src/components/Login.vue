@@ -37,7 +37,7 @@
 @click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Sign in
 </v-btn>
 
-<div class="mb-3">Don't have an account yet?   <router-link
+<div class="mb-3" id="signup">Don't have an account yet?   <router-link
       class="home"
       tag="span"
       :to="{name: 'register'}"
