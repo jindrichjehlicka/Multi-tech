@@ -109,7 +109,7 @@ export default {
   margin-top:40px;
   opacity: 0;
   animation-name: btn;
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-delay: 0s;
   animation-fill-mode: forwards;
 

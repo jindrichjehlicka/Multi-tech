@@ -251,9 +251,10 @@ export default {
 <style scoped>
 .home{
   cursor: pointer;
+   padding-top: 2cm;
 }
 .home:hover{
-  color: #DCDCDC;
+  background-color: #474A9F;
 }
 .button{
  

@@ -65,6 +65,7 @@ a {
   color: #42b983;
 }
 
+
 .card-1 {
   background-color: #fafafa;
 }
@@ -103,6 +104,10 @@ a {
 }
 
 #text {
+   margin: 0;
+  
+  line-height: 1.5;
+  text-align: center;
   position: relative;
   -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
   animation: mymove2 1s;
