@@ -2,7 +2,7 @@
 
 <template>
 <div>
-<page-header/>
+
 
   <v-card flat class="mt-5 mb-3"  id="form">
     <v-card-media class="card-1">

@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
 <div id="form">
-<page-header/>
+
  <v-layout column justify-center > 
 <v-flex xs12  class="mt-5">
 <panel title= "Register">

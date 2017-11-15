@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
-  <div>
-  <page-header/>
+  
+  
   <v-layout column>
     <v-flex>
       <products-search-panel id="search-panel"/>
@@ -10,7 +10,7 @@
       </v-flex>
 
   </v-layout>
-     </div>
+    
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 /* eslint-disable */
 <template>
-<div id="form">
-<page-header/>
- <v-layout column>
+
+
+ <v-layout column id="form">
 <v-flex xs12  class="mt-5">
 <panel title= "Login" >
 
@@ -50,7 +50,7 @@
 </v-flex>
 </v-layout>
 
-</div>
+
  </template>
 
 <script>

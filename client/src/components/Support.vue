@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
 <div id="form">
-<page-header/>
+
  <v-layout column>
 <v-flex xs12  class="mt-5">
 <div class = "white elevation-24">

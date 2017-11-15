@@ -1,13 +1,14 @@
 const{
     sequelize,
     Product,
-    User
+    User,
+    Manual
 } = require ('../src/models')
 
 const Promise = require ('bluebird') //makes  sure it inserts before any other action
 const products = require ('./products.json')
 const users = require ('./users.json')
-// const manuals = require ('./manuals.json')
+const manuals = require ('./manuals.json')
 
 
 sequelize.sync({force:true})
@@ -24,4 +25,11 @@ await Promise.all(
         Product.create(product)
         })
     )
+
+    //manual after because of asociation
+    await Promise.all(
+        manuals.map(manual => {
+           Manual.create(manual)
+            })
+        )
 })
