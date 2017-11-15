@@ -3,7 +3,7 @@
 <div id="form">
 <page-header/>
  <v-layout column>
-<v-flex xs12 sm6 offset-sm3 class="mt-5">
+<v-flex xs12  class="mt-5">
 <div class = "white elevation-24">
 <v-toolbar flat dense class class = "indigo darken-2 white--text" >
 <v-toolbar-title >Support</v-toolbar-title>
