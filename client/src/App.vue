@@ -2,107 +2,20 @@
 <template>    
   <div id="app">
  <v-app >
-  <v-navigation-drawer
- persistent
- clipped
-disable-resize-watcher
-disable-route-watcher
+    <v-navigation-drawer class="indigo darken-3"
+      app
+      persistent
       v-model="drawer"
-      app 
-      dark
-      
-     class="indigo darken-3"
-     id="drawer"
+      enable-resize-watcher
+      absolute
     >
-    <br/>
-
-    <!--TODO:add ripple -->
-      <v-list dense class="indigo darken-3" >
-
-       <v-list-tile :to="{
-         name: 'home'
-         }">
+      <v-list dense class="indigo darken-3">
+        <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link" >
           <v-list-tile-action>
-            <i class="fa fa-home" aria-hidden="true"></i>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Main page</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-      <v-list-tile  :to="{
-      name: 'products'
-      }" >
-          <v-list-tile-action>
-            <i class="fa fa-product-hunt" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Products</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile  :to="{
-      name: 'support'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-question" aria-hidden="true"></i> 
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Support</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile v-if="!$store.state.isUserLoggedIn"  :to="{
-      name: 'login'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Login</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile  v-if="!$store.state.isUserLoggedIn"  :to="{
-      name: 'register'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-user-plus" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Sign up</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile v-if="$store.state.isUserLoggedIn"  :to="{
-      name: 'profile'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-user" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Profile</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
-          <v-list-tile-action>
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title >Sign Out</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        
-          
-         <v-list-tile class="mt-5 pt-5 " @click="externalLink" >
-           
-          <v-list-tile-action>
-            <i class="fa fa-external-link" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title >Go to <a id="multitech">Multitechwa</a></v-list-tile-title>
+            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>

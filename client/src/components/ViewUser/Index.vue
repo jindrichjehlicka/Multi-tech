@@ -1,6 +1,6 @@
 <template>
 <div>
-<page-header/>
+
     <v-layout >
         <v-flex xs12 sm6 offset-sm3>
             <user-metadata :user = "user" />
