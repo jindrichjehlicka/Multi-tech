@@ -2,7 +2,6 @@
 <template>
 <v-footer 
   fixed
-
   
   class="footer pa-3 grey lighten-3">
     <v-spacer></v-spacer>

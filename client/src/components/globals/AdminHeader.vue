@@ -1,7 +1,27 @@
 /* eslint-disable */
 <template>
      <div>
-    
+       <v-navigation-drawer class="indigo darken-3"
+      app
+      persistent
+      v-model="drawer"
+      disable-resize-watcher
+      disable-route-watcher
+    absolute
+    :width="230"
+    dark
+    >
+      <v-list dense class="indigo darken-3">
+        <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link" >
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-toolbar  dark fixed flat  class="indigo darken-3" id="navbar">
       <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
@@ -108,7 +128,14 @@ export default {
     }
   }, 
     data: () => ({
-      drawer: false
+      drawer: false,
+       menuItems: [
+          {icon: 'supervisor_account', title: 'All products', link: '/admin/products'},
+          {icon: 'supervisor_account', title: 'Users', link: '/users'},
+          {icon: 'person', title: 'Profile', link: '/profile'},
+          {icon: 'face', title: 'Sign up', link: '/signup'},
+          {icon: 'lock_open', title: 'Sign in', link: '/signin'}
+        ]
     }),
     props: {
       source: String
