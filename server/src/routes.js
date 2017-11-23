@@ -3,6 +3,7 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require ('./policies/AuthenticationControllerPolicy')
 const ProductsController = require('./controllers/ProductsController')
 const UsersController = require('./controllers/UsersController')
+const ManualsController = require('./controllers/ManualsController')
 
 module.exports = (app) => {
     app.post('/register',
@@ -36,5 +37,8 @@ module.exports = (app) => {
 
     app.get('/users/:userId',
     UsersController.show)
+
+    app.get('/manuals',
+        ManualsController.index)
     }
        

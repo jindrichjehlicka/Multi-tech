@@ -3,7 +3,7 @@
 
 
  <v-layout column id="form">
-<v-flex xs12  class="mt-5">
+<v-flex xs12 md6 offset-md3 >
 <panel title= "Login" >
 
 <form
