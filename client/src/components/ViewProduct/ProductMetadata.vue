@@ -32,6 +32,27 @@
                        }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit
                 </v-btn>
+                 <v-btn
+                 v-if="admin== 1 "
+              center
+              right
+                dark 
+                class = "indigo darken-3 " 
+               @click="addManual"
+               >
+                      Add to user
+                </v-btn>
+                  <v-btn
+                  v-if="admin== 1 "
+              center
+              right
+                dark 
+                class = "indigo darken-3 " 
+               @click="addManual"
+               >
+                     Delete from user
+                </v-btn>
+              
               
                 <!-- TODO -->
                  <div class="product-url ">
@@ -54,13 +75,26 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 
     export  default {
+      data() {
+    return {
+     admin:this.$store.state.user.id
+    };
+  },
         
         props: [
             'product'
         ],
+        computed:{
+          ...mapState(['isUserLoggedIn'])
+        },
+        methods:{
+          addManual(){
+            console.log('manual')
+          }
+        }
       }
 </script>
 

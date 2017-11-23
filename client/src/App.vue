@@ -147,7 +147,7 @@
 
 
      <v-btn flat dark to ="Admin"
-      v-if="$store.state.isUserLoggedIn" 
+     
        class="button"
        flat dark 
           :to="{
@@ -229,7 +229,8 @@ import UsersService from '@/services/UsersService'
 export default {
   name: 'app',
   data: () => ({
-      drawer: false
+      drawer: false,
+      
     }),
     props: {
       source: String
