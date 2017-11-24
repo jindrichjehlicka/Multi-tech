@@ -10,76 +10,20 @@
       disable-route-watcher
     absolute
     :width="230"
+    
     class="indigo darken-3"
     dark
     >
   <v-list dense class="indigo darken-3" >
-
-       <v-list-tile :to="{
-         name: 'home'
-         }">
+ <v-list-tile exact
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link">
           <v-list-tile-action>
-            <i class="fa fa-home" aria-hidden="true"></i>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Main page</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-      <v-list-tile  :to="{
-      name: 'products'
-      }" >
-          <v-list-tile-action>
-            <i class="fa fa-product-hunt" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Products</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile  :to="{
-      name: 'support'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-question" aria-hidden="true"></i> 
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Support</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile v-if="!$store.state.isUserLoggedIn"  :to="{
-      name: 'login'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Login</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile  v-if="!$store.state.isUserLoggedIn"  :to="{
-      name: 'register'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-user-plus" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Sign up</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-         <v-list-tile v-if="$store.state.isUserLoggedIn"  :to="{
-      name: 'profile'
-      }">
-          <v-list-tile-action>
-            <i class="fa fa-user" aria-hidden="true"></i>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Profile</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+</v-list-tile>
 
          <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
           <v-list-tile-action>
@@ -111,86 +55,25 @@
       <router-link
       class="home"
       tag="span"
+      style="cursor: pointer"
       :to="{name: 'root'}"
         >
         Multi-tech
       </router-link><br/>
     </v-toolbar-title>
-<br/>
+<v-spacer></v-spacer>
  <v-toolbar-items class="hidden-sm-and-down">
 
-      <v-btn flat dark 
-      
-       class="button"
-      :to="{
-      name: 'products'
-     
-      }"
-     :ripple="false"> Products</v-btn>
+       <v-btn
+       exact
+          flat
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link">
+          <v-icon left dark>{{ item.icon }}</v-icon>
+          {{ item.title }}
 
-      <v-btn flat dark
-      class="button"
-        :to="{
-      name: 'support'
-      
-      }"
-      :ripple="false"
-      > Support</v-btn>
-
-
-      
-
-    </v-toolbar-items>
-          <v-spacer></v-spacer>
-    <v-toolbar-items class="hidden-sm-and-down">
-    
-
-
-     <v-btn flat dark to ="Admin"
-     
-       class="button"
-       flat dark 
-          :to="{
-      name: 'admin'
-     }"
-     :ripple="false">  <span>
-      <i class="fa fa-key" aria-hidden="true"></i></i>&nbsp</span>
-          Admin
-      </v-btn>
-
-      <v-btn flat dark to ="Login"
-       v-if="!$store.state.isUserLoggedIn"
-       class="button"
-       flat dark 
-          :to="{
-      name: 'login'
-     }"
-     :ripple="false"> 
-          Login
-      </v-btn>
-
-       <v-btn 
-       v-if="!$store.state.isUserLoggedIn"
-       class="button"
-       flat dark 
-           :to="{
-      name: 'register'
-     }"
-     :ripple="false"> 
-          Sign Up
-      </v-btn>
-
-       <v-btn 
-       class="button"
-       flat dark 
-       v-if="$store.state.isUserLoggedIn"
-           :to="{
-      name: 'profile'
-     }"
-     :ripple="false"> <span>
-      <i class="fa fa-user" aria-hidden="true"></i>&nbsp</span><!-- TODO:refactor later -->
-        Profile
-      </v-btn>
+        </v-btn>
 
       <v-btn 
       class="button"
@@ -235,6 +118,32 @@ export default {
     props: {
       source: String
     }, 
+    computed: {
+      menuItems () {
+        let menuItems = [
+          
+          {icon: 'face', title: 'Sign in', link: '/login'},
+          {icon: 'lock_open', title: 'Sign up', link: '/register'},
+          
+        ]
+        if (this.$store.state.isUserLoggedIn) {
+          menuItems = [
+            {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
+         
+           
+          ]
+        }
+         if (this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1) {
+          menuItems = [
+            {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
+            
+            {icon: 'room', title: 'Organize Meetup', link: '/support'},
+          ]
+        }
+        return menuItems
+      },
+     
+    },
      methods: {
   
     logout (){
@@ -271,11 +180,7 @@ export default {
 }
 
 
-.home{
-  cursor: pointer;
 
-   
-}
 #title{
  padding: 0.7em 1.5em;
 }

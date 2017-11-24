@@ -3,7 +3,7 @@
 <div id="form">
 
  <v-layout column justify-center > 
-<v-flex xs12 md6 offset-md3 >
+<v-flex xs10 offset-xs1 md6 offset-md3 >
 <panel title= "Register">
 <form
   name="multi-tech-form"
