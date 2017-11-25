@@ -36,12 +36,16 @@
 
           <v-flex sm6 hidden-xs-only>
             <img class="product-logo" :src="product.companyLogo"/>
+            
           </v-flex>
+          
         </v-layout>
-
+<v-divider class="grey mt-5"></v-divider>
       </div>
+       
     </panel>
   </v-flex>
+  
 </v-layout>
      
 </template>

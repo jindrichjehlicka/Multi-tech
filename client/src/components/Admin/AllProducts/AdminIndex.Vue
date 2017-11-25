@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
-  <div>
-  <admin-header/>
+  
+  
   <v-layout column>
     <v-flex>
      <admin-products-search-panel class="mb-5" />
@@ -10,7 +10,7 @@
       </v-flex>
 
   </v-layout>
-     </div>
+     
 </template>
 
 <script>

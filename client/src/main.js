@@ -11,7 +11,7 @@ import store from '@/store/store'
 import 'font-awesome/css/font-awesome.css'
 import Panel from '@/components/globals/Panel'
 import PageHeader from '@/components/globals/Header'
-import AdminHeader from '@/components/globals/AdminHeader'
+
 
 Vue.config.productionTip = false;
 
@@ -19,7 +19,7 @@ Vue.use(Vuetify)
 
 Vue.component('panel',Panel),
 Vue.component('page-header',PageHeader),
-Vue.component('admin-header',AdminHeader)
+
 
 sync(store, router)
 

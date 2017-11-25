@@ -1,6 +1,6 @@
 <template>
-<div>
-<admin-header/>
+
+
     <v-layout>
         <v-flex xs3 offset-xs1>
         <panel title="Products Metadata" class="mt-5 ml-2">
@@ -67,7 +67,7 @@
         </v-flex>
 
     </v-layout>
-    </div>
+
 </template>
 
 <script>

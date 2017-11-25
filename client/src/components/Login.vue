@@ -87,9 +87,7 @@ export default {
 
 
 <style scoped>
-#form{
-  margin-top:2cm;
-}
+
 .home{
   cursor: pointer;
  

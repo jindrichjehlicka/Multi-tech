@@ -60,7 +60,7 @@
               dark 
               right
                 class = "indigo darken-3 ml-4" 
-              ><i class="fa fa-download" aria-hidden="true"></i>&nbsp Download manual</v-btn></a>
+              ><v-icon left> fa-paperclip</v-icon> Download manual</v-btn></a>
               </div>
             
      

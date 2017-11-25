@@ -49,7 +49,9 @@
       :to="{name: 'login'}"
         >
          Sign in here! 
+         <v-icon right>fa-sign-in</v-icon>
       </router-link>
+      
       </div>
 </panel>
 
@@ -96,9 +98,7 @@ export default {
 
 
 <style scoped>
-#form{
-  margin-top:2cm;
-}
+
 .home{
   cursor: pointer;
 

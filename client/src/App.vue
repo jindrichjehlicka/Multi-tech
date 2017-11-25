@@ -5,16 +5,20 @@
     <v-navigation-drawer 
       app
       persistent
+  disable-resize-watcher
+  disable-route-watcher
+   clipped
       v-model="drawer"
-      disable-resize-watcher
-      disable-route-watcher
-    absolute
+      
+    fixed
     :width="230"
     
     class="indigo darken-3"
     dark
     >
   <v-list dense class="indigo darken-3" >
+  <v-subheader>Menu</v-subheader>
+  <v-divider></v-divider>
  <v-list-tile exact
           v-for="item in menuItems"
           :key="item.title"
@@ -24,8 +28,7 @@
           </v-list-tile-action>
           <v-list-tile-content>{{ item.title }}</v-list-tile-content>
 </v-list-tile>
-
-         <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
+ <v-list-tile v-if="$store.state.isUserLoggedIn" target="_blank" @click="logout">
           <v-list-tile-action>
             <i class="fa fa-sign-out" aria-hidden="true"></i>
           </v-list-tile-action>
@@ -33,6 +36,19 @@
             <v-list-tile-title >Sign Out</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+<v-subheader v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1"class="mt-5">Admin menu</v-subheader>
+<v-divider v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1"></v-divider>
+ <v-list-tile exact
+          v-for="item in items"
+          :key="item.title"
+          :to="item.link">
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+</v-list-tile>
+
+        
 
         
           
@@ -61,16 +77,28 @@
         Multi-tech
       </router-link><br/>
     </v-toolbar-title>
-<v-spacer></v-spacer>
- <v-toolbar-items class="hidden-sm-and-down">
 
+<v-spacer></v-spacer>
+    <v-menu v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1" top right transition="slide-x-transition">
+            <v-btn  class=" pr-2 pl-1 orange "slot="activator" dark>
+              <v-icon>arrow_drop_down</v-icon> <span>Admin</span>
+            </v-btn>
+            <v-list>
+              <v-list-tile v-for="item in items" :key="item.title" :to="item.link">
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
+ <v-toolbar-items class="hidden-sm-and-down">
+  
+        
        <v-btn
-       exact
+       class="pr-3 pl-3"
           flat
           v-for="item in menuItems"
           :key="item.title"
           :to="item.link">
-          <v-icon left dark>{{ item.icon }}</v-icon>
+          
           {{ item.title }}
 
         </v-btn>
@@ -96,24 +124,28 @@
 
     
       
-       
-         <router-view> <v-container fluid ></v-container></router-view>
-       
+       <v-container fluid >
+         <router-view> </router-view>
+      </v-container>
      </v-content>
-     <page-footer/>
+    <v-footer fixed class="pa-3">
+    <v-spacer></v-spacer>
+    <div>© {{ new Date().getFullYear() }}</div>
+  </v-footer>
     </v-app>  
+    
      </div>     
      </template>
 
 <script>
 
-import PageFooter from '@/components/Footer.vue'
+
 import UsersService from '@/services/UsersService'
 export default {
   name: 'app',
   data: () => ({
       drawer: false,
-      
+    
     }),
     props: {
       source: String
@@ -122,27 +154,38 @@ export default {
       menuItems () {
         let menuItems = [
           
-          {icon: 'face', title: 'Sign in', link: '/login'},
-          {icon: 'lock_open', title: 'Sign up', link: '/register'},
+          {icon: 'fa-sign-in', title: 'Sign in', link: '/login'},
+          {icon: 'fa-user-plus', title: 'Sign up', link: '/register'},
+          {icon: 'fa-phone', title: 'Support', link: '/support'},
           
         ]
         if (this.$store.state.isUserLoggedIn) {
           menuItems = [
-            {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
-         
+            {icon: 'fa-shopping-cart', title: 'Products', link: '/products'},
+            {icon: 'fa-user', title: 'Profile', link: '/profile'},
+          {icon: 'fa-phone', title: 'Support', link: '/support'},
+          
            
           ]
         }
-         if (this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1) {
-          menuItems = [
-            {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
-            
-            {icon: 'room', title: 'Organize Meetup', link: '/support'},
-          ]
-        }
+        //  if (this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1) {
+        //   menuItems = [
+        //     {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
+        //      {icon: 'room', title: 'Organize Meetup', link: '/support'},
+        //   ]
+        // }
         return menuItems
       },
-     
+     items(){
+      let  items = []
+      if(this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1){
+        items= [
+        {icon: 'fa-address-book', title: 'Users', link: '/users' },
+        {icon: 'fa-phone', title: 'All products', link: '/admin/products' },
+        ]
+      }
+      return items
+     }
     },
      methods: {
   
@@ -161,10 +204,7 @@ export default {
     }
     
   },
-  components:{
-    
-    PageFooter
-  }
+  
 };
 </script>
 
@@ -190,16 +230,7 @@ export default {
 }
 
 
-.button{
- 
-  
-    text-align: center;
-    
-    display: inline-block;
-      padding: 1em 2em;
-  
-  
-}
+
 
 
 .bars{
