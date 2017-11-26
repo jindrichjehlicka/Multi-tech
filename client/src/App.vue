@@ -4,14 +4,14 @@
  <v-app id="inspire"  >
     <v-navigation-drawer 
       app
-      persistent
-  disable-resize-watcher
+      clipped
+ disable-resize-watcher
   disable-route-watcher
-   clipped
+ 
       v-model="drawer"
-      
+     
     fixed
-    :width="230"
+    :width="300"
     
     class="indigo darken-3"
     dark
@@ -22,7 +22,7 @@
  <v-list-tile exact
           v-for="item in menuItems"
           :key="item.title"
-          :to="item.link">
+          :to="item.link" id="whatever">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -65,7 +65,8 @@
     </v-navigation-drawer>
 
     <v-toolbar app   dark fixed  flat  class="indigo darken-3" >
-      <v-toolbar-side-icon class="bars"  @click.stop="drawer = !drawer"><i class="fa fa-bars" aria-hidden="true"></i></v-toolbar-side-icon>
+      <v-toolbar-side-icon  large @click.stop="drawer = !drawer" v-if="!drawer"><v-icon medium>fa-bars</v-icon></v-toolbar-side-icon>
+      <v-toolbar-side-icon   large @click.stop="drawer = !drawer" v-if="drawer"><v-icon medium>fa-times</v-icon></v-toolbar-side-icon>
       <v-toolbar-title id="title">
    
       <router-link
@@ -174,7 +175,8 @@ export default {
         //      {icon: 'room', title: 'Organize Meetup', link: '/support'},
         //   ]
         // }
-        return menuItems
+  
+  return menuItems
       },
      items(){
       let  items = []
@@ -221,14 +223,13 @@ export default {
 
 
 
-#title{
- padding: 0.7em 1.5em;
-}
 #title:hover{
-  background-color:#474A9F;
+ color:#F5F5F5;
 
 }
-
+#whatever:visited{
+color:#fff;
+}
 
 
 

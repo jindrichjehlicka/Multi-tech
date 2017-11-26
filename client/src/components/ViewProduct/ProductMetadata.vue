@@ -18,8 +18,10 @@
             <br/>
           
               <v-btn
+            v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1 "
               center
               right
+            
                 dark 
                 class = "indigo darken-3 " 
                 :to="{
@@ -33,7 +35,7 @@
                       Edit
                 </v-btn>
                  <v-btn
-                 v-if="admin== 1 "
+                 v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1 "
               center
               right
                 dark 
@@ -43,7 +45,7 @@
                       Add to user
                 </v-btn>
                   <v-btn
-                  v-if="admin== 1 "
+                  v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1"
               center
               right
                 dark 
@@ -57,6 +59,7 @@
                 <!-- TODO -->
                  <div class="product-url ">
               <a :href="product.url" target="_blank"><v-btn
+              large
               dark 
               right
                 class = "indigo darken-3 ml-4" 
