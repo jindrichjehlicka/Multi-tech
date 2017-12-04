@@ -3,6 +3,9 @@
            
         <img class="product-logo" :src="product.companyLogo"/>
             <div class="product-name " >
+              {{product.id}}
+              </div>
+            <div class="product-name " >
               {{product.companyName}}
               </div>
 
@@ -18,6 +21,7 @@
             <br/>
           
               <v-btn
+               v-if="isUserLoggedIn && this.$store.state.user.admin === 1 "
               center
               right
                 dark 
@@ -32,24 +36,24 @@
                        }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit
                 </v-btn>
+
                  <v-btn
-                 v-if="admin== 1 "
+                 v-if="isUserLoggedIn && this.$store.state.user.admin === 1  && !manual "
               center
               right
                 dark 
                 class = "indigo darken-3 " 
-               @click="addManual"
-               >
-                      Add to user
+               @click="addManual">
+               Add to user
                 </v-btn>
+
                   <v-btn
-                  v-if="admin== 1 "
+                  v-if="isUserLoggedIn && this.$store.state.user.admin === 1   && manual "
               center
               right
                 dark 
                 class = "indigo darken-3 " 
-               @click="addManual"
-               >
+               @click="deleteManual">
                      Delete from user
                 </v-btn>
               
@@ -76,24 +80,60 @@
 
 <script>
 import {mapState} from 'vuex'
+import ManualsService from '@/services/ManualsService'
 
     export  default {
-      data() {
-    return {
-     admin:this.$store.state.user.id
-    };
-  },
-        
-        props: [
+      props: [
             'product'
         ],
-        computed:{
-          ...mapState(['isUserLoggedIn'])
-        },
-        methods:{
-          addManual(){
-            console.log('manual')
+      data() {
+    return {
+      manual:null
+    };
+  },
+        computed: {
+    ...mapState([
+      'isUserLoggedIn'
+    ])
+  },
+        watch: {
+          async product(){
+              if(!this.isUserLoggedIn){
+           return
+         }
+         try{
+         this.manual = (await ManualsService.index({
+           productId:  this.$store.state.route.params.productId,
+           userId: this.$store.state.user.id
+         })).data
+          }catch(err){
+            console.log(err)
           }
+          }
+        },
+
+  
+       
+        methods:{
+          async addManual (){
+            try{
+           this.manual = (await ManualsService.post({
+           productId: this.product.id,
+           userId: this.$store.state.user.id
+         })).data
+         }catch(err){
+           console.log(err)
+         }
+          },
+
+            async deleteManual(){              
+            try{
+           await ManualsService.delete(this.manual.id)
+           this.manual = null
+         }catch(err){
+           console.log(err)
+         }
+          },
         }
       }
 </script>

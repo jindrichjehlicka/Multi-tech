@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <div>
-  <admin-header/>
+  
   <v-layout column>
     <v-flex>
       <users-search-panel />

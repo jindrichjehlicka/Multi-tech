@@ -13,6 +13,7 @@ import Panel from '@/components/globals/Panel'
 import PageHeader from '@/components/globals/Header'
 
 
+
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify)

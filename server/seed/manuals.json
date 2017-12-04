@@ -1,18 +1,6 @@
 [
     {
-        "productId":1,
+        "ProductId":1,
         "UserId":1
-    },
-    {
-        "productId":1,
-        "UserId":2
-    },
-    {
-        "productId":2,
-        "UserId":1
-    },
-    {
-        "productId":2,
-        "UserId":2
     }
 ]
