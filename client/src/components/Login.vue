@@ -33,8 +33,8 @@
 </v-alert>
   
 <br>
-<v-btn dark class = "indigo darken-3 mb-5" 
-@click="login"><span><i class="fa fa-sign-in"></i>&nbsp</span>Sign in
+<v-btn large dark class = "green elevation-12 mb-5" 
+@click="login" ><v-icon left>fa-sign-in</v-icon>Sign in
 </v-btn>
 
 <div class="mb-3" id="signup">Don't have an account yet?   <router-link

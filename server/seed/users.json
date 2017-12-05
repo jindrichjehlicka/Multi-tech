@@ -10,6 +10,12 @@
             "password": "12345678",
             "mine": "",
             "admin": 1
+          },
+          {
+            "email": "caroline@gmail.com",
+            "password": "12345678",
+            "mine": "",
+            "admin": 0
           }
     
 ]

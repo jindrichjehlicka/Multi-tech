@@ -39,10 +39,11 @@
 
 
 <br>
-<v-btn dark 
- class = "indigo darken-3 pm-2 mb-5" 
-@click="register"><span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp</span>Sign up
+<v-btn dark large
+ class = "green elevation-12 mb-5" 
+@click="register"><v-icon left class="mb-1">fa-user-plus</v-icon>Sign up
 </v-btn>
+
 <div class="mb-3">Already have an account?  <router-link
       class="home"
       tag="span"

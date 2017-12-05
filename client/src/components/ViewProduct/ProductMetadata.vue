@@ -20,10 +20,37 @@
              
             <br/>
           
+             
+                <v-layout row>
+                <v-flex xs5 offset-xs2 >
+                <v-text-field
+              label="User ID"
+               required
+              :rules="[required]"
+                v-model.number="user.id"
+                type="number"
+               
+              ></v-text-field>
+              </v-flex>
+              <v-flex xs6>
+                 <v-btn
+                 v-if="isUserLoggedIn && this.$store.state.user.admin === 1   "
+              center
+              right
+                dark 
+                class = "indigo darken-3 mt-3" 
+               
+               @click="addManual">
+               Add to user
+                </v-btn>
+                </v-flex>
+                </v-layout>
+
               <v-btn
                v-if="isUserLoggedIn && this.$store.state.user.admin === 1 "
               center
               right
+            
                 dark 
                 class = "indigo darken-3 " 
                 :to="{
@@ -36,19 +63,9 @@
                        }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
                       Edit
                 </v-btn>
-
-                 <v-btn
-                 v-if="isUserLoggedIn && this.$store.state.user.admin === 1  && !manual "
-              center
-              right
-                dark 
-                class = "indigo darken-3 " 
-               @click="addManual">
-               Add to user
-                </v-btn>
-
+            <!-- Comment here is ok 
                   <v-btn
-                  v-if="isUserLoggedIn && this.$store.state.user.admin === 1   && manual "
+                  v-if="isUserLoggedIn && this.$store.state.user.admin === 1    "
               center
               right
                 dark 
@@ -56,11 +73,12 @@
                @click="deleteManual">
                      Delete from user
                 </v-btn>
-              
+              -->
               
                 <!-- TODO -->
                  <div class="product-url ">
               <a :href="product.url" target="_blank"><v-btn
+              large
               dark 
               right
                 class = "indigo darken-3 ml-4" 
@@ -88,52 +106,49 @@ import ManualsService from '@/services/ManualsService'
         ],
       data() {
     return {
-      manual:null
-    };
+      manual:null,
+      user:{
+        id:null
+      },
+        error:null,
+        required:(value) => !!value || 'Required.'
+    }
   },
         computed: {
     ...mapState([
       'isUserLoggedIn'
     ])
   },
-        watch: {
-          async product(){
-              if(!this.isUserLoggedIn){
-           return
-         }
-         try{
-         this.manual = (await ManualsService.index({
-           productId:  this.$store.state.route.params.productId,
-           userId: this.$store.state.user.id
-         })).data
-          }catch(err){
-            console.log(err)
-          }
-          }
-        },
-
   
        
         methods:{
           async addManual (){
+              this.error = null
+            const areAllFieldsFilledIn = Object
+            .keys(this.user)
+            .every(key=> !!this.user[key])
+        if(!areAllFieldsFilledIn){
+            this.error = 'Please fill in all the required fields'
+            return
+        }
             try{
            this.manual = (await ManualsService.post({
            productId: this.product.id,
-           userId: this.$store.state.user.id
+           userId: this.user.id
          })).data
          }catch(err){
            console.log(err)
          }
           },
 
-            async deleteManual(){              
-            try{
-           await ManualsService.delete(this.manual.id)
-           this.manual = null
-         }catch(err){
-           console.log(err)
-         }
-          },
+        //     async deleteManual(){              
+        //     try{
+        //    await ManualsService.delete(this.manual.id)
+        //    this.manual = null
+        //  }catch(err){
+        //    console.log(err)
+        //  }
+        //   },
         }
       }
 </script>
