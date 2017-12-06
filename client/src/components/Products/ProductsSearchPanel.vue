@@ -1,14 +1,14 @@
 <template>
-<v-layout>
-        <v-flex xs12 sm4 offset-sm4 >
+
+       
     <panel title="Search" >
     <v-text-field
               label="Search by product name or model"
               v-model="search"
             ></v-text-field>
     </panel>
-    </v-flex>
-    </v-layout>
+    
+    
 </template>
 
 <script>

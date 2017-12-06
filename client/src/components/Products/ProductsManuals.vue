@@ -44,14 +44,14 @@ import ManualsService from '@/services/ManualsService'
         },
         computed: {
             ...mapState([
-                'isUserLoggedin'
+                'isUserLoggedIn'
             ])
         },
         async mounted () {
-            if(this.isUserLoggedin){
+            if(this.isUserLoggedIn){
                 this.manuals = (await ManualsService.index({
                     userId: this.$store.state.user.id
-                }))
+                })).data
             }
         }
         
