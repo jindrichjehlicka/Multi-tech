@@ -1,13 +1,13 @@
 /* eslint-disable */
 <template>
-  
-  
-  <v-layout column>
-    <v-flex>
+  <v-layout row>
+  <v-flex xs6>
+  <products-manuals />
+  </v-flex>
+
+    <v-flex xs6>
       <products-search-panel id="search-panel"/>
-     
       <products-panel class="mt-5 pb-5" id="panel"/>
-      
       </v-flex>
 
   </v-layout>
@@ -16,6 +16,7 @@
 
 <script>
 import ProductsPanel from './ProductsPanel'
+import ProductsManuals from './ProductsManuals'
 import ProductsSearchPanel from './ProductsSearchPanel'
 import ProductsService from '@/services/ProductsService'
 
@@ -24,7 +25,9 @@ export default{
     components: {
       
       ProductsPanel,
-      ProductsSearchPanel
+      ProductsSearchPanel,
+      ProductsManuals
+
     },
     data (){
       return{

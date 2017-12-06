@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <v-flex xs12 sm6 offset-sm3 >
+  
     <panel title = "Products"> 
   
 
@@ -44,7 +44,7 @@
       </div>
        
     </panel>
-  </v-flex>
+  
   
 </v-layout>
      

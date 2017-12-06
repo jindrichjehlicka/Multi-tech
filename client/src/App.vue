@@ -65,8 +65,8 @@
     </v-navigation-drawer>
 
     <v-toolbar app   dark fixed  flat  class="indigo darken-3" >
-      <v-toolbar-side-icon  large @click.stop="drawer = !drawer" v-if="!drawer"><v-icon medium>fa-bars</v-icon></v-toolbar-side-icon>
-      <v-toolbar-side-icon   large @click.stop="drawer = !drawer" v-if="drawer"><v-icon medium>fa-times</v-icon></v-toolbar-side-icon>
+      <v-toolbar-side-icon  large @click.stop="drawer = !drawer" v-if="!drawer"><v-icon medium class="mb-1">fa-bars</v-icon></v-toolbar-side-icon>
+      <v-toolbar-side-icon   large @click.stop="drawer = !drawer" v-if="drawer"><v-icon medium class="mb-1">fa-times</v-icon></v-toolbar-side-icon>
       <v-toolbar-title id="title">
    
       <router-link

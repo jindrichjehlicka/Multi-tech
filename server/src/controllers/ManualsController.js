@@ -1,17 +1,30 @@
-const {Manual} = require('../models')
+const {Manual, Product, User} = require('../models')
+const _ = require('lodash')
 
 module.exports = {
 
   async index (req, res) {
     try {    
       const {productId, userId} = req.query
-      const manual = await Manual.findOne({
-          where: {
-              ProductId: productId,
-              UserId: userId
-          }
+      const where = {
+        UserId: userId
+      }
+      if (productId) {
+        where.ProductId = productId
+      }
+      const manuals = await Manual.findAll({
+          where: where,
+          include: [
+            {
+              model: Product
+            }
+          ]
       }) 
-         res.send(manual)
+      .map(manual => manual.toJSON())
+      .map(manual => _.extend({
+        manualId: manual.id
+      },manual.Product))
+         res.send(manuals)
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured trying to get the manual'

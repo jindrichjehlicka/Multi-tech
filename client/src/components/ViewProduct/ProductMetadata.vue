@@ -121,6 +121,22 @@ import ManualsService from '@/services/ManualsService'
   },
   
        
+        watch: {
+          async product(){
+              if(!this.isUserLoggedIn){
+           return
+         }
+         try{
+         this.manual = (await ManualsService.index({
+           productId:  this.product.id,
+           userId: this.$store.state.user.id
+         })).data
+          }catch(err){
+            console.log(err)
+          }
+          }
+        },
+
         methods:{
           async addManual (){
               this.error = null
