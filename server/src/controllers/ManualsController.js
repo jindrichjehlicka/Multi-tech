@@ -2,7 +2,7 @@ const {Manual, Product, User} = require('../models')
 const _ = require('lodash')
 
 module.exports = {
-
+ 
   async index (req, res) {
     try {    
       const {productId, userId} = req.query

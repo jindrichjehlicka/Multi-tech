@@ -1,43 +1,57 @@
 /* eslint-disable */
 <template>
-  <v-layout row >
-  <v-flex xs6>
-  <products-manuals />
-  </v-flex>
+  <v-layout row justify-center v-bind="binding">
 
-    <v-flex xs6>
-      <products-search-panel id="search-panel"/>
-      <products-panel class="mt-5 pb-5" id="panel"/>
+    <v-flex xs10 md8>
+     
+      <manuals-panel class=" pb-5" id="panel"/>
       </v-flex>
+      
 
   </v-layout>
     
 </template>
 
 <script>
-import ProductsPanel from './ProductsPanel'
-import ProductsManuals from './ProductsManuals'
-import ProductsSearchPanel from './ProductsSearchPanel'
-import ProductsService from '@/services/ProductsService'
+import {mapState} from 'vuex'
+import ManualsPanel from './ManualsPanel'
+
+
+import ManualsService from '@/services/ManualsService'
 
 export default{
  
     components: {
       
-      ProductsPanel,
-      ProductsSearchPanel,
-      ProductsManuals
+      ManualsPanel
 
     },
     data (){
       return{
-       products:null
+       manuals:null
       }
     },
-   async mounted(){
-      //do a request to the backend for all the products
-     this.products = (await ProductsService.index()).data
-    }
+    computed: {
+            ...mapState([
+                'isUserLoggedIn'
+            ]),
+           
+      binding () {
+        const binding = {}
+
+        if (this.$vuetify.breakpoint.mdAndDown) binding.column= true
+
+        return binding
+      }
+    
+        },
+    async mounted () {
+            if(this.isUserLoggedIn){
+                this.manuals = (await ManualsService.index({
+                    userId: this.$store.state.user.id
+                })).data
+            }
+        },
 }
 </script>
 

@@ -6,6 +6,7 @@ import Root from '@/components/Root';
 import Register from '@/components/Register';
 import Login from '@/components/Login';
 import Products from '@/components/Products/Index';
+import Manuals from '@/components/Manuals/Index';
 import Profile from '@/components/Profile';
 import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
@@ -16,6 +17,7 @@ import AdminProducts from '@/components/Admin/AllProducts/AdminIndex';
 import Admin from '@/components/Admin/Index';
 import EditUser from '@/components/EditUser';
 import ViewUser from '@/components/ViewUser/Index';
+
 
 
 
@@ -68,6 +70,7 @@ export default new Router({
       component: Products,
      
     },
+  
     {
       path: '/products/:productId',
       name: 'product',
@@ -85,6 +88,12 @@ export default new Router({
       path: '/users',
       name: 'users',
       component: Users,
+     
+    },
+    {
+      path: '/manuals',
+      name: 'manuals',
+      component: Manuals,
      
     },
     {

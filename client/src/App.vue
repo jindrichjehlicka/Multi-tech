@@ -162,7 +162,7 @@ export default {
         ]
         if (this.$store.state.isUserLoggedIn) {
           menuItems = [
-            {icon: 'fa-shopping-cart', title: 'Products', link: '/products'},
+            {icon: 'fa-shopping-cart', title: 'My products', link: '/manuals'},
             {icon: 'fa-user', title: 'Profile', link: '/profile'},
           {icon: 'fa-phone', title: 'Support', link: '/support'},
           
@@ -242,8 +242,4 @@ color:#fff;
 width:230px;
 }
 
-#multitech{
-  font-weight: bold;
-  font-size:14px;
-}
 </style>

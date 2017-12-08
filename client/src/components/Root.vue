@@ -21,7 +21,7 @@
       </v-card>
        <v-layout justify-center>
     <v-flex xs12 sm8 > 
-      <div class=" mt-5" id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut turpis nibh, ullamcorper ut congue vel, pulvinar eget tortor. Ut rhoncus tortor sit amet hendrerit cursus. Etiam fermentum accumsan ligula, non finibus quam placerat non. Pellentesque ante sapien, porta id quam at, tincidunt semper lectus. Aenean commodo nisi leo, ac gravida erat ullamcorper ut. Vestibulum tortor augue, ullamcorper et turpis in, congue sodales dui. Nullam auctor congue augue, eu scelerisque velit. Mauris a sapien in orci convallis ornare. Aliquam sed ultricies orci.
+      <div class=" mt-5 headline" id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut turpis nibh, ullamcorper ut congue vel, pulvinar eget tortor. Ut rhoncus tortor sit amet hendrerit cursus. Etiam fermentum accumsan ligula, non finibus quam placerat non. Pellentesque ante sapien, porta id quam at, tincidunt semper lectus. Aenean commodo nisi leo, ac gravida erat ullamcorper ut. Vestibulum tortor augue, ullamcorper et turpis in, congue sodales dui. Nullam auctor congue augue, eu scelerisque velit. Mauris a sapien in orci convallis ornare. Aliquam sed ultricies orci.
 
 Integer sem massa, mattis quis luctus vitae, pellentesque vel ligula. 
 </div>
@@ -105,8 +105,7 @@ a {
 
 #text {
   line-height: 1.5;
-  font-size:20px;
-  position: relative;
+ 
   -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
   animation: mymove2 1s;
 }
