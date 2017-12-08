@@ -1,5 +1,5 @@
 const {Manual, Product, User} = require('../models')
-const _ = require('lodash')
+
 
 module.exports = {
  
@@ -15,13 +15,11 @@ module.exports = {
       const manuals = await Manual.findAll({
           where: where,
           include: [
-            {
-              model: Product
-            }
+            {model: Product}
           ]
       }) 
       .map(manual => manual.toJSON())
-      .map(manual => _.extend({
+      .map(manual => Object.assign({
         manualId: manual.id
       },manual.Product))
          res.send(manuals)
