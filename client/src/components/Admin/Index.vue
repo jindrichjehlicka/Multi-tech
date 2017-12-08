@@ -2,8 +2,8 @@
 <template>
 
 
- <v-layout column id="form">
-<v-flex xs12 md6 offset-md3 >
+ <v-layout column justify-center id="form">
+<v-flex xs12 md6>
 <panel title= "Login" >
 
 <form

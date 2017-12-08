@@ -1,10 +1,10 @@
 <template>
 <div>
 
-    <v-layout >
-        <v-flex xs12 sm6 offset-sm3>
+    <v-layout row justify-center>
+        <v-flex xs12 sm6>
             <product-metadata :product = "product" />
-     
+                <br>
         </v-flex>
     </v-layout>
     </div>

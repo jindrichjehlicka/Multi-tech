@@ -93,7 +93,8 @@ import ManualsService from '@/services/ManualsService'
           return this.manuals;
         }
         return this.manuals.filter(function(manual){
-          return manual.companyName.toLowerCase().indexOf(self.searchText) >= 0 || manual.model.toLowerCase().indexOf(self.searchText) >= 0;
+          return manual.companyName.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0 || 
+          manual.model.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0;
         
         });
       }

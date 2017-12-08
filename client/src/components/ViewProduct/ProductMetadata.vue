@@ -1,5 +1,5 @@
 <template>
-     <panel title = "Product information" class="mt-5">
+     <panel title = "Product information" class="mb-5">
            
         <img class="product-logo" :src="product.companyLogo"/>
             <div class="product-name " >

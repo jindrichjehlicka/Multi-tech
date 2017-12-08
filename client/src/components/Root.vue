@@ -4,7 +4,7 @@
 <div>
 
 
-  <v-card flat class="mt-5 mb-3"  id="form">
+  <v-card flat class=" mb-3"  id="form">
     <v-card-media class="card-1">
     <v-container   fluid fill-height>
     <v-layout justify-center align-left>
@@ -105,7 +105,7 @@ a {
 
 #text {
   line-height: 1.5;
- 
+  position:relative;
   -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
   animation: mymove2 1s;
 }
