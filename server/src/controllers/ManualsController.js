@@ -18,10 +18,10 @@ module.exports = {
             {model: Product}
           ]
       }) 
-      .map(manual => manual.toJSON())
-      .map(manual => Object.assign({
-        manualId: manual.id
-      },manual.Product))
+      // .map(manual => manual.toJSON())
+      // .map(manual => Object.assign({
+      //   manualId: manual.id
+      // },manual.Product))
          res.send(manuals)
     } catch (err) {
       res.status(500).send({

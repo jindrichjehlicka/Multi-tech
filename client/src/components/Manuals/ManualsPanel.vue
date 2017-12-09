@@ -18,13 +18,13 @@
         <v-flex xs12 class="mt-4">
             <div class="product-name"
             >
-              {{manual.companyName}}
+              {{manual.Product.companyName}}
               </div>
               <div class="product-model">
-              {{manual.model}}
+              {{manual.Product.model}}
               </div>
               <div class="product-url ">
-              <a :href="manual.url" target="_blank"><v-btn
+              <a :href="manual.Product.url" target="_blank"><v-btn
               light
               center
                 class ="grey lighten-2 mt-4" 
@@ -32,7 +32,7 @@
               </div>
 </v-flex>
  <v-flex sm12 hidden-xs-only>
-            <img class="product-logo mt-4" :src="manual.companyLogo"/>
+            <img class="product-logo mt-4" :src="manual.Product.companyLogo"/>
             
           </v-flex>         
             </v-layout>
@@ -93,8 +93,8 @@ import ManualsService from '@/services/ManualsService'
           return this.manuals;
         }
         return this.manuals.filter(function(manual){
-          return manual.companyName.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0 || 
-          manual.model.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0;
+          return manual.Product.companyName.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0 || 
+          manual.Product.model.toLowerCase().indexOf(self.searchText.toLowerCase().trim()) >= 0;
         
         });
       }
