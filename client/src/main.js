@@ -7,7 +7,7 @@ import router from './router';
 import Vuetify from 'vuetify';
 import {sync} from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.min.css'
-import store from '@/store/store'
+import {store} from '@/store/store'
 import 'font-awesome/css/font-awesome.css'
 import Panel from '@/components/globals/Panel'
 import PageHeader from '@/components/globals/Header'

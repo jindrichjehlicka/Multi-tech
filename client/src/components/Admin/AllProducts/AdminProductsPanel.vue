@@ -1,55 +1,56 @@
 /* eslint-disable */
 <template>
-  <v-flex xs12 sm6 offset-sm3 >
-    <panel title = "All Products"> 
-         <v-btn 
+<v-layout justify-center>
+  <v-flex xs12 sm9 >
+      <v-btn 
         :to="{name: 'products-create'}"    
         slot ="action"
         class="green darken-1"
         dark 
         medium
-        absolute
+        fixed
         right
         middle
         fab >
         <v-icon>add</v-icon> 
       </v-btn>
+ <panel title="All products">
+  
+    <v-data-table
+    :headers="headers"
+    :pagination.sync ="pagination"
+    :items="products">
+
+    <template slot = "items" slot-scope = "props">
+     <td class="text-xs-right ">
+    {{props.item.id}}
     
-      <div 
-      v-for="product in products"
-      class="product"
-      :key="product.id">
+    </td>
+    <td class="text-xs-right">
+    {{props.item.companyName}}
+    
+    </td>
 
-      <v-layout>
-        <v-flex xs12 sm6>
-            <div class="product-name">
-              {{product.companyName}}
-              </div>
-
-              <div class="product-model">
-              {{product.model}}
-              </div>
-
-                <v-btn 
+    <td class="text-xs-right">
+    {{props.item.model}}
+    </td>
+      
+      
+    <v-btn 
                 dark 
-                class = "indigo darken-3 mt-3" 
+                class = "green"  small
                    :to="{
                    name: 'product',
                    params: {
-                     productId: product.id
+                     productId: props.item.id
                    }
-                 }"><span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp</span>
+                 }">
                       View
                 </v-btn>
-
-              </v-flex>
-
-          <v-flex sm6 hidden-xs-only>
-            <img class="product-logo" :src="product.companyLogo"/>
-          </v-flex>
-        </v-layout>
-
-      </div>
+  
+    
+    </template>
+    </v-data-table>
     </panel>
   </v-flex>
 </v-layout>
@@ -62,7 +63,27 @@ import ProductsService from '@/services/ProductsService'
 export default {
     data () {
       return {
-       products:null
+         headers: [
+                   {
+                        text:'ID',
+                        value:'id'
+                    },
+                    {
+                        text:'Name',
+                        value: 'companyName'
+                    },
+                    {
+                        text:'Model',
+                        value:'model'
+                    },
+                    
+                ],
+                pagination: {
+                    sortBy: 'companyName',
+                    descending: false
+                },
+       products:[],
+     
       }
     },
   watch: {
@@ -96,7 +117,7 @@ export default {
 font-size:24px;
 }
 .product-logo{
-  width:70%;
+  width:15%;
   margin: 0 auto;
 }
 

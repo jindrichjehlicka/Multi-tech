@@ -2,7 +2,7 @@
 <template>
   
   
-  <v-layout column>
+  <v-layout column justify-center>
     <v-flex>
      <admin-products-search-panel class="mb-5" />
     

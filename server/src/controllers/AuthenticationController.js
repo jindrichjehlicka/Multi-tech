@@ -4,12 +4,11 @@ const config = require('../config/config')
 
 //helper method
 function jwtSignUser (user){
-  const ONE_WEEK = 60 * 60 * 24 * 7 
+  const time = 60 * 60 * 24 * 14
   return jwt.sign(user, config.authentication.jwtSecret,{
-    expiresIn: ONE_WEEK
+    expiresIn: time
   })
 }
-
 module.exports = {
   async  register(req, res) {
       try{
@@ -43,7 +42,8 @@ module.exports = {
               error: 'The login information was incorrect'
             })
           }
-
+       
+          
           const userJson = user.toJSON()
           res.send({
             user: userJson,

@@ -22,7 +22,7 @@ async index (req, res) {
       })
       } else{
          products = await Product.findAll({
-          limit:20
+          
         })
       }
      
