@@ -4,11 +4,12 @@ const cors = require('cors')
 const morgan = require('morgan')
 const{sequelize} = require ('./models')
 const config=require('./config/config')
-
-
-
+const nodemailer = require('nodemailer');
+const path = require('path')
 
 const app = express()
+
+app.use(express.static('client'));
 
 app.use(morgan('combined'))
 app.use(bodyParser.json())
@@ -16,6 +17,10 @@ app.use(cors())
 
 require('./routes')(app)
 //ROUTES
+
+
+
+ 
 
 sequelize.sync()
 .then(() => {
@@ -26,6 +31,6 @@ console.log(`Server started on port` + config.port)
 
 
 
-    app.use(express.static('client/build'));
+  
  
 

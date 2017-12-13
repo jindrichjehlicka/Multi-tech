@@ -5,6 +5,8 @@ const AuthenticationControllerPolicy = require ('./policies/AuthenticationContro
 const ProductsController = require('./controllers/ProductsController')
 const UsersController = require('./controllers/UsersController')
 const ManualsController = require('./controllers/ManualsController')
+const EmailController = require('./controllers/EmailController')
+
 
 
 
@@ -41,4 +43,7 @@ module.exports = (app) => {
         ManualsController.post),
     app.delete('/manuals/:manualId',
         ManualsController.delete)
+
+        app.post('/send', 
+        EmailController.post)
     }
