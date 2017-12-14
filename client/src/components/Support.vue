@@ -3,25 +3,29 @@
     <v-layout justify-center> 
         <v-flex xs12 md8>
        
-        <panel title="Products Metadata" >
+        <panel title="Support" >
      <v-form  ref="form" >
+     
             <v-text-field
             type="text"
             v-model="name"
-              label=" Name"
+              label=" Name (optional)"
                    
               ></v-text-field>
 
                 <v-text-field
             type="text"
             v-model="company"
-              label=" Company Name"
+              label=" Company Name (optional)"
                     
               ></v-text-field>   
 
               <v-text-field
-            type="text"
+            type="email"
             v-model="email"
+            required
+             :rules="emailRules"
+              
               label=" Email"
                    
               ></v-text-field>   
@@ -29,7 +33,7 @@
               <v-text-field
             type="text"
             v-model="phone"
-              label="Phone Number"
+              label="Phone Number (optional)" 
                     
               ></v-text-field>
 
@@ -37,6 +41,8 @@
               <v-text-field
             type="text"
             v-model="message"
+            required
+              :rules="[v => !!v || 'You cannot send an empty message !']"
               label="Message"
                   multi-line
               ></v-text-field>
@@ -47,7 +53,6 @@
 
 
        
-
             
 
             <v-btn
@@ -55,8 +60,30 @@
              @click="send">Send
             </v-btn>
 
-        
-    
+            <v-btn 
+            dark
+            class="grey darken-3"
+            @click="clear">
+            clear form
+            </v-btn>
+          <div>
+            <v-progress-circular  
+            
+            indeterminate 
+            v-bind:size="size"
+            color="primary"
+             ></v-progress-circular>
+        </div>
+     <v-snackbar
+      :timeout="timeout"
+      :color="color"
+      :multi-line="mode === 'multi-line'"
+      :vertical="mode === 'vertical'"
+      v-model="snackbar"
+    >
+      {{ text }}
+      <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
         </v-flex>
 
     </v-layout>
@@ -65,31 +92,70 @@
 
 <script>
 import EmailService from '@/services/EmailService'
-    export  default{
+    export  default {
            data() {
     return {
       name: '',
       company: '',
       email:'',
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ],
       phone:'',
-      message: ''
+      message: '',
+      msg:'',
+      snackbar: false,
+      color: 'green',
+      mode: '',
+      timeout: 6000,
+      text: 'Your message has been sent',
+      valid: true,
+      size:"0"
+      
+      
+      
+      
     };
   },
  
   methods: {
-    send() {
-      if(this.email != ''){
-           EmailService.post({
-        name :this.name,
-        company : this.company,
-        phone : this.phone,
-        message: this.message
-     }) 
+    async send () {     
+        this.snackbar = false
+       
+      if(!this.$refs.form.validate()){
+        this.error = 'Please fill in all the required fields'
+        return
       }
-  
-    },
-  },
+      try{
+         this.size="50"
+          if(this.$refs.form.validate()){
+            await EmailService.post({
+              name :this.name,
+              company : this.company,
+              email: this.email,
+              phone : this.phone,
+              message: this.message
+        })       
+          }      
+        
+           this.$refs.form.reset()
+            this.snackbar = true
+            this.size="0"
+            // setTimeout( () => this.$router.push({ path: '/'}), 2000);
+            
+         
+      } catch (err){
+          console.log(err)
+        }      
+      },
+
+      clear () {
+        this.$refs.form.reset()
+      }
     }
+  }
+    
 </script>
 
 <style scoped>

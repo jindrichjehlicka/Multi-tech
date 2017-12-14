@@ -26,7 +26,7 @@ post(req, res) {
         secure: false, // true for 465, false for other ports
         auth: {
             user: 'testing.jayjay@gmail.com', // generated ethereal user
-            pass: '' // generated ethereal password
+            pass: 'Testing1234' // generated ethereal password
         },
         tls:{
            rejectUnauthorized:false  
@@ -35,7 +35,7 @@ post(req, res) {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Jay " <jindrichjehlicka@gmail.com>', // sender address
+        from: '"Multi-tech support " <jindra.jehlicka@gmail.com>', // sender address
         to: 'jindrichjehlicka@gmail.com', // list of receivers
         subject: 'Nodemailer ', // Subject line
         text: 'Hello world?', // plain text body
@@ -51,7 +51,8 @@ post(req, res) {
         // Preview only available when sending through an Ethereal account
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact',{msg:"Email has been sent"})
+        res.status(200 ).send('OK') 
+        res.status(500).send(errorMsg)
     });
 }
 }

@@ -106,15 +106,13 @@ export  default {
             companyLogo:null,
             url:null
                 },
-                error:null,
-                
-                
-                   snackbar: false,
-        color: 'green',
-        mode: '',
-        timeout: 5000,
-        text: 'Product created',
-         valid: true,
+              error:null,              
+          snackbar: false,
+             color: 'green',
+              mode: '',
+              timeout: 5000,
+              text: 'Product created',
+              valid: true,
             }
            
             },
@@ -132,9 +130,8 @@ export  default {
         try{
             if (this.$refs.form.validate()){
              await ProductsService.post(this.product)               
-        //         this.$router.push({
-        //         name: 'admin-products'
-        // })
+      
+        this.$refs.form.reset()
         this.snackbar = true
             }
          } catch (err) {
