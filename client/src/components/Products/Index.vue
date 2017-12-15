@@ -1,63 +1,60 @@
 /* eslint-disable */
 <template>
-  <v-layout row >
-  <v-flex xs6>
-  <products-manuals />
-  </v-flex>
+  <v-layout row>
+    <v-flex xs6>
+      <products-manuals />
+    </v-flex>
 
     <v-flex xs6>
-      <products-search-panel id="search-panel"/>
-      <products-panel class="pb-5" id="panel"/>
-      </v-flex>
+      <products-search-panel id="search-panel" />
+      <products-panel class="pb-5" id="panel" />
+    </v-flex>
 
   </v-layout>
-    
+
 </template>
 
 <script>
-import ProductsPanel from './ProductsPanel'
-import ProductsManuals from './ProductsManuals'
-import ProductsSearchPanel from './ProductsSearchPanel'
-import ProductsService from '@/services/ProductsService'
+import ProductsPanel from "./ProductsPanel";
+import ProductsManuals from "./ProductsManuals";
+import ProductsSearchPanel from "./ProductsSearchPanel";
+import ProductsService from "@/services/ProductsService";
 
-export default{
- 
-    components: {
-      
-      ProductsPanel,
-      ProductsSearchPanel,
-      ProductsManuals
-
-    },
-    data (){
-      return{
-       products:null
-      }
-    },
-   async mounted(){
-      //do a request to the backend for all the products
-     this.products = (await ProductsService.index()).data
-    }
-}
+export default {
+  components: {
+    ProductsPanel,
+    ProductsSearchPanel,
+    ProductsManuals
+  },
+  data() {
+    return {
+      products: null
+    };
+  },
+  async mounted() {
+    //do a request to the backend for all the products
+    this.products = (await ProductsService.index()).data;
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.product{
-  padding:30px;
+.product {
+  padding: 30px;
   height: 230px;
   overflow: hidden;
 }
 
-.product-name{
-  font-size:30px;
+.product-name {
+  font-size: 30px;
 }
 
-.product-model{
-font-size:24px;
+.product-model {
+  font-size: 24px;
 }
-.product-logo{
-  width:70%;
+.product-logo {
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -67,10 +64,9 @@ font-size:24px;
   animation: mymove 1s;
 }
 
-
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes mymove {
-   0% {
+  0% {
     top: 0px;
     left: -1000px;
   }
@@ -101,7 +97,7 @@ font-size:24px;
 }
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes mymove2 {
- 0% {
+  0% {
     top: 0px;
     left: 1000px;
   }

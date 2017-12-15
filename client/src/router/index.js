@@ -24,8 +24,7 @@ import ViewUser from '@/components/ViewUser/Index';
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'root',
       component: Root,
@@ -46,87 +45,87 @@ export default new Router({
       component: Login,
     },
 
-        {
+    {
       path: '/support',
       name: 'support',
       component: Support,
     },
-    
+
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
-    
+
     },
     {
       path: '/products/create',
       name: 'products-create',
-      component:CreateProduct,
-      
+      component: CreateProduct,
+
     },
     {
       path: '/products',
       name: 'products',
       component: Products,
-     
+
     },
-  
+
     {
       path: '/products/:productId',
       name: 'product',
-      component:ViewProduct,
-     
+      component: ViewProduct,
+
     },
     {
       path: '/products/:productId/edit',
       name: 'product-edit',
-      component:EditProduct,
-    
+      component: EditProduct,
+
     },
-   
+
     {
       path: '/users',
       name: 'users',
       component: Users,
-     
+
     },
     {
       path: '/manuals',
       name: 'manuals',
       component: Manuals,
-     
+
     },
     {
       path: '/admin',
       name: 'admin',
       component: Admin,
-     
+
     },
     {
       path: '/admin/products',
       name: 'admin-products',
       component: AdminProducts,
-   
+
     },
     {
       path: '/users/:userId',
       name: 'user',
-      component:ViewUser,
- 
+      component: ViewUser,
+
     },
     {
       path: '/users/:userId/edit',
       name: 'user-edit',
-      component:EditUser,
-   
+      component: EditUser,
+
     },
     {
-      path:'*',
+      path: '*',
       redirect: 'root'
     }
-    
-    
-   
+
+
+
 
   ],
 });
