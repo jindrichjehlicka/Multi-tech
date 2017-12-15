@@ -121,17 +121,19 @@
         
     
     </v-toolbar>
+      <v-container fluid >
   <v-content>
 
     
       
-       <v-container fluid >
+     
          <router-view> </router-view>
-      </v-container>
+      
      </v-content>
-    <v-footer fixed class="pa-3">
+     </v-container>
+    <v-footer absolute class="pa-3">
     <v-spacer></v-spacer>
-    <div>© {{ new Date().getFullYear() }}</div>
+    © {{ new Date().getFullYear() }}
   </v-footer>
     </v-app>  
     
@@ -157,7 +159,7 @@ export default {
           
           {icon: 'fa-sign-in', title: 'Sign in', link: '/login'},
           {icon: 'fa-user-plus', title: 'Sign up', link: '/register'},
-          {icon: 'fa-phone', title: 'Support', link: '/support'},
+         
           
         ]
         if (this.$store.state.isUserLoggedIn) {
@@ -169,13 +171,7 @@ export default {
            
           ]
         }
-        //  if (this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1) {
-        //   menuItems = [
-        //     {icon: 'supervisor_account', title: 'View Meetups', link: '/profile'},
-        //      {icon: 'room', title: 'Organize Meetup', link: '/support'},
-        //   ]
-        // }
-  
+       
   return menuItems
       },
      items(){

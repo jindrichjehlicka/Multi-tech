@@ -6,7 +6,7 @@
       <v-toolbar-title >{{title}} </v-toolbar-title>
 <slot name = "action" />
 </v-toolbar>
-<div class="pl-4 pr-4 pt-2 pb-2">
+<div class="pl-4 pr-4 ">
 <slot>
 No slot content defined
 </slot>     

@@ -1,7 +1,7 @@
 <template>
     
     <v-layout justify-center> 
-        <v-flex xs12 md8>
+        <v-flex xs12 md7>
        
         <panel title="Support" >
      <v-form  ref="form" >
@@ -20,15 +20,8 @@
                     
               ></v-text-field>   
 
-              <v-text-field
-            type="email"
-            v-model="email"
-            required
-             :rules="emailRules"
-              
-              label=" Email"
-                   
-              ></v-text-field>   
+           
+             
 
               <v-text-field
             type="text"
@@ -91,17 +84,16 @@
 </template>
 
 <script>
+import UsersService from '@/services/UsersService'
 import EmailService from '@/services/EmailService'
     export  default {
            data() {
     return {
+     
       name: '',
       company: '',
-      email:'',
-        emailRules: [
-          (v) => !!v || 'E-mail is required',
-          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-        ],
+     
+       
       phone:'',
       message: '',
       msg:'',
@@ -128,16 +120,18 @@ import EmailService from '@/services/EmailService'
         return
       }
       try{
-         this.size="50"
+       
+          this.size="50"
           if(this.$refs.form.validate()){
             await EmailService.post({
-              name :this.name,
-              company : this.company,
-              email: this.email,
+              name :this.name || "Not defined",
+              company : this.company || "Not defined",
+              email:  this.$store.state.user.email ,
               phone : this.phone,
               message: this.message
         })       
-          }      
+          }     
+          
         
            this.$refs.form.reset()
             this.snackbar = true

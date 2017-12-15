@@ -7,7 +7,7 @@
 
     <v-flex xs6>
       <products-search-panel id="search-panel"/>
-      <products-panel class="mt-5 pb-5" id="panel"/>
+      <products-panel class="pb-5" id="panel"/>
       </v-flex>
 
   </v-layout>

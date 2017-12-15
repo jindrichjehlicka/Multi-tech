@@ -52,7 +52,7 @@ post(req, res) {
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
         res.status(200 ).send('OK') 
-        res.status(500).send(errorMsg)
+        res.status(500).send('error')
     });
 }
 }
