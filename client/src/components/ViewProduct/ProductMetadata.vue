@@ -40,8 +40,8 @@
                        }">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp Edit
     </v-btn>
-    <!-- Comment here is ok 
-                  <v-btn
+    
+                  <!-- <v-btn
                   v-if="isUserLoggedIn && this.$store.state.user.admin === 1    "
               center
               right
@@ -49,8 +49,8 @@
                 class = "indigo darken-3 " 
                @click="deleteManual">
                      Delete from user
-                </v-btn>
-              -->
+                </v-btn> -->
+             
 
     <!-- TODO -->
     <div class="product-url ">
@@ -117,7 +117,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
-    }
+    },
 
     //     async deleteManual(){
     //     try{

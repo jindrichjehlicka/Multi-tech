@@ -3,9 +3,10 @@
 
   <v-layout column justify-center>
     <v-flex>
-      <admin-products-search-panel class="mb-5" />
+      <admin-products-search-panel v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1" class="mb-5" />
 
-      <admin-products-panel/>
+      <admin-products-panel  v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.admin ===1" />
+     
     </v-flex>
 
   </v-layout>

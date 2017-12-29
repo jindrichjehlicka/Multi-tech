@@ -53,6 +53,7 @@
         <v-text-field label="User Email" required :rules="[required]" v-model="user.email"></v-text-field>
 
         <v-text-field label="Mine name (optional)" v-model="user.mine"></v-text-field>
+        <v-text-field label="Password" v-model="user.password"></v-text-field>
 
         <v-text-field label="Admin(0-Customer,1-Admin)" required :rules="[required]" v-model="user.admin"></v-text-field>
 

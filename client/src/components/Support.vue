@@ -83,7 +83,7 @@ export default {
         return;
       }
       try {
-        // this.size="50"
+        this.size="50"
         if (this.$refs.form.validate()) {
           await EmailService.post({
             name: this.name || "Not defined",
@@ -99,8 +99,8 @@ export default {
         this.snackbar = true;
         this.size = "0";
         // setTimeout( () => this.$router.push({ path: '/'}), 2000);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        this.error = error.response.data.error;
       }
     },
 

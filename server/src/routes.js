@@ -4,7 +4,7 @@ const ProductsController = require('./controllers/ProductsController')
 const UsersController = require('./controllers/UsersController')
 const ManualsController = require('./controllers/ManualsController')
 const EmailController = require('./controllers/EmailController')
-
+const isAuthenticated = require ('./policies/isAuthenticated')
 
 
 
@@ -36,12 +36,16 @@ module.exports = (app) => {
             UsersController.show)
 
     app.get('/manuals',
+            isAuthenticated,
             ManualsController.index),
         app.post('/manuals',
+        isAuthenticated,
             ManualsController.post),
         app.delete('/manuals/:manualId',
+        isAuthenticated,
             ManualsController.delete)
 
     app.post('/send',
+    isAuthenticated,
         EmailController.post)
 }

@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors())
 
+require('./passport')
 require('./routes')(app)
 //ROUTES
 

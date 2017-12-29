@@ -93,9 +93,9 @@ export default {
 
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.manuals = (await ManualsService.index({
-        userId: this.$store.state.user.id
-      })).data;
+      this.manuals = (await ManualsService.index()).data;
+    // userId: this.$store.state.user.id is no longer neccesary, now it gets id from passport auth
+      
     }
   }
 

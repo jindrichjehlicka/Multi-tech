@@ -7,17 +7,17 @@ import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
   strict: true,
-
+  plugins: [
+    createPersistedState()
+  ],
   state: {
     token: null,
     user: null,
     isUserLoggedIn: false,
   },
-  plugins: [
-    createPersistedState()
-  ],
+ 
   mutations: {
     setToken(state, token) {
       state.token = token;

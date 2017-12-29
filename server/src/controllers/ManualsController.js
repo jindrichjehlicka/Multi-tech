@@ -9,26 +9,25 @@ module.exports = {
 
   async index(req, res) {
     try {
+      const userId = req.user.id
       const {
-        productId,
-        userId
+        productId
       } = req.query
       const where = {
         UserId: userId
       }
       if (productId) {
-        where.ProductId = productId
+        where.ProductId = productId,
+        where.UserId = userId
       }
       const manuals = await Manual.findAll({
         where: where,
         include: [{
-          model: Product
+          //return User and Product info.. model: Product - returns  only product info
+          all: true 
         }]
       })
-      // .map(manual => manual.toJSON())
-      // .map(manual => Object.assign({
-      //   manualId: manual.id
-      // },manual.Product))
+      
       res.send(manuals)
     } catch (err) {
       res.status(500).send({
