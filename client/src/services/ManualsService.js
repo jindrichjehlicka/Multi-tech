@@ -2,14 +2,13 @@
 import Api from '@/services/Api'
 
 export default {
-  // index (search) {
-  //     return Api().get('manuals',{
-  //         params: {
-  //             search: search
-  //         }
-  //     })
-  // },
+
   index(manual) {
+    return Api().get('manual', {
+      params: manual
+    })
+  },
+  getall(manual) {
     return Api().get('manuals', {
       params: manual
     })

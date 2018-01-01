@@ -24,7 +24,7 @@ module.exports = {
         where: where,
         include: [{
           //return User and Product info.. model: Product - returns  only product info
-          all: true 
+          model:Product
         }]
       })
       

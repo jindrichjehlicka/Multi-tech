@@ -3,21 +3,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-// import vuexCache from 'vuex-cache'
+
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: true,
-  plugins: [
-    createPersistedState()
-  ],
+ 
   state: {
     token: null,
     user: null,
     isUserLoggedIn: false,
   },
- 
+  plugins: [
+    createPersistedState()
+  ],
   mutations: {
     setToken(state, token) {
       state.token = token;
@@ -55,5 +55,6 @@ export default new Vuex.Store({
       return state.error
     }
   }
-
+  
 })
+

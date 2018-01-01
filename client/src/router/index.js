@@ -7,6 +7,7 @@ import Register from '@/components/Register';
 import Login from '@/components/Login';
 import Products from '@/components/Products/Index';
 import Manuals from '@/components/Manuals/Index';
+import AllManuals from '@/components/ViewAllManuals';
 import Profile from '@/components/Profile';
 import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
@@ -105,6 +106,13 @@ export default new Router({
       path: '/manuals',
       name: 'manuals',
       component: Manuals,
+      beforeEnter: NavigationGuard
+
+    },
+    {
+      path: '/allmanuals',
+      name: 'allmanuals',
+      component: AllManuals,
       beforeEnter: NavigationGuard
 
     },

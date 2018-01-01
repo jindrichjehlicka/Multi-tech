@@ -135,7 +135,8 @@ export default {
       ) {
         items = [
           { icon: "fa-address-book", title: "Users", link: "/users" },
-          { icon: "fa-phone", title: "All products", link: "/admin/products" }
+          { icon: "fa-phone", title: "All Products", link: "/admin/products" },
+          { icon: "fa-phone", title: "Owned Products", link: "/allmanuals" }
         ];
       }
       return items;

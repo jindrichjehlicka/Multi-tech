@@ -2,7 +2,7 @@
 <template>
   <v-layout row justify-center v-bind="binding">
 
-    <v-flex xs10 md8>
+    <v-flex xs12 md8 >
 
       <manuals-panel class=" pb-5" id="panel" />
     </v-flex>

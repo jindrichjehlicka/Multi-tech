@@ -3,7 +3,7 @@
   <v-layout justify-center>
     <v-flex xs12 md8>
 
-      <panel title="Products Metadata">
+      <panel title="Create Product">
         <v-form v-model="valid" ref="form" lazy-validation>
           <v-text-field label="Product Name" required :rules="[v => !!v || 'Product name is required']" v-model="product.companyName"></v-text-field>
           <!-- TODO change companyName to ProductName eveyrywhere -->
@@ -28,7 +28,9 @@
       <v-btn dark class="grey darken-3" @click="clear">clear form</v-btn>
       <v-divider class="mt-3 mb-3"></v-divider>
 
-      <v-btn>Go back to ALL products</v-btn>
+      <v-btn
+      :to="{name: 'admin-products'}"
+      >Go back to ALL products</v-btn>
 
       <v-snackbar :timeout="timeout" :color="color" :multi-line="mode === 'multi-line'" :vertical="mode === 'vertical'" v-model="snackbar">
         {{ text }}
@@ -69,7 +71,7 @@ export default {
     async create() {
       this.error = null;
       this.snackbar = false;
-      // const areAllFieldsFilledIn = Object.keys(this.product).every(key=> !!this.product[key])
+ 
       if (!this.$refs.form.validate()) {
         this.error = "Please fill in all the required fields";
         return;

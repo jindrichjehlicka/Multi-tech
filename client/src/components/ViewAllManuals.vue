@@ -1,4 +1,6 @@
 <template>
+<v-layout>
+<v-flex xs6>
 
   <panel title="My products" class="mb-5">
     <v-text-field name="input-1" label="Search by name or model" id="testing" v-model="searchText"></v-text-field>
@@ -13,8 +15,12 @@
           <div class="product-model">
             {{manual.Product.model}}
           </div>
-        
-          
+          <div class="product-model">
+            {{manual.id}}
+          </div>
+          <div class="product-model">
+            {{manual.User.email}}
+          </div>
           <div class="product-url ">
             <a :href="manual.Product.url" target="_blank">
               <v-btn light center class="grey lighten-2 mt-4">
@@ -22,30 +28,17 @@
             </a>
           </div>
         </v-flex>
-        <v-flex sm12 hidden-xs-only>
-          <img class="product-logo mt-4" :src="manual.Product.companyLogo" />
-
-        </v-flex>
+       
       </v-layout>
       <v-divider class="grey mt-5"></v-divider>
     </div>
   </panel>
 
-  <!--<v-data-table
-    :headers="headers"
-    :pagination.sync ="pagination"
-    :items="manuals">
+</v-flex>
 
-    <template slot = "items" slot-scope = "props">
-    <td class="text-xs-right">
-    {{props.item.companyName}}
-    </td>
+</v-layout>
 
-    <td class="text-xs-right">
-    {{props.item.model}}
-    </td>
-    </template>
-    </v-data-table>-->
+
   </panel>
 </template>
 
@@ -54,21 +47,7 @@ import { mapState } from "vuex";
 import ManualsService from "@/services/ManualsService";
 export default {
   data() {
-    return {
-      // headers: [
-      //     {
-      //         text:'Name',
-      //         value: 'companyName'
-      //     },
-      //     {
-      //         text:'Model',
-      //         value:'model'
-      //     }
-      // ],
-      // pagination: {
-      //     sortBy: 'date',
-      //     descending: true
-      // },
+    return { 
       manuals: [],
       searchText: ""
     };
@@ -95,7 +74,7 @@ export default {
 
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.manuals = (await ManualsService.index()).data;
+      this.manuals = (await ManualsService.getall()).data;
     // userId: this.$store.state.user.id is no longer neccesary, now it gets id from passport auth
       
     }
