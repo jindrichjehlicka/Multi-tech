@@ -1,10 +1,40 @@
 <template>
-<v-layout>
-<v-flex xs6>
+  <v-layout>
+    <v-flex xs12>
 
-  <panel title="My products" class="mb-5">
-    <v-text-field name="input-1" label="Search by name or model" id="testing" v-model="searchText"></v-text-field>
+      <panel title="All Owned products" class="mb-5">
+           <v-text-field
+        append-icon="search"
+        label="Search"
+        single-line
+       
+        v-model.trim="search"
+      ></v-text-field>
+        <!-- <v-text-field name="input-1" label="Search by name or model" id="testing" v-model="searchText"></v-text-field> -->
+        <v-data-table 
+        v-bind:headers="headers" 
+        :pagination.sync="pagination" 
+        v-bind:items="manuals"
+        v-bind:search="search">
 
+          <template slot="items" slot-scope="props">
+            <td class="text-xs-right ">
+              {{props.item.id}}
+            </td>
+            <td class="text-xs-right">
+              {{props.item.Product.companyName}}
+            </td>
+            <td class="text-xs-right">
+              {{props.item.Product.model}}
+            </td>
+             <td class="text-xs-right">
+              {{props.item.User.email}}
+            </td>
+           
+
+          </template>
+        </v-data-table>
+        <!-- 
     <div v-for="manual in itemsSearched" class="manual" :key="manual.id">
 
       <v-layout>
@@ -21,25 +51,19 @@
           <div class="product-model">
             {{manual.User.email}}
           </div>
-          <div class="product-url ">
-            <a :href="manual.Product.url" target="_blank">
-              <v-btn light center class="grey lighten-2 mt-4">
-                <v-icon left> fa-paperclip</v-icon> Download manual</v-btn>
-            </a>
-          </div>
+        
         </v-flex>
        
       </v-layout>
       <v-divider class="grey mt-5"></v-divider>
-    </div>
-  </panel>
+    </div> -->
+      </panel>
 
-</v-flex>
+    </v-flex>
 
-</v-layout>
+  </v-layout>
 
-
-  </panel>
+ 
 </template>
 
 <script>
@@ -47,37 +71,59 @@ import { mapState } from "vuex";
 import ManualsService from "@/services/ManualsService";
 export default {
   data() {
-    return { 
+    return {
+      search:'',
+       headers: [
+        {
+          text: "ID",
+          value: "id"
+        },
+        {
+          text: "Company",
+          value: "Product.companyName"
+        },
+        {
+          text: "Model",
+          value: "Product.model"
+        },
+         {
+          text: "Model",
+          value: "User.email"
+        }
+      ],
+      pagination: {
+        sortBy: "id",
+        descending: false
+      },
       manuals: [],
-      searchText: ""
+      
     };
   },
   computed: {
     ...mapState(["isUserLoggedIn"]),
-    itemsSearched: function() {
-      var self = this;
-      if (this.searchText == "") {
-        return this.manuals;
-      }
-      return this.manuals.filter(function(manual) {
-        return (
-          manual.Product.companyName
-            .toLowerCase()
-            .indexOf(self.searchText.toLowerCase().trim()) >= 0 ||
-          manual.Product.model
-            .toLowerCase()
-            .indexOf(self.searchText.toLowerCase().trim()) >= 0
-        );
-      });
-    }
+    // itemsSearched: function() {
+    //   var self = this;
+    //   if (this.searchText == "") {
+    //     return this.manuals;
+    //   }
+    //   return this.manuals.filter(function(manual) {
+    //     return (
+    //       manual.Product.companyName
+    //         .toLowerCase()
+    //         .indexOf(self.searchText.toLowerCase().trim()) >= 0 ||
+    //       manual.Product.model
+    //         .toLowerCase()
+    //         .indexOf(self.searchText.toLowerCase().trim()) >= 0
+    //     );
+    //   });
+    // }
   },
 
   async mounted() {
-    if (this.isUserLoggedIn) {
+   
       this.manuals = (await ManualsService.getall()).data;
-    // userId: this.$store.state.user.id is no longer neccesary, now it gets id from passport auth
-      
-    }
+     
+    
   }
 
   //  watch: {
