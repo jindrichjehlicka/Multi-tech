@@ -67,7 +67,7 @@ module.exports = (app) => {
             isAuthenticated,
             ManualsController.post),
         app.delete('/manuals/:manualId',
-            isAuthenticated,
+           
             ManualsController.delete)
 
     app.post('/send',

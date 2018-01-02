@@ -1,69 +1,52 @@
 <template>
-  <v-layout>
-    <v-flex xs12>
+  <v-layout justify-center>
+    <v-flex xs12 md8>
 
-      <panel title="All Owned products" class="mb-5">
-           <v-text-field
-        append-icon="search"
-        label="Search"
-        single-line
-       
-        v-model.trim="search"
-      ></v-text-field>
-        <!-- <v-text-field name="input-1" label="Search by name or model" id="testing" v-model="searchText"></v-text-field> -->
-        <v-data-table 
-        v-bind:headers="headers" 
-        :pagination.sync="pagination" 
-        v-bind:items="manuals"
-        v-bind:search="search">
+      <panel title="Owned products" class="mb-5">
+        
+
+<v-layout>
+  <v-flex xs5>
+    <v-text-field append-icon="search" label="Search" single-line v-model.trim="search"></v-text-field></v-flex>
+  <v-flex xs5 class="ml-5">
+  <v-text-field label="Delete product from user by ID" v-model.number="manual.id" type="number"></v-text-field>
+  </v-flex>
+  <v-flex xs2 class="ml-3">
+    <v-btn center right dark class="red mt-3" @click="deleteManual">
+              
+              Delete
+            </v-btn>
+  </v-flex>
+  </v-layout>
+
+
+          
+        <v-data-table v-bind:headers="headers" :pagination.sync="pagination" v-bind:items="manuals" v-bind:search="search" > 
 
           <template slot="items" slot-scope="props">
-            <td class="text-xs-right ">
+            <td class="text-xs-left " >
               {{props.item.id}}
             </td>
-            <td class="text-xs-right">
-              {{props.item.Product.companyName}}
-            </td>
-            <td class="text-xs-right">
-              {{props.item.Product.model}}
-            </td>
-             <td class="text-xs-right">
+            <td class="text-xs-left">
               {{props.item.User.email}}
             </td>
-           
+            <td class="text-xs-left">
+              {{props.item.Product.companyName}}
+            </td>
+            <td class="text-xs-left">
+              {{props.item.Product.model}}
+            </td>
+
 
           </template>
         </v-data-table>
-        <!-- 
-    <div v-for="manual in itemsSearched" class="manual" :key="manual.id">
 
-      <v-layout>
-        <v-flex xs12 class="mt-4">
-          <div class="product-name">
-            {{manual.Product.companyName}}
-          </div>
-          <div class="product-model">
-            {{manual.Product.model}}
-          </div>
-          <div class="product-model">
-            {{manual.id}}
-          </div>
-          <div class="product-model">
-            {{manual.User.email}}
-          </div>
-        
-        </v-flex>
-       
-      </v-layout>
-      <v-divider class="grey mt-5"></v-divider>
-    </div> -->
       </panel>
 
     </v-flex>
 
   </v-layout>
 
- 
 </template>
 
 <script>
@@ -72,59 +55,62 @@ import ManualsService from "@/services/ManualsService";
 export default {
   data() {
     return {
-      search:'',
-       headers: [
+      search: "",
+      headers: [
         {
           text: "ID",
-          value: "id"
+          value: "id",
+          align: "left",
+          class:"subheading"
+        },
+        {
+          text: "User",
+          value: "User.email",
+          align: "left"
         },
         {
           text: "Company",
-          value: "Product.companyName"
+          value: "Product.companyName",
+          align: "left"
         },
         {
           text: "Model",
-          value: "Product.model"
-        },
-         {
-          text: "Model",
-          value: "User.email"
+          value: "Product.model",
+          align: "left",
+         
         }
       ],
       pagination: {
-        sortBy: "id",
+        sortBy: "User.email",
         descending: false
       },
       manuals: [],
-      
+      manual:{
+        id:null
+      }
     };
   },
   computed: {
-    ...mapState(["isUserLoggedIn"]),
-    // itemsSearched: function() {
-    //   var self = this;
-    //   if (this.searchText == "") {
-    //     return this.manuals;
-    //   }
-    //   return this.manuals.filter(function(manual) {
-    //     return (
-    //       manual.Product.companyName
-    //         .toLowerCase()
-    //         .indexOf(self.searchText.toLowerCase().trim()) >= 0 ||
-    //       manual.Product.model
-    //         .toLowerCase()
-    //         .indexOf(self.searchText.toLowerCase().trim()) >= 0
-    //     );
-    //   });
-    // }
+    ...mapState(["isUserLoggedIn"])
+  },
+  methods: {
+          async deleteManual(){
+        try{
+       await ManualsService.delete(this.manual.id)
+       this.manual = null
+      
+  
+     }catch(err){
+       console.log(err)
+     }
+      },
+  },
+  async mounted() {
+    this.manuals = (await ManualsService.getall()).data;
   },
 
-  async mounted() {
-   
-      this.manuals = (await ManualsService.getall()).data;
-     
-    
-  }
+  
+
 
   //  watch: {
   //     '$route.query.search':  {

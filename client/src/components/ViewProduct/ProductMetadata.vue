@@ -19,16 +19,7 @@
 
     <br/>
 
-    <v-layout row>
-      <v-flex xs5 offset-xs2>
-        <v-text-field label="User ID" required :rules="[required]" v-model.number="user.id" type="number"></v-text-field>
-      </v-flex>
-      <v-flex xs6>
-         <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1   " center right dark class="indigo darken-3 mt-3" @click="addManual">
-          Add to user
-        </v-btn>
-      </v-flex>
-    </v-layout>
+  
 
     <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1 " center right dark class="indigo darken-3 " :to="{
                     name: 'product-edit',
@@ -41,24 +32,23 @@
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp Edit
     </v-btn>
     
-                  <!-- <v-btn
-                  v-if="isUserLoggedIn && this.$store.state.user.admin === 1    "
-              center
-              right
-                dark 
-                class = "indigo darken-3 " 
-               @click="deleteManual">
-                     Delete from user
-                </v-btn> -->
-             
-
-    <!-- TODO -->
     <div class="product-url ">
       <a :href="product.url" target="_blank">
         <v-btn large dark right class="indigo darken-3 ml-4">
           <v-icon left> fa-paperclip</v-icon> Download manual</v-btn>
       </a>
     </div>
+    <v-divider></v-divider>
+      <v-layout row justify-center>
+      <v-flex xs7 offset-xs1>
+        <v-text-field label="Add product to the user by user ID"  :rules="[required]" v-model.number="user.id" type="number"></v-text-field>
+      </v-flex>
+      <v-flex xs5>
+         <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1   " center right dark class="green mt-3" @click="addManual">
+          Add to user
+        </v-btn>
+      </v-flex>
+    </v-layout>
 
   </panel>
 </template>
