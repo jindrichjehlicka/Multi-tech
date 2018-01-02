@@ -1,4 +1,5 @@
 <template>
+
   <panel title="Product information" class="mb-5">
 
     <img class="product-logo" :src="product.companyLogo" />
@@ -19,8 +20,6 @@
 
     <br/>
 
-  
-
     <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1 " center right dark class="indigo darken-3 " :to="{
                     name: 'product-edit',
                      params() {
@@ -29,28 +28,38 @@
                        }
                        }
                        }">
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp Edit
+      <v-icon>fa-pencil-square-o</v-icon>&nbsp Edit
     </v-btn>
-    
+
     <div class="product-url ">
       <a :href="product.url" target="_blank">
         <v-btn large dark right class="indigo darken-3 ml-4">
           <v-icon left> fa-paperclip</v-icon> Download manual</v-btn>
       </a>
     </div>
-    <v-divider></v-divider>
-      <v-layout row justify-center>
+    <v-divider class="mt-2"></v-divider>
+    <v-layout row justify-center>
       <v-flex xs7 offset-xs1>
-        <v-text-field label="Add product to the user by user ID"  :rules="[required]" v-model.number="user.id" type="number"></v-text-field>
+
+        <v-form v-model="valid" ref="form" lazy-validation>
+          <v-text-field label="Add product to the user by user ID" required :rules="[v => !!v || 'User ID is required']" v-model.number="user.id" type="number"></v-text-field>
+        </v-form>
+
       </v-flex>
       <v-flex xs5>
-         <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1   " center right dark class="green mt-3" @click="addManual">
+        <v-btn center right dark class="green mt-3" @click="addManual">
           Add to user
         </v-btn>
       </v-flex>
+
+      <v-snackbar :timeout="timeout" :color="color" :multi-line="mode === 'multi-line'" :vertical="mode === 'vertical'" v-model="snackbar">
+        {{ text }}
+        <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
+      </v-snackbar>
     </v-layout>
 
   </panel>
+
 </template>
 
 <script>
@@ -64,10 +73,15 @@ export default {
       manual: null,
       user: {
         id: null,
-        email:null
+        email: null
       },
       error: null,
-      required: value => !!value || "Required."
+      snackbar: false,
+      color: "green",
+      mode: "",
+      timeout: 5000,
+      text: "Product has been added to the user",
+      valid: true
     };
   },
   computed: {
@@ -91,26 +105,26 @@ export default {
   // },
 
   methods: {
-    async addManual() {     
-     
+    async addManual() {
+      this.snackbar = false;
+      if (!this.$refs.form.validate()) {
+        return;
+      }
       try {
-        this.manual = (await ManualsService.post({
-          productId: this.product.id,
-          userId: this.user.id
-        })).data;
+        if (this.$refs.form.validate()) {
+          this.manual = (await ManualsService.post({
+            productId: this.product.id,
+            userId: this.user.id
+          })).data;
+          this.$refs.form.reset();
+          this.snackbar = true;
+        }
       } catch (err) {
         console.log(err);
       }
-    },
+    }
 
-    //     async deleteManual(){
-    //     try{
-    //    await ManualsService.delete(this.manual.id)
-    //    this.manual = null
-    //  }catch(err){
-    //    console.log(err)
-    //  }
-    //   },
+    
   }
 };
 </script>
@@ -132,7 +146,7 @@ export default {
   color: black;
 }
 .product-logo {
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
 }
 .product-description {

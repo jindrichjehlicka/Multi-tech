@@ -2,9 +2,12 @@
     <div>
 
         <v-layout row justify-center>
-            <v-flex xs12 sm6>
-                <product-metadata :product="product" />
-                <br>
+          <v-flex xs3 >
+            <users />
+            </v-flex>
+            <v-flex xs6 offset-xs1>
+              
+                <product-metadata :product="product" />                
             </v-flex>
         </v-layout>
     </div>
@@ -12,6 +15,7 @@
 
 <script>
 import ProductMetadata from "@/components/ViewProduct/ProductMetadata";
+import Users from "@/components/ViewProduct/Users";
 import ProductsService from "@/services/ProductsService";
 
 export default {
@@ -25,7 +29,8 @@ export default {
     this.product = (await ProductsService.show(productId)).data;
   },
   components: {
-    ProductMetadata
+    ProductMetadata,
+    Users
   }
 };
 </script>

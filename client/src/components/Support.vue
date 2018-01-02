@@ -1,7 +1,7 @@
 <template>
 
-  <v-layout justify-center>
-    <v-flex xs12 md7>
+  <v-layout row justify-center>
+    <v-flex xs12 md8 >
 
       <panel title="Support">
         <v-form v-model="valid" ref="form" lazy-validation>
@@ -10,7 +10,7 @@
 
           <v-text-field type="text" v-model="company" label=" Company Name (optional)"></v-text-field>
 
-          <v-text-field type="text" v-model="phone" label="Phone Number (optional)"></v-text-field>
+          <v-text-field type="text" v-model="phone" single-line label="Phone Number (optional)"></v-text-field>
 
           <v-select v-bind:items="items" v-model="subject" label="Subject" required :rules="[v => !!v || 'Please select a subject !']" item-value="text"></v-select>
 

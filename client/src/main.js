@@ -6,8 +6,8 @@ import {sync} from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import 'font-awesome/css/font-awesome.css'
-import Panel from '@/components/globals/Panel'
-import PageHeader from '@/components/globals/Header'
+import Panel from '@/components/ReusablePanel/Panel'
+
 
 Vue.config.productionTip = false;
 

@@ -52,8 +52,8 @@
         </v-toolbar-side-icon>
         <v-toolbar-title id="title">
 
-          <router-link class="home" tag="span" style="cursor: pointer" :to="{name: 'root'}">
-            Multi-tech
+          <router-link class="home headline" tag="span" style="cursor: pointer" :to="{name: 'root'}">
+            Multi-Tech
           </router-link><br/>
         </v-toolbar-title>
 
@@ -120,7 +120,7 @@ export default {
       if (this.$store.state.isUserLoggedIn) {
         menuItems = [
           { icon: "fa-shopping-cart", title: "My products", link: "/manuals" },
-          { icon: "fa-user", title: "Profile", link: "/profile" },
+        
           { icon: "fa-phone", title: "Support", link: "/support" }
         ];
       }

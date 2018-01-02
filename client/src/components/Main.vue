@@ -27,14 +27,7 @@
 
 <script>
 export default {};
-// import PageHeader from '@/components/globals/Header.vue'
 
-// export default {
-//   name: 'app',
-//   components:{
-//     PageHeader
-//   }
-// };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

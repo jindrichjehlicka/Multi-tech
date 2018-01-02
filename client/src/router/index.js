@@ -8,15 +8,15 @@ import Login from '@/components/Login';
 import Products from '@/components/Products/Index';
 import Manuals from '@/components/Manuals/Index';
 import AllManuals from '@/components/ViewAllManuals';
-import Profile from '@/components/Profile';
+
 import Support from '@/components/Support';
 import CreateProduct from '@/components/CreateProduct';
 import ViewProduct from '@/components/ViewProduct/Index';
 import EditProduct from '@/components/EditProduct';
 import Users from '@/components/Admin/Users/Index';
 import AdminProducts from '@/components/Admin/AllProducts/AdminIndex';
-import Admin from '@/components/Admin/Index';
-import EditUser from '@/components/EditUser';
+
+
 import ViewUser from '@/components/ViewUser/Index';
 
 import NavigationGuard from './NavigationGuard';
@@ -58,13 +58,7 @@ export default new Router({
      
     },
 
-    {
-      path: '/profile',
-      name: 'profile',
-      component: Profile,
-      beforeEnter: NavigationGuard
-
-    },
+   
     {
       path: '/products/create',
       name: 'products-create',
@@ -116,13 +110,7 @@ export default new Router({
       beforeEnter: NavigationGuard
 
     },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin,
-      beforeEnter: NavigationGuardAdmin
-
-    },
+   
     {
       path: '/admin/products',
       name: 'admin-products',
@@ -137,13 +125,7 @@ export default new Router({
       beforeEnter: NavigationGuardAdmin
 
     },
-    {
-      path: '/users/:userId/edit',
-      name: 'user-edit',
-      component: EditUser,
-      beforeEnter: NavigationGuardAdmin
-
-    },
+  
     {
       path: '*',
       redirect: 'root'

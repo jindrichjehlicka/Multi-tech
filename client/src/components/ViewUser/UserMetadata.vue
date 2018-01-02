@@ -3,6 +3,9 @@
     <panel title="User information" class="">
 
       <v-flex>
+         <div class="user-email subheading">
+         ID: {{user.id}}
+        </div>
         <div class="user-email subheading">
           Email : {{user.email}}
         </div>
@@ -31,20 +34,7 @@
 
         <br/>
 
-        <!--  <v-btn
-              center
-              right
-                dark 
-                class = "indigo darken-3 " 
-                :to="{
-                    name: 'user-edit',
-                     params: {
-                       userID: user.id
-                       }
-                       }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp
-                      Edit
-                </v-btn>
-                -->
+    
       </v-flex>
     </panel>
 
