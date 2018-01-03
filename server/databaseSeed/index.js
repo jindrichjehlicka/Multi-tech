@@ -3,7 +3,7 @@ const {
     Product,
     User,
     Manual
-} = require('../src/models')
+} = require('../API/models')
 
 const Promise = require('bluebird') //makes  sure it inserts before any other action
 const products = require('./products.json')

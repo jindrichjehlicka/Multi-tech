@@ -23,9 +23,7 @@ module.exports = {
           }
         })
       } else {
-        users = await User.findAll({
-          limit: 20
-        })
+        users = await User.findAll()
       }
 
       res.send(users)

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node node_modules/nodemon/bin/nodemon.js src/app.js --exec",
+    "start": "node node_modules/nodemon/bin/nodemon.js API/app.js --exec",
     "lint": "true || ./node node_modules/.bin/eslint **.*.js",
-    "seed": "node ./seed"
+    "databaseSeed": "node ./databaseSeed"
   },
   "keywords": [],
   "author": "",

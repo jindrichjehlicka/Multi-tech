@@ -1,11 +1,12 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
-const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
+const JoiValidation = require('./AuthMiddlewares/JoiValidation')
 const ProductsController = require('./controllers/ProductsController')
 const UsersController = require('./controllers/UsersController')
 const ManualsController = require('./controllers/ManualsController')
 const AdminManualController = require('./controllers/AdminManualController')
 const EmailController = require('./controllers/EmailController')
-const isAuthenticated = require('./policies/isAuthenticated')
+const EmailRegisterController = require('./controllers/EmailRegisterController')
+const PassportValidation = require('./AuthMiddlewares/PassportValidation')
 
 var mcache = require('memory-cache');
 var cache = (duration) => {
@@ -31,46 +32,59 @@ var cache = (duration) => {
 module.exports = (app) => {
 
     app.post('/register',
-        AuthenticationControllerPolicy.register,
+        JoiValidation.register,
         AuthenticationController.register),
+
         app.post('/login',
             AuthenticationController.login),
 
         app.get('/products',
+        PassportValidation,
             ProductsController.index),
 
         app.put('/products/:productId',
+        PassportValidation,
             ProductsController.put),
         app.post('/products',
+        PassportValidation,
             ProductsController.post),
         app.get('/products/:productId',
+        PassportValidation,
             ProductsController.show)
 
     app.get('/users',
+    PassportValidation,
         UsersController.index),
+        PassportValidation,
         app.put('/users/:userId',
+        PassportValidation,
             UsersController.put),
         app.post('/users',
+        PassportValidation,
             UsersController.post),
         app.get('/users/:userId',
+        PassportValidation,
             UsersController.show)
 
     app.get('/manuals',
-        isAuthenticated,
+    PassportValidation,
         AdminManualController.index),
 
-        app.get('/manual',
-            isAuthenticated,
+        app.get('/manual',cache(900),
+        PassportValidation,
             ManualsController.index),
-
+        //my product are cached for 15 min,
         app.post('/manuals',
-           
+
             ManualsController.post),
         app.delete('/manuals/:manualId',
-           
+
             ManualsController.delete)
 
-    app.post('/send',
-        isAuthenticated,
-        EmailController.post)
+    app.post('/support',
+    PassportValidation,
+        EmailController.post),
+
+        app.post('/email',
+            EmailRegisterController.post)
 }

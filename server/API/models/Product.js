@@ -11,4 +11,3 @@ module.exports = (sequelize, DataTypes) => {
 
     return Product
 }
-//takes sequelize and data types, returns(define) user model that can be used

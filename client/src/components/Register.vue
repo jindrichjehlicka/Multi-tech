@@ -40,6 +40,7 @@
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
+import EmailRegisterService from "@/services/EmailRegisterService";
 
 export default {
   data() {
@@ -61,9 +62,15 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+        EmailRegisterService.post({
+             
+             email: this.email,
+             mine: this.mine || "Not defined"
+          });
         this.$router.push({
           name: "login"
         });
+        
       } catch (error) {
         this.error = error.response.data.error;
       }

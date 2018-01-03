@@ -5,7 +5,7 @@ module.exports = {
         const schema = {
             email: Joi.string().email(),
             password: Joi.string().regex(
-                new RegExp('^[a-zA-Z0-9]{8,32}$')
+                new RegExp('^[a-zA-Z0-9]{6,128}$')
             ),
             mine: Joi.string().empty('').optional(),
             admin:Joi.number().integer().min(0).max(1)
@@ -22,11 +22,7 @@ module.exports = {
                     break
                 case 'password':
                     res.status(400).send({
-                        error: `The password can only contain uppr case,lower case,provided failed to match the following rules:
-                    <br>
-                    1.It must contain ONLY the following characters : Upper case, lower case and numerics
-                    <br>
-                    2. It must be minimum 8 characters and maximum 32 characters
+                        error: `Password can only contain upper case,lower case and numbers and it must be minimum 6 characters!                  
                     `
                     })
                     break
@@ -34,7 +30,7 @@ module.exports = {
 
                 default:
                     res.status(400).send({
-                        error: 'Invalid registration information'
+                        error: 'Wrong information!'
                     })
 
             }

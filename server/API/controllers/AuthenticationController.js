@@ -6,9 +6,9 @@ const config = require('../config/config')
 
 //helper method
 function jwtSignUser(user) {
-  const time = 60 * 60 * 24 * 14
+  
   return jwt.sign(user, config.authentication.jwtSecret, {
-    expiresIn: time
+    expiresIn: 60 * 60 * 24 * 7
   })
 }
 module.exports = {
@@ -16,12 +16,14 @@ module.exports = {
     try {
       const user = await User.create(req.body)
       res.send(user.toJSON())
+     
     } catch (err) {
       res.status(400).send({
         error: 'This email is alrady in use'
       })
     }
   },
+
   async login(req, res) {
     try {
       const {
@@ -39,16 +41,12 @@ module.exports = {
           error: 'The login information was incorrect'
         })
       }
-
-
       const isPasswordValid = await user.comparePassword(password)
       if (!isPasswordValid) {
         return res.status(403).send({
           error: 'The login information was incorrect'
         })
       }
-
-
       const userJson = user.toJSON()
       res.send({
         user: userJson,
