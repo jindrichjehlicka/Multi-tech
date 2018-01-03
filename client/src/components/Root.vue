@@ -20,21 +20,14 @@
       <v-flex xs12 sm8>
         <div class=" mt-5 headline" id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut turpis nibh, ullamcorper ut congue vel, pulvinar eget tortor. Ut rhoncus tortor sit amet hendrerit cursus. Etiam fermentum accumsan ligula, non finibus quam placerat non. Pellentesque ante sapien, porta id quam at, tincidunt semper lectus. Aenean commodo nisi leo, ac gravida erat ullamcorper ut. Vestibulum tortor augue, ullamcorper et turpis in, congue sodales dui. Nullam auctor congue augue, eu scelerisque velit. Mauris a sapien in orci convallis ornare. Aliquam sed ultricies orci. Integer sem massa, mattis quis luctus vitae, pellentesque vel ligula.
         </div>
+        
       </v-flex>
     </v-layout>
   </div>
 </template>
 
 <script>
-export default {};
-// import PageHeader from '@/components/globals/Header.vue'
 
-// export default {
-//   name: 'app',
-//   components:{
-//     PageHeader
-//   }
-// };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

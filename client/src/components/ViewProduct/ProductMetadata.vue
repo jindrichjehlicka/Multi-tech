@@ -6,9 +6,11 @@
     <div class="product-name ">
       {{product.id}}
     </div>
+    <!-- <iframe :src="product.url " ></iframe> -->
     <div class="product-name ">
       {{product.companyName}}
     </div>
+    <div>{{product.url}}</div>
 
     <div class="product-model">
       {{product.model}}
@@ -20,7 +22,7 @@
 
     <br/>
 
-    <v-btn v-if="isUserLoggedIn && this.$store.state.user.admin === 1 " center right dark class="indigo darken-3 " :to="{
+    <v-btn center right dark class="indigo darken-3 " :to="{
                     name: 'product-edit',
                      params() {
                        return{
@@ -123,8 +125,6 @@ export default {
         console.log(err);
       }
     }
-
-    
   }
 };
 </script>

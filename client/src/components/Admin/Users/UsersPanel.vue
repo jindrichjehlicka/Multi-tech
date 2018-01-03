@@ -1,8 +1,38 @@
 /* eslint-disable */
 <template>
-  <v-flex xs12 sm6 offset-sm3>
+  <v-flex xs12 sm8 offset-sm3>
     <panel title="Users">
 
+      <v-data-table :headers="headers" :pagination.sync="pagination" :items="users">
+
+          <template slot="items" slot-scope="props">
+            <td class="text-xs-left ">
+              {{props.item.id}}
+
+            </td>
+            <td class="text-xs-left">
+              {{props.item.email}}
+
+            </td>
+
+            <td   class="text-xs-left">
+              <div v-if="props.item.admin===1">Admin</div>
+              <div v-if="props.item.admin===0">Customer</div>
+            </td>
+
+            <v-btn dark class="green" small :to="{
+                   name: 'user',
+                   params: {
+                     userId: props.item.id
+                   }
+                 }">
+              View
+            </v-btn>
+
+          </template>
+        </v-data-table>
+
+<!-- 
       <div v-for="user in users" class="user" :key="user.id">
 
         <v-layout>
@@ -57,7 +87,7 @@
 
         </v-layout>
 
-      </div>
+      </div> -->
     </panel>
   </v-flex>
   </v-layout>
@@ -70,7 +100,28 @@ import UsersService from "@/services/UsersService";
 export default {
   data() {
     return {
-      users: null
+          headers: [
+        {
+          text: "User ID",
+          value: "id",
+          align:"left"
+        },
+        {
+          text: "Email",
+          value: "email",
+          align:"left"
+        },
+        {
+          text: "Account type",
+          value: "admin",
+          align:"left"
+        }
+      ],
+      pagination: {
+        sortBy: "id",
+        descending: false
+      },
+      users: []
     };
   },
   watch: {

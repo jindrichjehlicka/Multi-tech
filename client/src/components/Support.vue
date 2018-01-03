@@ -10,13 +10,14 @@
 
           <v-text-field type="text" v-model="company" label=" Company Name (optional)"></v-text-field>
 
-          <v-text-field type="text" v-model="phone" single-line label="Phone Number (optional)"></v-text-field>
+          <v-text-field class="mt-1" type="text" v-model="phone" single-line label="Phone Number (optional)"></v-text-field>
 
           <v-select v-bind:items="items" v-model="subject" label="Subject" required :rules="[v => !!v || 'Please select a subject !']" item-value="text"></v-select>
 
           <v-text-field type="text" v-model="message" required :rules="[v => !!v || 'You cannot send an empty message !']" label="Message" multi-line></v-text-field>
 
         </v-form>
+        <div class="text-xs-left">* required field</div>
       </panel>
 
       <v-alert class="ml-4" icon="warning" :value="error" transition="scale-transition" error>
