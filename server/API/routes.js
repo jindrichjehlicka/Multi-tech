@@ -70,7 +70,8 @@ module.exports = (app) => {
     PassportValidation,
         AdminManualController.index),
 
-        app.get('/manual',cache(900),
+        app.get('/manual',
+       
         PassportValidation,
             ManualsController.index),
         //my product are cached for 15 min,

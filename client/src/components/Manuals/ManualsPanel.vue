@@ -31,21 +31,6 @@
     </div>
   </panel>
 
-  <!--<v-data-table
-    :headers="headers"
-    :pagination.sync ="pagination"
-    :items="manuals">
-
-    <template slot = "items" slot-scope = "props">
-    <td class="text-xs-right">
-    {{props.item.companyName}}
-    </td>
-
-    <td class="text-xs-right">
-    {{props.item.model}}
-    </td>
-    </template>
-    </v-data-table>-->
   </panel>
 </template>
 
@@ -55,20 +40,7 @@ import ManualsService from "@/services/ManualsService";
 export default {
   data() {
     return {
-      // headers: [
-      //     {
-      //         text:'Name',
-      //         value: 'companyName'
-      //     },
-      //     {
-      //         text:'Model',
-      //         value:'model'
-      //     }
-      // ],
-      // pagination: {
-      //     sortBy: 'date',
-      //     descending: true
-      // },
+    
       manuals: [],
       searchText: ""
     };
@@ -93,26 +65,19 @@ export default {
     }
   },
 
-  async mounted() {
-    if (this.isUserLoggedIn) {
-      this.manuals = (await ManualsService.index()).data;
-    // userId: this.$store.state.user.id is no longer neccesary, now it gets id from passport auth
-      
-    }
-  }
+async mounted() {
+   try  {
+     if(this.isUserLoggedIn){
+ this.manuals = (await ManualsService.index()).data;
+    localStorage.setItem('manuals', JSON.stringify(this.manuals));  
+     }   
+   }catch(err){
+     this.manuals=JSON.parse( localStorage.getItem('manuals' ) )
+     console.log(err)    
+   }
+ }
 
-  //  watch: {
-  //     '$route.query.search':  {
-  //       immediate: true,
-  //       async handler (value) {
-  //          if(this.isUserLoggedIn){
-  //                 this.manuals = (await ManualsService.index({
-  //                     userId: this.$store.state.user.id
-  //                 })).data
-  //             }
-  //       }
-  //     }
-  //   },
+  
 };
 </script>
 
