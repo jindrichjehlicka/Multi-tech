@@ -7,7 +7,10 @@
 
 <v-layout>
   <v-flex xs5>
-    <v-text-field append-icon="search" label="Search" single-line v-model.trim="search"></v-text-field></v-flex>
+   <v-form v-model="valid" ref="form" lazy-validation>
+          <v-text-field append-icon="search" label="Search" single-line v-model.trim="search"></v-text-field>
+        </v-form>
+    </v-flex>
   <v-flex xs5 class="ml-5">
   <v-text-field label="Delete product from user by ID" v-model.number="manual.id" type="number"></v-text-field>
   </v-flex>
@@ -56,6 +59,7 @@ export default {
   data() {
     return {
       search: "",
+      valid:true,
       headers: [
         {
           text: "ID",
@@ -87,7 +91,7 @@ export default {
       manuals: [],
       manual:{
         id:null
-      }
+      },
     };
   },
   computed: {
@@ -97,7 +101,15 @@ export default {
           async deleteManual(){
         try{
        await ManualsService.delete(this.manual.id)
-       this.manual = null
+      //  this.manual = null
+       this.manuals = (await ManualsService.getall()).data;
+       this.$refs.form.reset();
+        //    this.$router.push({
+        //   name: "allmanuals",
+        //   // params: {
+        //   //   userId: userId
+        //   // }
+        // });
       
   
      }catch(err){
@@ -112,18 +124,7 @@ export default {
   
 
 
-  //  watch: {
-  //     '$route.query.search':  {
-  //       immediate: true,
-  //       async handler (value) {
-  //          if(this.isUserLoggedIn){
-  //                 this.manuals = (await ManualsService.index({
-  //                     userId: this.$store.state.user.id
-  //                 })).data
-  //             }
-  //       }
-  //     }
-  //   },
+  
 };
 </script>
 

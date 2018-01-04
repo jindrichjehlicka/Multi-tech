@@ -22,6 +22,7 @@ export default new Vuex.Store({
         getItem: key => Cookies.get(key),
         setItem: (key, value) => Cookies.set(key, value, { expires: 1, secure: false}),
         //expires in one day
+        //secure is set to false, since it's running on local host 
         removeItem: key => Cookies.remove(key)
       }
     })
