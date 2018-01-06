@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <v-flex xs12 sm8 offset-sm3>
+  <v-flex xs12 sm8 offset-sm2>
     <panel title="Users">
 
       <v-data-table :headers="headers" :pagination.sync="pagination" :items="users">

@@ -104,6 +104,9 @@ export default {
             userId: userId
           }
         });
+        this.$router.push({
+          name:"users"
+        })
       } catch (err) {
         console.log(err);
       }

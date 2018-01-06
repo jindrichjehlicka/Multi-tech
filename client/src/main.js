@@ -7,6 +7,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import 'font-awesome/css/font-awesome.css'
 import Panel from '@/components/ReusablePanel/Panel'
+// index.js or main.js
 
 
 Vue.config.productionTip = false;

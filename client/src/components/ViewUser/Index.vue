@@ -1,8 +1,8 @@
 <template>
     <div>
 
-        <v-layout>
-            <v-flex xs12 sm6 offset-sm3>
+        <v-layout justify-center>
+            <v-flex xs12 sm6 >
                 <user-metadata :user="user" />
 
             </v-flex>

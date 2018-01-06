@@ -1,37 +1,47 @@
+/* eslint-disable */
 <template>
+<v-container fluid grid-list-md > 
+  <v-layout column justify-center>
 
-  <panel title="My products" class="mb-5">
-    <v-text-field name="input-1" label="Search by name or model" id="testing" v-model="searchText"></v-text-field>
+    <v-flex xs12 md4 
+    >
 
-    <div v-for="manual in itemsSearched" class="manual" :key="manual.id">
-
-      <v-layout>
-        <v-flex xs12 class="mt-4">
-          <div class="product-name">
-            {{manual.Product.companyName}}
-          </div>
-          <div class="product-model">
-            {{manual.Product.model}}
-          </div>
-        
+      <v-card v-for="manual in itemsSearched" class="manual" :key="manual.id">
+        <v-card-media
+        class="product-logo mt-4" 
+          :src="manual.Product.companyLogo"
+          height="150px"
+        >
+        </v-card-media>
+        <v-card-title primary-title>
           
-          <div class="product-url ">
-            <a :href="manual.Product.url" target="_blank">
+            <div class="headline">{{manual.Product.companyName}}</div>
+          
+        </v-card-title>    
+        <v-card-title primary-title>          
+            <div class="headline">{{manual.Product.model}}</div>
+          
+        </v-card-title>
+        <v-card-actions>
+         <a :href="manual.Product.url" target="_blank">
               <v-btn light center class="grey lighten-2 mt-4">
-                <v-icon left> fa-paperclip</v-icon> Download manual</v-btn>
+                <v-icon left> bookmark</v-icon> Download manual</v-btn>
             </a>
-          </div>
-        </v-flex>
-        <v-flex sm12 hidden-xs-only>
-          <img class="product-logo mt-4" :src="manual.Product.companyLogo" />
+          <v-spacer></v-spacer>
+          <v-btn icon @click.native="show = !show">
+            <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <v-slide-y-transition>
+          <v-card-text v-show="show">
+            {{manual.Product.description}}
+          </v-card-text>
+        </v-slide-y-transition>
+      </v-card>
+    </v-flex>
 
-        </v-flex>
-      </v-layout>
-      <v-divider class="grey mt-5"></v-divider>
-    </div>
-  </panel>
-
-  </panel>
+  </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -40,7 +50,7 @@ import ManualsService from "@/services/ManualsService";
 export default {
   data() {
     return {
-    
+    show: false,
       manuals: [],
       searchText: ""
     };
@@ -81,7 +91,31 @@ async mounted() {
 };
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.product {
+  padding: 30px;
+  height: 230px;
+  overflow: hidden;
+}
+
+.product-name {
+  font-size: 30px;
+}
+
+.product-model {
+  font-size: 24px;
+}
+.product-logo {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#search-panel {
+  position: relative;
+  -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
+  animation: mymove 1s;
+}
 .product {
   padding: 30px;
   height: 230px;
@@ -98,7 +132,7 @@ async mounted() {
   font-weight: 400;
 }
 .product-logo {
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
 }
 .product-url {
@@ -109,5 +143,62 @@ async mounted() {
 a {
   color: blue;
   text-decoration: none; /* no underline */
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0% {
+    top: 0px;
+    left: -1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  0% {
+    top: 0px;
+    left: -1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+#panel {
+  position: relative;
+  -webkit-animation: mymove 1s; /* Safari 4.0 - 8.0 */
+  animation: mymove2 1s;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove2 {
+  0% {
+    top: 0px;
+    left: 1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+/* Standard syntax */
+@keyframes mymove2 {
+  0% {
+    top: 0px;
+    left: 1000px;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+  }
 }
 </style>

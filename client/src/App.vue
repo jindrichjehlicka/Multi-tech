@@ -85,13 +85,13 @@
         </v-toolbar-items>
 
       </v-toolbar>
-      <v-container fluid>
+   
         <v-content>
 
           <router-view> </router-view>
 
         </v-content>
-      </v-container>
+      
       <v-footer absolute class="pa-3">
         <v-spacer></v-spacer>
         © {{ new Date().getFullYear() }}
