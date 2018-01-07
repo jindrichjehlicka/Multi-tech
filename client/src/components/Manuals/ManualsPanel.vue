@@ -57,7 +57,7 @@ import ManualsService from "@/services/ManualsService";
 export default {
   data() {
     return {
-    show: false,
+      show: false,
       manuals: [],
       searchText: ""
     };
@@ -81,20 +81,17 @@ export default {
       });
     }
   },
-
-async mounted() {
-   try  {
-     if(this.isUserLoggedIn){
- this.manuals = (await ManualsService.index()).data;
-    localStorage.setItem('manuals', JSON.stringify(this.manuals));  
-     }   
-   }catch(err){
-     this.manuals=JSON.parse( localStorage.getItem('manuals' ) )
-     console.log(err)    
-   }
- }
-
-  
+  async mounted() {
+    try {
+      if (this.isUserLoggedIn) {
+        this.manuals = (await ManualsService.index()).data;
+        localStorage.setItem("manuals", JSON.stringify(this.manuals));
+      }
+    } catch (err) {
+      this.manuals = JSON.parse(localStorage.getItem("manuals"));
+      console.log(err);
+    }
+  }
 };
 </script>
 
