@@ -67,8 +67,7 @@ export default {
     itemsSearched: function() {
       var self = this;
       if (this.searchText == "") {
-        return this.manuals;
-      }
+        return this.manuals; }
       return this.manuals.filter(function(manual) {
         return (
           manual.Product.companyName
@@ -76,21 +75,16 @@ export default {
             .indexOf(self.searchText.toLowerCase().trim()) >= 0 ||
           manual.Product.model
             .toLowerCase()
-            .indexOf(self.searchText.toLowerCase().trim()) >= 0
-        );
-      });
-    }
-  },
+            .indexOf(self.searchText.toLowerCase().trim()) >= 0 );
+      }); } },
   async mounted() {
     try {
       if (this.isUserLoggedIn) {
         this.manuals = (await ManualsService.index()).data;
-        localStorage.setItem("manuals", JSON.stringify(this.manuals));
-      }
+        localStorage.setItem("manuals", JSON.stringify(this.manuals)); }
     } catch (err) {
       this.manuals = JSON.parse(localStorage.getItem("manuals"));
-      console.log(err);
-    }
+      console.log(err);}
   }
 };
 </script>
