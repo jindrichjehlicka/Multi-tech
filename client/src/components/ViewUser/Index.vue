@@ -20,10 +20,7 @@ export default {
       user: {}
     };
   },
-  async mounted() {
-    const userId = this.$store.state.route.params.userId;
-    this.user = (await UsersService.show(userId)).data;
-  },
+ 
   components: {
     UserMetadata
   }

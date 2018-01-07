@@ -28,10 +28,7 @@ export default {
       users: null
     };
   },
-  async mounted() {
-    //do a request to the backend for all the products
-    this.users = (await UsersService.index()).data;
-  }
+ 
 };
 </script>
 

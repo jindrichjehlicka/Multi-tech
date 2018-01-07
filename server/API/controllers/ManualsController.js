@@ -13,21 +13,19 @@ module.exports = {
       const {
         productId
       } = req.query
-      const where = {
+      const myManual = {
         UserId: userId
       }
       if (productId) {
-        where.ProductId = productId,
-        where.UserId = userId
+        myManual.ProductId = productId,
+          myManual.UserId = userId
       }
       const manuals = await Manual.findAll({
-        where: where,
+        myManual: myManual,
         include: [{
-          //return User and Product info.. model: Product - returns  only product info
-          model:Product
+          model: Product
         }]
       })
-      
       res.send(manuals)
     } catch (err) {
       res.status(500).send({

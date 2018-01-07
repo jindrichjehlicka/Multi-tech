@@ -53,17 +53,17 @@ module.exports = (app) => {
             ProductsController.show)
 
     app.get('/users',
-    PassportValidation,
+ 
         UsersController.index),
-        PassportValidation,
+        
         app.put('/users/:userId',
-        PassportValidation,
+        
             UsersController.put),
         app.post('/users',
-        PassportValidation,
+   
             UsersController.post),
         app.get('/users/:userId',
-        PassportValidation,
+       
             UsersController.show)
 
     app.get('/manuals',

@@ -119,13 +119,12 @@ export default {
       ];
       if (this.$store.state.isUserLoggedIn) {
         menuItems = [
-          { icon: "fa-shopping-cart", title: "My products", link: "/manuals" },
-        
+          { icon: "fa-shopping-cart", title: "My products", link: "/manuals" },        
           { icon: "fa-phone", title: "Support", link: "/support" }
         ];
       }
-
       return menuItems;
+      
     },
     items() {
       let items = [];

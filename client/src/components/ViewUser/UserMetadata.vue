@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <panel title="User information" class="">
 
-      <v-flex>
+<div>
+ <panel title="User information" class="">
+
+      <v-flex xs6>
          <div class="user-email subheading">
          ID: {{user.id}}
         </div>
         <div class="user-email subheading">
           Email : {{user.email}}
         </div>
-
+        
         <div v-if="user.mine === ''" class="user-mine subheading">
          Mine Name :  Not defined
         </div>
         <div v-else class="user-mine subheading">
          Mine Name : {{user.mine}}
         </div>
-
         <div v-if="user.admin === 0" class="user-email  subheading" id="user-email-big">
           Customer account
         </div>
@@ -26,23 +26,19 @@
         <div v-else>
           Account type has not been specified
         </div>
-
         <div class="user-createdAt subheading">
           {{user.createdAt}}
-
-        </div>
-
-        <br/>
-
-    
+        </div>    
       </v-flex>
     </panel>
 
-    <panel title="Edit User" class="mt-5 ml-2">
+    <panel title="Edit User" class="mt-1 ml-2">
       <v-flex>
+      <v-form>
         <v-text-field label="User Email" required :rules="[required]" v-model="user.email"></v-text-field>
 
         <v-text-field label="Mine name (optional)" v-model="user.mine"></v-text-field>
+        <v-text-field label="Pass" v-model="password"></v-text-field>
         <!-- <v-text-field label="Password" v-model="user.password"></v-text-field> -->
           <v-select
               v-bind:items="items"
@@ -51,6 +47,8 @@
               single-line
            
             ></v-select>
+      </v-form>
+      
         <!-- <v-text-field label="Admin(0-Customer,1-Admin)" required :rules="[required]" v-model="user.admin"></v-text-field> -->
 
         <v-alert class="ml-4" :value="error" transition="scale-transition" error>
@@ -59,15 +57,15 @@
 
         <v-btn dark class="indigo darken-3 mt-3" @click="save">Save User
         </v-btn>
+         <v-btn dark class="indigo darken-3 mt-3" @click="changePass">Change password
+        </v-btn>
 
-        <!-- <v-btn class="green mt-3" dark>
 
-          Make admin
-        </v-btn> -->
       </v-flex>
     </panel>
+</div>
 
-  </div>
+   
 </template>
 
 <script>
@@ -80,8 +78,10 @@ export default {
         email: null,
         password: null,
         mine: null,
-        admin: null
+        admin: null,
+       
       },
+       password:null,
       error: null,
       required: value => !!value || "Required.",
      
@@ -96,6 +96,7 @@ export default {
   methods: {
     async save() {
       const userId = this.$store.state.route.params.userId;
+
       try {
         await UsersService.put(this.user);
         this.$router.push({
@@ -104,9 +105,27 @@ export default {
             userId: userId
           }
         });
+        // this.$router.push({
+        //   name:"users"
+        // })
+      } catch (err) {
+        console.log(err);
+      }
+    },
+      async changePass() {
+      const userId = this.$store.state.route.params.userId;
+      this.user.password = this.password
+      try {
+        await UsersService.put(this.user);
         this.$router.push({
-          name:"users"
-        })
+          name: "user",
+          params: {
+            userId: userId
+          }
+        });
+        // this.$router.push({
+        //   name:"users"
+        // })
       } catch (err) {
         console.log(err);
       }
