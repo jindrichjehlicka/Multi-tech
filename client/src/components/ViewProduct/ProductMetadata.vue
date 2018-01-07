@@ -3,14 +3,12 @@
   <panel title="Product information" class="mb-5">
 
     <img class="product-logo" :src="product.companyLogo" />
-    <div class="product-name ">
-      {{product.id}}
-    </div>
+  
     <!-- <iframe :src="product.url " ></iframe> -->
     <div class="product-name ">
       {{product.companyName}}
     </div>
-    <div>{{product.url}}</div>
+   
 
     <div class="product-model">
       {{product.model}}
@@ -90,37 +88,34 @@ export default {
     ...mapState(["isUserLoggedIn"])
   },
 
-  // watch: {
-  //   async product() {
-  //     if (!this.isUserLoggedIn) {
-  //       return;
-  //     }
-  //     try {
-  //       this.manual = (await ManualsService.index({
-  //         productId: this.product.id,
-  //         userId: this.$store.state.user.id
-  //       })).data;
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // },
-
-  methods: {
-    async addManual() {
-      this.snackbar = false;
-      if (!this.$refs.form.validate()) {
+  watch: {
+    async product() {
+      if (!this.isUserLoggedIn) {
         return;
       }
       try {
-        if (this.$refs.form.validate()) {
+        this.manual = (await ManualsService.index({
+          productId: this.product.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+
+  methods: {
+    async addManual() {
+     
+   
+      try {
+       
           this.manual = (await ManualsService.post({
             productId: this.product.id,
             userId: this.user.id
           })).data;
-          this.$refs.form.reset();
-          this.snackbar = true;
-        }
+       
+        
       } catch (err) {
         console.log(err);
       }

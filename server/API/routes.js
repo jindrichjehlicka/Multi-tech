@@ -53,17 +53,17 @@ module.exports = (app) => {
             ProductsController.show)
 
     app.get('/users',
- 
+    PassportValidation,
         UsersController.index),
         
         app.put('/users/:userId',
-        
+        PassportValidation,
             UsersController.put),
         app.post('/users',
-   
+        PassportValidation,
             UsersController.post),
         app.get('/users/:userId',
-       
+        PassportValidation,
             UsersController.show)
 
     app.get('/manuals',
@@ -76,10 +76,10 @@ module.exports = (app) => {
             ManualsController.index),
         //my product are cached for 15 min,
         app.post('/manuals',
-
+        PassportValidation,
             ManualsController.post),
         app.delete('/manuals/:manualId',
-
+        PassportValidation,
             ManualsController.delete)
 
     app.post('/support',

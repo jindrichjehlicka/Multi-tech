@@ -10,18 +10,16 @@ module.exports = {
   async index(req, res) {
     try {
       const userId = req.user.id
-      const {
-        productId
-      } = req.query
-      const myManual = {
+      const {productId} = req.query
+      const where = {
         UserId: userId
       }
       if (productId) {
-        myManual.ProductId = productId,
-          myManual.UserId = userId
+        where.ProductId = productId,
+        where.UserId = userId
       }
       const manuals = await Manual.findAll({
-        myManual: myManual,
+       where: where,
         include: [{
           model: Product
         }]

@@ -38,7 +38,7 @@
         <v-text-field label="User Email" required :rules="[required]" v-model="user.email"></v-text-field>
 
         <v-text-field label="Mine name (optional)" v-model="user.mine"></v-text-field>
-        <v-text-field label="Pass" v-model="password"></v-text-field>
+      
         <!-- <v-text-field label="Password" v-model="user.password"></v-text-field> -->
           <v-select
               v-bind:items="items"
@@ -57,7 +57,7 @@
 
         <v-btn dark class="indigo darken-3 mt-3" @click="save">Save User
         </v-btn>
-         <v-btn dark class="indigo darken-3 mt-3" @click="changePass">Change password
+         <v-btn dark class="indigo darken-3 mt-3" @click="">Change password
         </v-btn>
 
 
