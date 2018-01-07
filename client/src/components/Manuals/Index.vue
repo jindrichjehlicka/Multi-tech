@@ -27,10 +27,10 @@
           >
             <v-card  hidden-xs-only class="elevation-2 "> 
               <v-card-media class="product-logo hidden-sm-and-down"
-                :src="manual.Product.companyLogo"                
+                              
                 height="150px"              
                
-              >                
+              >          <img :src="manual.Product.companyLogo"  >      
               </v-card-media>
                 <div class="headline " v-text="manual.Product.companyName"></div>
                 <div class="headline " v-text="manual.Product.model"></div>

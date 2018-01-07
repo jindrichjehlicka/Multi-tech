@@ -12,6 +12,13 @@
           :src="manual.Product.companyLogo"
           height="150px"
         >
+         <v-container fluid fill-height>
+          <v-layout justify-center align-left>
+            <v-flex xs12 sm4>
+              <img   :src="manual.Product.companyLogo" alt="logo">
+            </v-flex>
+          </v-layout>
+        </v-container>
         </v-card-media>
         <v-card-title primary-title>
           
