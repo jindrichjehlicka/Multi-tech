@@ -107,7 +107,7 @@ export default {
   methods: {
     async addManual() {
      
-   
+   this.snackbar=false
       try {
        
           this.manual = (await ManualsService.post({
@@ -115,7 +115,7 @@ export default {
             userId: this.user.id
           })).data;
        
-        
+        this.snackbar=true
       } catch (err) {
         console.log(err);
       }
