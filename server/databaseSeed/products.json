@@ -3,7 +3,7 @@
         "model": "Model LA-ST120",
         "description": "Parallel connected , trabnsient voltage surge suppresor device utilizing both high-energy handling and Frequency Attenuation Network circuitry for virtual elimion of ring wave type transients",
         "companyLogo": "logo",
-        "url": "https://drive.google.com/open?id=0B4arE4cEroO2VmFXYTl5WUt5bXc"
+        "url": "url"
     },
     {
 
@@ -11,14 +11,14 @@
         "model": "Model RM-ST40",
         "description": "Parallel connected , trabnsient voltage surge suppresor device utilizing both high-energy handling and Frequency Attenuation Network circuitry for virtual elimion of ring wave type transients",
         "companyLogo": "logo",
-        "url": "https://drive.google.com/open?id=0B4arE4cEroO2Rmp3WkthUnhtQUk"
+        "url": "url"
     },
     {
         "companyName": "CJC",
         "model": "Model HD HDU 15/12",
         "description": "CJC Offline Fine Filter mounted in frame with vibration dampers",
-        "companyLogo": "http://fynsmaritimeklynge.dk/wp-content/uploads/2015/07/C-C-Jensen-984x554.png",
-        "url": "https://drive.google.com/open?id=0B4arE4cEroO2UWN3cExiVVBZOW8"
+        "companyLogo": "logo",
+        "url": "url"
 
     }
 ]
