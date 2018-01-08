@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "apicache": "^1.1.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.1",
@@ -24,7 +23,6 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.15.4",
-    "express-redis-cache": "^1.0.0",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.0.1",
     "lodash": "^4.17.4",
