@@ -145,7 +145,7 @@ export default {
   color: black;
 }
 .product-logo {
-  width: 40%;
+  width:30%;
   margin: 0 auto;
 }
 .product-description {
