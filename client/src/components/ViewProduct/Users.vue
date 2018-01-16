@@ -4,8 +4,14 @@
     <v-flex >
      
       <panel title="Users List">
-
-        <v-data-table :headers="headers" :pagination.sync="pagination" :items="users">
+   <v-text-field
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+        v-model="search"
+      ></v-text-field>
+        <v-data-table v-bind:headers="headers" :pagination.sync="pagination" v-bind:items="users"  v-bind:search="search">
 
           <template slot="items" slot-scope="props">
             <td class="text-xs-left ">
@@ -50,7 +56,8 @@ export default {
         sortBy: "id",
         descending: false
       },
-      users: []
+      users: [],
+      search: '',
     };
   },
    watch: {
