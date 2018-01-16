@@ -18,6 +18,7 @@ import AdminProducts from '@/components/Admin/AllProducts/AdminIndex';
 
 
 import ViewUser from '@/components/ViewUser/Index';
+import ChangePassword from '@/components/ChangePassword';
 
 import NavigationGuard from './NavigationGuard';
 import NavigationGuardAdmin from './NavigationGuardAdmin';
@@ -122,6 +123,13 @@ export default new Router({
       path: '/users/:userId',
       name: 'user',
       component: ViewUser,
+      beforeEnter: NavigationGuardAdmin
+
+    },
+    {
+      path: '/changepassword/:userId',
+      name: 'change-password',
+      component: ChangePassword,
       beforeEnter: NavigationGuardAdmin
 
     },

@@ -58,8 +58,7 @@ module.exports = {
     }
   },
   async put(req, res) {
-    // var password = req.body.password;
-    // req.body.password = bcrypt.hashSync(password);  
+   
     
     try {
       await User.update(req.body, {        

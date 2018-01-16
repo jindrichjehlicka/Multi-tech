@@ -1,7 +1,7 @@
 <template>
  
     
-      <v-container fluid grid-list-md class="mb-5">
+      <v-container fluid grid-list-xs class="mb-5">
       <v-layout>
       <v-flex xs12>  
       <panel title="My Products">

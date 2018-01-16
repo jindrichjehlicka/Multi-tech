@@ -1,45 +1,129 @@
 <template>
-    <div>
 
-        <v-layout  v-bind="binding" >
-          <v-flex xs8 offset-xs2 md3 offset-md1 class="mb-3">
-            <users />
-            </v-flex>
-            <v-flex xs11  md6 offset-md1 class="mb-5 ml-3">
-              
-                <product-metadata :product="product" />                
-            </v-flex>
-        </v-layout>
+  <panel title="Product information" class="mb-5">
+
+    <img class="product-logo hidden-sm-and-down" :src="product.companyLogo" />
+  
+    <!-- <iframe :src="product.url " ></iframe> -->
+    <div class="product-name ">
+      {{product.companyName}}
     </div>
+   
+
+    <div class="product-model">
+      {{product.model}}
+    </div>
+    <br/>
+    <div class="product-description">
+      {{product.description}}
+    </div>
+
+    <br/>
+
+    <v-btn center right dark class="indigo darken-3 " :to="{
+                    name: 'product-edit',
+                     params() {
+                       return{
+                          productID: product.id
+                       }
+                       }
+                       }">
+      <v-icon>fa-pencil-square-o</v-icon>&nbsp Edit
+    </v-btn>
+
+    <div class="product-url ">
+      <a :href="product.url" target="_blank">
+        <v-btn large dark right class="indigo darken-3 ml-4">
+          <v-icon left> fa-paperclip</v-icon> Download manual</v-btn>
+      </a>
+    </div>
+    <v-divider class="mt-2"></v-divider>
+    <v-layout row justify-center>
+      <v-flex xs7 offset-xs1>
+
+        <v-form v-model="valid" ref="form" lazy-validation>
+          <v-text-field label="Add product to the user by user ID" required :rules="[v => !!v || 'User ID is required']" v-model.number="user.id" type="number"></v-text-field>
+        </v-form>
+   <v-alert class="ml-4" :value="error" transition="scale-transition" error>
+          {{error}}
+        </v-alert>
+      </v-flex>
+      <v-flex xs12 md5>
+        <v-btn center right dark class="green mt-3" @click="addManual">
+          Add to user
+        </v-btn>
+      </v-flex>
+
+      <v-snackbar :timeout="timeout" :color="color" :multi-line="mode === 'multi-line'" :vertical="mode === 'vertical'" v-model="snackbar">
+        {{ text }}
+        <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
+      </v-snackbar>
+    </v-layout>
+
+  </panel>
+
 </template>
 
 <script>
-import ProductMetadata from "@/components/ViewProduct/ProductMetadata";
-import Users from "@/components/ViewProduct/Users";
-import ProductsService from "@/services/ProductsService";
+import { mapState } from "vuex";
+import ManualsService from "@/services/ManualsService";
 
 export default {
+  props: ["product"],
   data() {
     return {
-      product: {}
+      manual: null,
+      user: {
+        id: null,
+        email: null
+      },
+      error: null,
+      snackbar: false,
+      color: "green",
+      mode: "",
+      timeout: 5000,
+      text: "Product has been added to the user",
+      valid: true
     };
   },
-  async mounted() {
-    const productId = this.$store.state.route.params.productId;
-    this.product = (await ProductsService.show(productId)).data;
-  },
   computed: {
-      binding () {
-        const binding = {}
+    ...mapState(["isUserLoggedIn"])
+  },
 
-        if (this.$vuetify.breakpoint.mdAndDown) binding.column = true
-
-        return binding
+  watch: {
+    async product() {
+      if (!this.isUserLoggedIn) {
+        return;
       }
-    },
-  components: {
-    ProductMetadata,
-    Users
+      try {
+        this.manual = (await ManualsService.index({
+          productId: this.product.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+
+  methods: {
+    async addManual() {
+     
+   this.snackbar=false
+      try {
+       if (this.$refs.form.validate()) {
+          this.manual = (await ManualsService.post({
+            productId: this.product.id,
+            userId: this.user.id
+          })).data;
+       this.error = null
+        this.$refs.form.reset();
+        this.snackbar=true
+      }
+      }catch (error) {
+        this.error = error.response.data.error;
+      }
+    }
   }
 };
 </script>
@@ -52,14 +136,29 @@ export default {
 }
 
 .product-name {
-  font-size: 30px;
+  font-size: 35px;
+  color: black;
 }
 
 .product-model {
   font-size: 24px;
+  color: black;
 }
 .product-logo {
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
+}
+.product-description {
+  font-size: 18px;
+  color: black;
+}
+.product-url {
+  font-size: 15px;
+  color: black;
+}
+
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
 }
 </style>

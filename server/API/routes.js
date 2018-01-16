@@ -2,6 +2,7 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const JoiValidation = require('./AuthMiddlewares/JoiValidation')
 const ProductsController = require('./controllers/ProductsController')
 const UsersController = require('./controllers/UsersController')
+const PasswordController = require('./controllers/PasswordController')
 const ManualsController = require('./controllers/ManualsController')
 const AdminManualController = require('./controllers/AdminManualController')
 const EmailController = require('./controllers/EmailController')
@@ -59,6 +60,9 @@ module.exports = (app) => {
         app.put('/users/:userId',
         PassportValidation,
             UsersController.put),
+            app.put('/password/:userId',
+        PassportValidation,
+            PasswordController.put),
         app.post('/users',
         PassportValidation,
             UsersController.post),
@@ -74,7 +78,7 @@ module.exports = (app) => {
        
         PassportValidation,
             ManualsController.index),
-        //my product are cached for 15 min,
+      
         app.post('/manuals',
         PassportValidation,
             ManualsController.post),

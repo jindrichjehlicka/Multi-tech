@@ -11,10 +11,10 @@
           <v-text-field append-icon="search" label="Search" single-line v-model.trim="search"></v-text-field>
         </v-form>
     </v-flex>
-  <v-flex xs5 class="ml-5">
+  <v-flex xs5 class="ml-1">
   <v-text-field label="Delete product from user by ID" v-model.number="manual.id" type="number"></v-text-field>
   </v-flex>
-  <v-flex xs2 class="ml-3">
+  <v-flex xs2 class="ml-1">
     <v-btn center right dark class="red mt-3" @click="deleteManual">
               
               Delete
@@ -33,7 +33,7 @@
             <td class="text-xs-left">
               {{props.item.User.email}}
             </td>
-            <td class="text-xs-left">
+            <td class="text-xs-left ">
               {{props.item.Product.companyName}}
             </td>
             <td class="text-xs-left">

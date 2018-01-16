@@ -1,11 +1,11 @@
 <template>
     <div>
 
-        <v-layout row justify-center>
-          <v-flex xs3 >
+        <v-layout  v-bind="binding" >
+          <v-flex xs8 offset-xs2 md3 offset-md1 class="mb-3">
             <users />
             </v-flex>
-            <v-flex xs6 offset-xs1>
+            <v-flex xs10 offset-xs1  md6 offset-md1 class="mb-5 ">
               
                 <product-metadata :product="product" />                
             </v-flex>
@@ -28,6 +28,15 @@ export default {
     const productId = this.$store.state.route.params.productId;
     this.product = (await ProductsService.show(productId)).data;
   },
+  computed: {
+      binding () {
+        const binding = {}
+
+        if (this.$vuetify.breakpoint.mdAndDown) binding.column = true
+
+        return binding
+      }
+    },
   components: {
     ProductMetadata,
     Users
