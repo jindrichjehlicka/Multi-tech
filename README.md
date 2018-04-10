@@ -1,2 +1,3 @@
 # multi-tech
-Vue.js and Express web application for managing customers and downloading manuals 
+Vue.js and Express web application for managing customers and downloading manuals made for Multi-tech Services (WA) Limited... 
+In progress
