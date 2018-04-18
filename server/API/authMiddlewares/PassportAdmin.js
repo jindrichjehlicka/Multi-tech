@@ -6,9 +6,12 @@ module.exports = function (req, res, next) {
       res.status(403).send({
         error: 'Access denied'
       })
-    } else{
-      req.user = user
-      next()
+    } else if(user.admin===1 ){
+      
+        req.user = user
+        next()
+      
+    
     }
   })(req, res, next)
-}
+}  

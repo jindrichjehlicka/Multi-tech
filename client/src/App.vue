@@ -92,7 +92,7 @@
 
         </v-content>
       
-      <v-footer absolute class="pa-3">
+      <v-footer absolute class="pa-3 mt-5">
         <v-spacer></v-spacer>
         © {{ new Date().getFullYear() }}
       </v-footer>

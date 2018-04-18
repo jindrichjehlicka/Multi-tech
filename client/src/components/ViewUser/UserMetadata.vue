@@ -54,7 +54,7 @@
       </v-flex>
     </panel>
 
-    <panel title="Change password" class="mt-5 ">
+    <panel title="Change password" class="mt-5 mb-5">
       <v-form v-model="valid" ref="form1" lazy-validation>
         <v-text-field label="New Password" :rules="passwordRules" :counter="6" required v-model="password"></v-text-field>
       </v-form>

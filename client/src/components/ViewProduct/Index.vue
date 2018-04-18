@@ -32,7 +32,7 @@ export default {
       binding () {
         const binding = {}
 
-        if (this.$vuetify.breakpoint.mdAndDown) binding.column = true
+        if (this.$vuetify.breakpoint.xs) binding.column = true
 
         return binding
       }
